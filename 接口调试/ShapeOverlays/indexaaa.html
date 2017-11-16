@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVG Shape Overlays | Demo 4</title>
+
+<link rel="stylesheet" type="text/css" href="css/demo.css" />
+
+<script src="https://h5.m.jd.com/dev/AoY8oPJews28R9bXaCcu41LJPm1/pages/180429/js/jquery.min.js"></script>
+
+</head>
+<body style="margin:0;padding:0">
+<header class="demo-4" style="background-color: #d00269;">
+	<div class="content content--demo-4">
+		<div class="hamburger hamburger--demo-4 js-hover">
+			<div class="hamburger__line hamburger__line--01">
+				<div class="hamburger__line-in hamburger__line-in--01 hamburger__line-in--demo-4"></div>
+			</div>
+			<div class="hamburger__line hamburger__line--02">
+				<div class="hamburger__line-in hamburger__line-in--02 hamburger__line-in--demo-4"></div>
+			</div>
+			<div class="hamburger__line hamburger__line--03">
+				<div class="hamburger__line-in hamburger__line-in--03 hamburger__line-in--demo-4"></div>
+			</div>
+			<div class="hamburger__line hamburger__line--cross01">
+				<div class="hamburger__line-in hamburger__line-in--cross01 hamburger__line-in--demo-4"></div>
+			</div>
+			<div class="hamburger__line hamburger__line--cross02">
+				<div class="hamburger__line-in hamburger__line-in--cross02 hamburger__line-in--demo-4"></div>
+			</div>
+		</div>
+
+
+		<div class="demo-title demo-title--demo-4">Human Pacifier</div>
+
+		<div class="global-menu">
+			<div class="global-menu__wrap">
+				<h3>【规则】</h3>
+				<p class="text">
+					1.	预售定金下单后，请在30分钟内付款。若超时，该订单将自动被取消。<br> 2.	预售商品可选择先支付定金，也可选择一次性支付全款。具体以商品详情页及下单页展示为准。<br> 3.	定金付款后，若非京东或商家责任（根据《售后政策》和客服判断为准），定金恕不退还。<br> 4.	预售结束后，请至京东“我的订单”中“待付款”订单查找所要支付尾款的订单。<br> 5.	尾款开始支付时，请在规定时间内支付尾款。若超时，系统将自动取消订单，且定金不退还。请注意预售结束时间，并及时支付尾款。对此我们会有短信、京东消息push及微信公众号推送等方式进行提醒。<br> 6.	如果提供赠品，赠品赠送顺序按照定金付款成功时间来计算，而不是定金下单时间。订单若取消，如有赠品，则赠品不予赠送。<br> 7.	发货时间请以预售商品详情页中“预计发货时间”为准。<br> 8.	定金膨胀商品（含“定金可抵XX元”提示语），即所付定金可当XX元使用。例如，预售价100元，定金1元，可抵10元，表示支付1元定金可当10元使用，即用户支付1元定金后，尾款只需支付90元，用户总体实付享受9元优惠。<br> 9.	预售可在定金阶段使用优惠券，优惠券优惠金额优先抵扣尾款金额，若尾款金额抵扣为0元后，可抵扣定金金额。例如预售价100元，定金10元，尾款为90元，若使用满100元-10元的优惠券则优惠券10元的优惠优先抵扣在尾款后，尾款只需支付80元。<br> 10.	如您对活动有任何疑问，请联系客服咨询。
+				</p>
+			</div>
+		</div>
+		<svg class="shape-overlays" viewBox="0 0 100 100" preserveAspectRatio="none">
+			<path class="shape-overlays__path"></path>
+			<path class="shape-overlays__path"></path>
+		</svg>
+	</div>
+</header>
+
+<script>
+!(function() {
+	var elmHamburger = document.querySelector('.hamburger');
+	var gNavItems = document.querySelectorAll('.global-menu__item');
+	var elmOverlay = document.querySelector('.shape-overlays');
+
+	var overlay = {
+		path: elmOverlay.querySelectorAll('path'),
+		numPoints: 4,
+		duration: 1000,
+		delayPointsArray: [],
+		delayPointsMax: 0,
+		delayPerPath: 60,
+		timeStart:　Date.now(),
+		isOpened: false,
+		isAnimating: false
+	}
+
+	function open(e) {
+	    e.isOpened = true;
+	    elmOverlay.classList.add('is-opened');
+	    e.timeStart = Date.now();
+	    renderLoop(e);
+	    $('.global-menu').stop(true);
+	    setTimeout(function(){
+	    	$('.global-menu').animate({
+	    		opacity: 1
+	    	},1000);
+	    }, 500)
+	}
+
+	function close(e) {
+	    e.isOpened = false;
+	    elmOverlay.classList.remove('is-opened');
+	    e.timeStart = Date.now();
+	    renderLoop(e);
+	    $('.global-menu').stop(true);
+	    $('.global-menu').animate({
+	        opacity: 0
+	    },600);
+	}
+
+	function toggle(e) {
+	    e.isAnimating = true;
+	    for (var i = 0; i < e.numPoints; i++) {
+	    	e.delayPointsArray[i] = 0;
+	    }
+	    e.isOpened === false ? open(e) : close(e);
+  	}
+
+  	function updatePath(e,time) {
+	    var points = [];
+	    var ease = {
+			exponentialInOut: (t) => {
+				return t == 0.0 || t == 1.0
+				  ? t
+				  : t < 0.5
+				    ? +0.5 * Math.pow(2.0, (20.0 * t) - 10.0)
+				    : -0.5 * Math.pow(2.0, 10.0 - (t * 20.0)) + 1.0;
+			},
+			sineOut: (t) => {
+				var HALF_PI = 1.5707963267948966;
+				return Math.sin(t * HALF_PI);
+			}
+	    }
+	    for (var i = 0; i < e.numPoints; i++) {
+	      var thisEase = (i % 2 === 1) ? ease.sineOut : ease.exponentialInOut;
+	      points[i] = (1 - thisEase(Math.min(Math.max(time - e.delayPointsArray[i], 0) / e.duration, 1))) * 100
+	    }
+
+	    let str = '';
+	    str += (e.isOpened) ? `M 0 0 H ${points[0]}` : `M ${points[0]} 0`;
+	    for (var i = 0; i < e.numPoints - 1; i++) {
+	      var p = (i + 1) / (e.numPoints - 1) * 100;
+	      var cp = p - (1 / (e.numPoints - 1) * 100) / 2;
+	      str += `C ${points[i]} ${cp} ${points[i + 1]} ${cp} ${points[i + 1]} ${p} `;
+	    }
+	    str += (e.isOpened) ? `H 100 V 0` : `H 0 V 0`;
+	    return str;
+	}
+
+  	function render(e) {
+	    if (e.isOpened) {
+	      for (var i = 0; i < e.path.length; i++) {
+	        e.path[i].setAttribute('d', updatePath(e,Date.now() - (e.timeStart + e.delayPerPath * i)));
+	      }
+	    } else {
+	      for (var i = 0; i < e.path.length; i++) {
+	        e.path[i].setAttribute('d', updatePath(e,Date.now() - (e.timeStart + e.delayPerPath * (e.path.length - i - 1))));
+	      }
+    	}
+	}
+
+  	function renderLoop(e) {
+	    render(e);
+	    if (Date.now() - e.timeStart < e.duration + e.delayPerPath * (e.path.length - 1) + e.delayPointsMax) {
+	    	requestAnimationFrame(function() {
+	        	renderLoop(e);
+	    	});
+	    } else {
+	      e.isAnimating = false;
+	    }
+	}
+
+	elmHamburger.addEventListener('click', () => {
+		if (overlay.isAnimating) { return false; }
+
+		toggle(overlay);
+
+		if (overlay.isOpened === true) {
+			elmHamburger.classList.add('is-opened-navi');
+			for (var i = 0; i < gNavItems.length; i++) {
+		    	gNavItems[i].classList.add('is-opened');
+			}
+		} else {
+			elmHamburger.classList.remove('is-opened-navi');
+			for (var i = 0; i < gNavItems.length; i++) {
+				gNavItems[i].classList.remove('is-opened');
+			}
+		}
+	});
+})();
+</script>
+
+</body>
+</html>

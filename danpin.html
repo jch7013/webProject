@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单品模板</title>
+</head>
+<body>
+	<div class="j-module" module-function="autoFill" module-param="{xInner:18,yInner:10,xOuter:0,yOuter:0}">
+	<ul class="exclusive">
+	   #foreach($!goods in $!goodsRecList)
+		<li class="jExc">
+			<div class="box">
+				<div class="jPic">
+					<a href='openapp.jdipad://virtual?params={"category":"jump","des":"productDetail","skuId":"$!goods.goodsId","sourceType":"yuni" ,"sourceValue":"yuni"}'>
+						<img height="181" width="181" alt="$!goods.wname" src="$!jshopCommon.getImage($!goods.imageurl,7)" />
+					</a>
+				</div>
+				<div class="jGoodsInfo">   
+					<div title="$!goods.wname" class="jDesc">
+						<a href='openapp.jdipad://virtual?params={"category":"jump","des":"productDetail","skuId":"$!goods.goodsId","sourceType":"yuni" ,"sourceValue":"yuni"}'>$!goods.wname</a>
+					</div>                        
+					<div class="jPrice">
+						<span  class="jdPrice">¥$!jshopPrice.getJdPrice($!goods.goodsId)</span>
+					</div>
+				</div>
+				<div class="jBtnArea">
+					<a href='openapp.jdipad://virtual?params={"category":"jump","des":"cart","skuId":"$!goods.goodsId","skuNum":"1","sourceType":"yuni" ,"sourceValue":"yuni"}'><em></em>加入购物车</a>
+				</div>
+			</div>
+			#if($!goods.promTag && $!goods.promTag != "")
+			<div class="jPromotionLabel">
+				<div class="jPromotionTextArea">
+					<span class="jPromotionNum">$!goods.promTag</span>
+				</div>
+			</div>
+			#end
+		</li> 
+		#end    
+	</ul>
+</div>
+<script>
+	var pad={};
+	pad.on = function(){
+		var arg = arguments;
+		var objects = document.querySelectorAll(arg[0]);
+		this.main(objects,function(){
+			this.addEventListener(arg[1],arg[2],false);
+		});
+	};
+	pad.each = function(){
+		var arg = arguments;
+		var objects = document.querySelectorAll(arg[0]);
+		this.main(objects,arg[1]);
+	};
+	pad.main = function(objects,fn){
+		for(var i=0;i<objects.length;i++){
+			fn.call(objects[i],i);
+		}
+	};
+	pad.on(".jBtnArea","click",function(){
+		this.removeEventListener("click");
+		var _this = this;
+		var span = document.createElement("span");
+		span.textContent = "+1";
+		this.appendChild(span);
+		setTimeout(function(){
+			_this.removeChild(span);
+		},1000);
+	});
+</script>
+	<style type="text/css" media="screen">
+		.exc .mc{overflow:hidden;}
+		.exc .mb{display:none;}
+		.exc .mc ul{margin: 0 auto;margin-right:-20px;}
+		.exc .jExc{width:183px; background: #fff;font-family: \5FAE\8F6F\96C5\9ED1;zoom:1;float: left;display: inline;margin: 0 18.5px 0 0;margin-bottom:10px;box-sizing:border-box;position:relative;overflow: hidden;}
+		.exc .box{overflow:hidden;border: 1px solid #cfcfcf}
+		.exc .jExcHover{padding: 5px; border: solid 3px #c80609;}
+		.exc .jExc .jPic{padding:0 0 10px 0; text-align:center;position: relative;}
+		.exc .jExc .jPic img{vertical-align:top;}
+		.exc .jExc .jPic a{ width:181px; height:181px; display:block; margin:0 auto;}
+		.exc .jExc .jPic i{display: block; width: 30px;height: 32px;position: absolute;right: 0px;top: -8px;background: #c80609;color: #fff;padding: 3px;text-align: center;line-height: 15px;font-style: normal;}
+		.exc .jExc .jGoodsInfo{ position:relative; zoom:1;margin:0 14px;}
+		.exc .jExc .jDesc{height:45px; overflow:hidden;}
+		.exc .jExc .jDesc a{color:#585858;height:45px; line-height:22.5px; text-decoration:none;font-family: \5FAE\8F6F\96C5\9ED1;font-size:13px;}
+		.exc .jExc .jDesc a:hover{text-decoration:underline;}
+		.exc .jExc .jPrice{margin-top:12px;}
+		.exc .jExc .jdPrice{ color:#e53d40;font-size:25px;font-weight: 400;height:32px;display:block;}
+		.exc .jExc .jdPrice .jdNum{font-size:30px;}
+		.exc .jExc .jSalePrice{color:#939393;font-size: 13px;float: left;display: inline; text-decoration:line-through;}
+		.exc .jExc .jBtnArea{height:45px;background: #e53d40;margin-top: 6px;position:relative;z-index:0;}
+		.exc .jExc .jBtnArea span{text-align: center;font-size:22px;width:80px;height:30px;line-height:30px;color:#e53d40;display:block;position:absolute;top:0;left:50%;z-index:0;margin-left:-40px;opacity:0;-webkit-animation:animations 1s ease-out;}
+		@-webkit-keyframes animations{
+			0%{top:0px;opacity:1;}
+			100%{top:-100px;opacity:0;}
+		}
+		.exc .jExc .jBtnArea a{display: block;height: 45px;line-height: 45px;overflow: hidden;font-size:16px;color:#fff;text-align:center;}
+		.exc .jExc .jBtnArea a em{background:url('//img11.360buyimg.com/cms/jfs/t634/288/244617125/1300/5e15a7bf/5459cd25N0f33e6e4.png') 0 0 no-repeat;display:inline-block;width:28px;height:25px;vertical-align: middle;margin-right: 5px;}
+
+		.exc .jPromotionLabel{width:96px; height:27px;position:absolute; top:-38px; left:-43px;border-top: 58px solid rgba(0,0,0,0);line-height: 27px;transform: rotate(-45deg);-webkit-transform: rotate(-45deg);-moz-transform: rotate(-45deg);-ms-transform: rotate(-45deg);}
+		.exc .jPromotionTextArea{overflow:hidden;background: #df3538; text-align:center; color:#fff;font-size:13px;}
+
+
+	</style>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<style>
+.r-nav{width:120px;height: auto;}
+.r-nav ul {width:120px; height: auto; overflow: hidden; background:url() no-repeat;}
+.r-nav ul li{float:left;width:120px;height: auto;display: block;}
+.r-nav ul li.p{margin-top: 10px; background:url() no-repeat;}
+.r-nav ul li.p:hover{background:url() no-repeat;}
+.r-nav ul li.p-active{background:url() no-repeat;}
+.r-nav ul li.toTop{margin-top:10px;margin-bottom:45px;}
+</style>
+<div class="r-nav">
+	<ul>   
+		<li class="h">        
+			
+		</li>   
+		<li class="p">      
+			<a href="#f1"></a>    
+		</li>   
+		<li class="p">        
+			<a href="#f2"></a>      
+		</li>   
+		<li class="p">      
+			<a href="#f3"></a>     
+		</li>   
+		<li class="p">       
+			<a href="#f4"></a>      
+		</li>  
+		<li class="p">      
+			<a href="#f5"></a>     
+		</li>
+		<li class="p">   
+			<a href="#f6"></a>      
+		</li> 
+		<li class="toTop">         
+			<a href="#"></a>    
+		</li>  
+	</ul>
+</div>
+<script>
+$(function() {
+	var len = $(".target").length;
+    var scrollHandler = function() {
+        var wrapScrollTop=new Array();
+        for(var i=0;i<len;i++){
+              wrapScrollTop[i] = $(".target").eq(i).offset().top;
+        }
+        var winScrollTop = $(window).scrollTop()+10;
+        for(var n=0;n<len;n++){
+            if(winScrollTop >= wrapScrollTop[n]){
+                var ele = $('.r-nav ul').find('.p').eq(n);
+                ele.addClass('p-active').siblings('.p').removeClass('p-active');
+            }
+        }
+    }
+    $(window).bind('scroll', scrollHandler);
+});
+</script>
+
+
+<style>
+.target { position: relative; }
+.placeholder { position: absolute; display:block; width:100px; height:50px;}
+.offsetTop01{top:0;}
+</style>
+<a name="f1" class="target"><span class="placeholder offsetTop01"></span></a>

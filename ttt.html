@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript" src="lib/jquery-1.12.2.min.js"></script>
+<script type="text/javascript">
+// str.substring(0, 4) === 'http' && str.indexOf('.jd.com') != -1
+var oldArr = [{first_name:"Colin",last_name:"Toh"},{first_name:"Addy",last_name:"Osmani"},{first_name:"Yehuda",last_name:"Katz"}];
+function getNewArr () {
+    return oldArr.map(function(item,index){
+        item.full_name= [item.first_name,item.last_name].join(" ");
+        return item;
+    });
+}
+
+var data = {
+	a: '123',
+	b: '567'
+}
+var type = ['ul','li','img'];
+var list = '';
+var arr = [];
+var arr1 = [];
+function getNewArra() {
+	$(data).each(function(i,d) {
+		console.log(i)
+	    type.map(function(item,index){
+	    	if(item==='img'){
+				arr.push(["<"+item+" src='"+d.a+"'>\n"].join(" "));
+	    	}else{
+	    		arr.push(['<'+item+'>\n'].join(" "));
+				arr1.unshift(['</'+item+'>\n'].join(" "));
+	    	}
+	    });
+	});
+	list = arr.join('') + arr1.join('');
+	return list;
+}
+console.log(getNewArra());
+</script>
+</body>
+</html>

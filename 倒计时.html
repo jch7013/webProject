@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+h1{text-align:center;font-size:40px;}
+</style>
+</head>
+<body>
+<h1 id="number"></h1>
+<script>
+var seconds = 1000;
+timeRun();
+var timer = setInterval(timeRun, 1000);
+
+function timeRun(){
+    var h1 = document.getElementById('number');
+    if (seconds <= 0) {
+        h1.innerHTML = "Game Over";
+        h1.style.fontSize = "120px";
+        clearInterval(timer);
+        return;
+    }
+    var h = Math.floor(seconds / 3600);
+    var s = seconds - h * 3600;
+    var m = Math.floor(s / 60);
+    s -= m * 60;
+
+    h = (h<10)?'0'+h:h;
+    m = (m<10)?'0'+m:m;
+    s = (s<10)?'0'+s:s;
+
+    var message = "倒计时还有 "+h+'时'+m+'分'+s+'秒';
+    h1.innerHTML = message;
+
+    seconds --;
+}
+</script>
+</body>
+</html>

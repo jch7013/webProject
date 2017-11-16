@@ -1,0 +1,162 @@
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0 0; padding: 0; height: 100%; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: #212121; font-family: 'Roboto', Helvetica, Arial, sans-serif; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+.donut { position: relative; width: 240px; height: 240px; }
+.donut__copy { text-align: center; width: 100%; height: 100%; padding-top: 68px; top: 0; left: 0; position: absolute; }
+.donut__title, .donut__secondary { display: block; margin: 0; padding: 0; }
+.donut__title, .donut__spic { color: lighten(#7a5bcf, 5%); font-weight: 200; }
+.donut__title { font-size: 79px; position: relative; animation: donutTitleFadeLeft 800ms 200ms cubic-bezier(.99,.01,.22,.94) forwards; opacity: 0; transform: translateX(0); }
+.donut__spic { position: absolute; top: 20px; font-size: 30px; line-height: 1em; content: "%"; animation: donutTitleFadeRight 800ms 200ms cubic-bezier(.99,.01,.22,.94) forwards; opacity: 0; transform: translateY(-20px); }
+
+@keyframes donutTitleFadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes donutTitleFadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+$radius: 90;
+$circumference: (pi() * (2 * $radius));
+
+.donut__svg { transform: rotate(-90deg); }
+
+.donut__svg__circle--one { stroke-dasharray: $circumference; stroke-dashoffset: $circumference; transition: stroke-dashoffset 1200ms cubic-bezier(.99,.01,.62,.94); }
+.info {
+  font-size: 14px;
+  color: #999;
+  position: absolute;
+  flex: 1;
+  bottom: 40px;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  
+  a {
+    color: #999;
+  }
+}
+</style>
+
+<div class="donut">
+  <svg width="240" height="240" xmlns="http://www.w3.org/2000/svg" class="donut__svg">
+    <circle id="donut-graph-x" class="donut__svg__scrim" r="90" cy="120" cx="120" stroke-width="3" stroke="#333" fill="none"/>
+    <circle id="donut-graph" class="donut__svg__circle--one" r="90" cy="120" cx="120" stroke-width="4" stroke="url(#purple)" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+    
+    <defs>
+      <linearGradient id="purple" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="#7a5bcf"/>
+        <stop offset="100%" stop-color="#8A6FD5"/>
+      </linearGradient>
+    </defs>
+    
+  </svg>
+  <div class="donut__copy">
+    <span class="donut__title">
+      <span class="js-donut-figure"></span>
+      <span class="donut__spic">%</span>
+    </span>
+  </div>
+</div>
+
+<script type="text/javascript">
+'use strict';
+var _createClass = function () {
+    function defineProperties(target, props) {
+        for (var i = 0; i < props.length; i++) {
+            if (window.CP.shouldStopExecution(1)) {
+                break;
+            }
+            var descriptor = props[i];
+            descriptor.enumerable = descriptor.enumerable || false;
+            descriptor.configurable = true;
+            if ('value' in descriptor)
+                descriptor.writable = true;
+            Object.defineProperty(target, descriptor.key, descriptor);
+        }
+        window.CP.exitedLoop(1);
+    }
+    return function (Constructor, protoProps, staticProps) {
+        if (protoProps)
+            defineProperties(Constructor.prototype, protoProps);
+        if (staticProps)
+            defineProperties(Constructor, staticProps);
+        return Constructor;
+    };
+}();
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError('Cannot call a class as a function');
+    }
+}
+var ProgressCircle = function () {
+    function ProgressCircle(percent, radius, elementClass) {
+        _classCallCheck(this, ProgressCircle);
+        this._percent = percent;
+        this._radius = radius;
+        this._elementClass = elementClass;
+    }
+    ProgressCircle.prototype.calcDashOffset = function calcDashOffset() {
+        var circumference = Math.PI * (2 * this.radius);
+        return Math.floor(circumference - this.percent / 100 * circumference);
+    };
+    ProgressCircle.prototype.createCSS = function createCSS() {
+        document.querySelectorAll('.' + this._elementClass + ' .donut__svg .donut__svg__circle--one')[0].style.strokeDashoffset = this.calcDashOffset();
+    };
+    ProgressCircle.prototype.updateText = function updateText() {
+        document.querySelectorAll('.' + this.elementClass + ' .js-donut-figure')[0].innerText = this.percent;
+    };
+    ProgressCircle.prototype.updateFigure = function updateFigure(newStat) {
+        this._percent = newStat;
+        this.updateText();
+        this.createCSS();
+    };
+    ProgressCircle.prototype.init = function init() {
+        var _this = this;
+        this.updateText();
+        setTimeout(function () {
+            _this.createCSS();
+        }, 1000);
+    };
+    _createClass(ProgressCircle, [
+        {
+            key: 'percent',
+            get: function get() {
+                return this._percent;
+            }
+        },
+        {
+            key: 'radius',
+            get: function get() {
+                return this._radius;
+            }
+        },
+        {
+            key: 'elementClass',
+            get: function get() {
+                return this._elementClass;
+                return document.getElementsByClassName(this._elementClass)[0];
+            }
+        }
+    ]);
+    return ProgressCircle;
+}();
+var progress = new ProgressCircle(82, 90, 'donut');
+progress.init();
+</script>

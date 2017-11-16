@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>英联邦留学</title>
+    <meta name="Keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="icon" href="//www.jd.com/favicon.ico" mce_href="//www.jd.com/favicon.ico" type="image/x-icon">
+    <link type="text/css" rel="stylesheet"  href="//misc.360buyimg.com/??jdf/1.0.0/unit/ui-base/1.0.0/ui-base.css,jdf/1.0.0/unit/shortcut/2.0.0/shortcut.css,jdf/1.0.0/unit/global-header/1.0.0/global-header.css,jdf/1.0.0/unit/myjd/2.0.0/myjd.css,jdf/1.0.0/unit/nav/2.0.0/nav.css,jdf/1.0.0/unit/shoppingcart/2.0.0/shoppingcart.css,jdf/1.0.0/unit/global-footer/1.0.0/global-footer.css,jdf/1.0.0/unit/service/1.0.0/service.css,jdf/1.0.0/unit/basePatch/1.0.0/basePatch.css,product/global/1.0.0/css/basePath.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/commonwealth.css">
+    <script type="text/javascript">
+	    window.pageConfig = { compatible: true, navId:'home',jdfVersion:'2.0.0' };
+    </script>
+    <script type="text/javascript" src="//misc.360buyimg.com/??jdf/1.0.0/unit/base/1.0.0/base.js,jdf/lib/jquery-1.6.4.js,product/global/1.0.0/js/basePath.js"></script>
+</head>
+<body>
+    <div id="shortcut-2014">
+        <div class="w">
+            <ul class="fl">
+                <li class="dorpdown" id="ttbar-mycity"></li>
+            </ul>
+            <ul class="fr">
+                <li class="fore1" id="ttbar-login">
+                    <a href="javascript:login();" class="link-login">你好，请登录</a>&nbsp;&nbsp;<a href="javascript:regist();" class="link-regist style-red">免费注册</a>
+                </li>
+                <li class="spacer"></li>
+                <li class="fore2">
+                    <div class="dt">
+                        <a target="_blank" href="//order.jd.com/center/list.action">我的订单</a>
+                    </div>
+                </li>
+                <li class="spacer"></li>
+                <li class="fore3 dorpdown" id="ttbar-myjd">
+                    <div class="dt cw-icon">
+                        <i class="ci-right"><s>◇</s></i>
+                        <a target="_blank" href="//home.jd.com/">我的京东</a>
+                    </div>
+                    <div class="dd dorpdown-layer"></div>
+                </li>
+                <li class="spacer"></li>
+                <li class="fore4">
+                    <div class="dt">
+                        <a target="_blank" href="//vip.jd.com/">京东会员</a>
+                    </div>
+                </li>
+                <li class="spacer"></li>
+                <li class="fore5">
+                    <div class="dt">
+                        <a target="_blank" href="//b.jd.com/">企业采购</a>
+                    </div>
+                </li>
+                <li class="spacer"></li>
+                <li class="fore6 dorpdown" id="ttbar-apps">
+                    <div class="dt cw-icon">
+                        <i class="ci-left"></i>
+                        <i class="ci-right"><s>◇</s></i>
+                        <a target="_blank" href="//app.jd.com/">手机京东</a>
+                    </div>
+                </li>
+                <li class="spacer"></li>
+                <li class="fore7 dorpdown" id="ttbar-atte">
+                    <div class="dt cw-icon">
+                        <i class="ci-right"><s>◇</s></i>关注京东
+                    </div>
+                </li>
+                <li class="spacer"></li>
+                <li class="fore8 dorpdown" id="ttbar-serv">
+                    <div class="dt cw-icon">
+                        <i class="ci-right"><s>◇</s></i>客户服务
+                    </div>
+                    <div class="dd dorpdown-layer"></div>
+                </li>
+                <li class="spacer"></li>
+                <li class="fore9 dorpdown" id="ttbar-navs">
+                    <div class="dt cw-icon">
+                        <i class="ci-right"><s>◇</s></i>网站导航
+                    </div>
+                    <div class="dd dorpdown-layer"></div>
+                </li>
+            </ul>
+            <span class="clr"></span>
+        </div>
+    </div>
+    <div id="o-header-2013"><div id="header-2013" style="display:none;"></div></div>
+	<div class="w">
+        <div id="logo-2014">
+            <a href="//www.jd.com/" class="logo">京东</a>
+            <div class="extra">
+                <div id="channel">留学</div>
+                <div id="categorys-mini">
+                    <div class="cw-icon">
+                        <h2>
+                            <a href="//www.jd.com/allSort.aspx">
+                                全部分类 <i class="ci-right"><s>◇</s></i>
+                            </a>
+                        </h2>
+                    </div>
+                    <div id="categorys-mini-main">
+                        <span class="loading"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="search-2014" >
+            <ul id="shelper" class="hide"></ul>
+            <div class="form">
+                <input type="text" onkeydown="javascript:if(event.keyCode==13) search('key');" autocomplete="off" id="key" accesskey="s" class="text" />
+                <button onclick="search('key');return false;" class="button cw-icon"> <i></i>
+                    搜索
+                </button>
+            </div>
+        </div>
+        <div id="settleup-2014" class="dorpdown">
+            <div class="cw-icon">
+                <i class="ci-left"></i>
+                <i class="ci-right">&gt;</i>
+                <a target="_blank" href="//cart.jd.com/cart/cart.html">我的购物车</a>
+            </div>
+            <div class="dorpdown-layer">
+                <div class="spacer"></div>
+                <div id="settleup-content">
+                    <span class="loading"></span>
+                </div>
+            </div>
+        </div>
+        <div id="hotwords"></div>
+        <span class="clr"></span>
+    </div>
+    <div id="nav-2014">
+        <div class="w">
+            <div class="w-spacer"></div>
+            <div id="categorys-2014" class="dorpdown">
+                <div class="dt">留学分类</div>
+            </div>
+            <div id="navitems-2014">
+                <ul id="navitems-group1">
+                    <li class="fore1" id="nav-home" clstag="">
+                        <a href="#none" target="_blank">留学首页</a>
+                    </li>
+                    <li class="fore2" id="nav-lxrm" clstag="">
+                        <a href="#none" target="_blank">留学入门</a>
+                    </li>
+                    <li class="fore3" id="nav-yxgl" clstag="">
+                        <a href="#none" target="_blank">院校攻略</a>
+                    </li>
+                    <li class="fore4" id="nav-ylblx" clstag="">
+                        <a href="#none" target="_blank">英联邦留学</a>
+                    </li>
+                    <li class="fore5" id="nav-xfzf" clstag="">
+                        <a href="#none" target="_blank">学费支付</a>
+                    </li>
+                    <li class="fore6" id="nav-hwfc" clstag="">
+                        <a href="#none" target="_blank">海外房产</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="treasure"></div>
+            <span class="clr"></span>
+        </div>
+    </div>
+    <script type="text/javascript">         /*设置导航选中*/          (function(){if(pageConfig.navId){var object=document.getElementById("nav-"+pageConfig.navId);if(object)object.className+=" curr";}})();     </script>
+    <div class="content-160822">
+        <div class="first-screen">
+            <div class="slider-160822">
+                <ul class="slider-mc">
+                    <li class="slider-item" style="background: #466ba9">
+                        <div class="w">
+                            <a target="_blank" href="#">
+                                <img src="images/commonwealth-banner.jpg" width="1210" height="420" alt="" />
+                            </a>
+                        </div>
+                    </li>
+                    <li class="slider-item" style="background: #466ba9">
+                        <div class="w">
+                            <a target="_blank" href="#">
+                                <img trigger-lazy-img="images/commonwealth-banner.jpg" width="1210" height="420" alt="" />
+                            </a>
+                        </div>
+                    </li>
+                    <li class="slider-item" style="background: #466ba9">
+                        <div class="w">
+                            <a target="_blank" href="#">
+                                <img trigger-lazy-img="images/commonwealth-banner.jpg" width="1210" height="420" alt="" />
+                            </a>
+                        </div>
+                    </li>
+                    <li class="slider-item" style="background: #466ba9">
+                        <div class="w">
+                            <a target="_blank" href="#">
+                                <img trigger-lazy-img="images/commonwealth-banner.jpg" width="1210" height="420" alt="" />
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="slider-extra">
+                    <ul class="slider-trigger">
+                        <li class="ui-slider-trigger-item"></li>
+                        <li class="ui-slider-trigger-item"></li>
+                        <li class="ui-slider-trigger-item"></li>
+                        <li class="ui-slider-trigger-item"></li>
+                    </ul>
+                    <div class="slider-btn">
+                        <a href="javascript:void(0)" class="prevBtn"><i class="arrow">&lt;</i></a>
+                        <a href="javascript:void(0)" class="nextBtn"><i class="arrow">&gt;</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="learn-160823" style="background: url('images/learn-bg.jpg');">
+            <div class="w">
+                 <div class="learn-mt">
+                    <h4 class="learn-title">1分钟了解英联邦留学</h4>
+                </div>
+                <div class="learn-mc">
+                    <p class="learn-info">英联邦是一个国际组织，由53个主权国家（包括属地）所组成，成员大多为前英国殖民地或者保护国，英联邦元首为伊丽莎白二世女王，同时身兼包括英国在内的16个英联邦王国的国家元，首此16国构成了一个现代版的共主邦联要组织机构有：联邦政府首脑会议、亚太地区英联邦政府首脑会议、联邦财政部长会议及其他部长级专业会议。<br/>1965年起设立英联邦秘书处，其职责是促进英联邦的合作，筹划英联邦各级会议。秘书处设在伦敦英国和各成员国互派高级专员代表大使级外交关系，筹划英联邦各级会议。</p>
+                    <div class="learn-country">
+                        <ul class="country-list">
+                            <li class="country-item">
+                                <img src="images/learn01.jpg">
+                                <div class="country-txt">英国/爱尔兰</div>
+                                <i class="arrow-down"></i>
+                            </li>
+                            <li class="country-item">
+                                <img src="images/learn02.jpg">
+                                <div class="country-txt">澳大利亚</div>
+                                <i class="arrow-down"></i>
+                            </li>
+                            <li class="country-item">
+                                <a href="#" target="_blank"><img src="images/learn03.jpg"></a>
+                                <div class="country-txt">加拿大</div>
+                                <i class="arrow-down"></i>
+                            </li>
+                            <li class="country-item">
+                                <a href="#" target="_blank"><img src="images/learn04.jpg"></a>
+                                <div class="country-txt">新加坡/马来西亚</div>
+                                <i class="arrow-down"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="abroad-160823">
+            <div class="w">
+                <ul class="abroad-list">
+                    <li class="abroad-item english">
+                        <div class="abroadbox-left">
+                            <div class="ab-left-cont">
+                                <div class="ab-left-tit">英国/爱尔兰</div>
+                                <div class="ab-left-body">
+                                    <div class="advantage">学制短，性价比高，欧洲中心</div>
+                                    <p class="ab-left-info">英国的私立中学有全世界最悠久的历史，培养了最多的名人与贵族。与英国本土学生同班学习。这一阶段包括GCSE和A-Level课程，在学习之后学生可以选择3至4四门感兴趣的学科之后便可进入理想中的大学。英国私立学校是顶尖教育的保障。</p>
+                                    <a href="#" target="_blank" class="ab-left-btn">查看更多</a>
+                                </div>
+                            </div>
+                            <div class="ab-left-img"><img src="images/abroadleft01.jpg"></div>
+                        </div>
+                        <div class="abroadbox-right" style="background: url('images/abroadbg01.jpg');">
+                            <div class="master">
+                                <h5 class="title">硕士</h5>
+                                <ul class="master-list">
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bachelor">
+                                <h5 class="title">本科</h5>
+                                <ul class="bachelor-list">
+                                    <li class="bachelor-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="bachelor-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="abroad-item australia">
+                        <div class="abroadbox-left">
+                            <div class="ab-left-cont">
+                                <div class="ab-left-tit">澳大利亚/新西兰</div>
+                                <div class="ab-left-body">
+                                    <div class="advantage">政策优势明显</div>
+                                    <p class="ab-left-info">英国的私立中学有全世界最悠久的历史，培养了最多的名人与贵族。与英国本土学生同班学习。这一阶段包括GCSE和A-Level课程，在学习之后学生可以选择3至4四门感兴趣的学科之后便可进入理想中的大学。英国私立学校是顶尖教育的保障。</p>
+                                    <a href="#" target="_blank" class="ab-left-btn">查看更多</a>
+                                </div>
+                            </div>
+                            <div class="ab-left-img"><img src="images/abroadleft02.jpg"></div>
+                        </div>
+                        <div class="abroadbox-right" style="background: url('images/abroadbg02.jpg');">
+                            <div class="master">
+                                <h5 class="title">硕士</h5>
+                                <ul class="master-list">
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bachelor">
+                                <h5 class="title">本科</h5>
+                                <ul class="bachelor-list">
+                                    <li class="bachelor-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="bachelor-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="abroad-item canada">
+                        <div class="abroadbox-left">
+                            <div class="ab-left-cont">
+                                <div class="ab-left-tit">加拿大</div>
+                                <div class="ab-left-body">
+                                    <div class="advantage">移民政策极好</div>
+                                    <p class="ab-left-info">英国的私立中学有全世界最悠久的历史，培养了最多的名人与贵族。与英国本土学生同班学习。这一阶段包括GCSE和A-Level课程，在学习之后学生可以选择3至4四门感兴趣的学科之后便可进入理想中的大学。英国私立学校是顶尖教育的保障。</p>
+                                    <a href="#" target="_blank" class="ab-left-btn">查看更多</a>
+                                </div>
+                            </div>
+                            <div class="ab-left-img"><img src="images/abroadleft03.jpg"></div>
+                        </div>
+                        <div class="abroadbox-right" style="background: url('images/abroadbg03.jpg');">
+                            <div class="master">
+                                <h5 class="title">硕士</h5>
+                                <ul class="master-list">
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bachelor">
+                                <h5 class="title">本科</h5>
+                                <ul class="bachelor-list">
+                                    <li class="bachelor-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="bachelor-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="abroad-item singapore">
+                        <div class="abroadbox-left">
+                            <div class="ab-left-cont">
+                                <div class="ab-left-tit">新加坡/马来西亚</div>
+                                <div class="ab-left-body">
+                                    <div class="advantage">社会治安稳定</div>
+                                    <p class="ab-left-info">英国的私立中学有全世界最悠久的历史，培养了最多的名人与贵族。与英国本土学生同班学习。这一阶段包括GCSE和A-Level课程，在学习之后学生可以选择3至4四门感兴趣的学科之后便可进入理想中的大学。英国私立学校是顶尖教育的保障。</p>
+                                    <a href="#" target="_blank" class="ab-left-btn">查看更多</a>
+                                </div>
+                            </div>
+                            <div class="ab-left-img"><img src="images/abroadleft04.jpg"></div>
+                        </div>
+                        <div class="abroadbox-right" style="background: url('images/abroadbg04.jpg');">
+                            <div class="master">
+                                <h5 class="title">硕士</h5>
+                                <ul class="master-list">
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="master-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bachelor">
+                                <h5 class="title">本科</h5>
+                                <ul class="bachelor-list">
+                                    <li class="bachelor-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="bachelor-item">
+                                        <a href="#" target="_blank">
+                                            <div class="abroad-card">
+                                                <div class="mt">
+                                                    <img class="mt-img" src="images/flag.jpg">
+                                                    <span class="mt-tit">爱尔兰</span>
+                                                </div>
+                                                <div class="mc">
+                                                    <div class="p-price">￥95635</div>
+                                                    <div class="p-name">启德留学</div>
+                                                    <div class="p-info">申请硕士即送英语教程</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="service-2014">
+        <div class="slogen">
+            <span class="item fore1">
+                <i></i><b>多</b>品类齐全，轻松购物
+            </span>
+            <span class="item fore2">
+                <i></i><b>快</b>多仓直发，极速配送
+            </span>
+            <span class="item fore3">
+                <i></i><b>好</b>正品行货，精致服务
+            </span>
+            <span class="item fore4">
+                <i></i><b>省</b>天天低价，畅选无忧
+            </span>
+        </div>
+        <div class="w">
+            <dl class="fore1">
+                <dt>购物指南</dt>
+                <dd>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-29.html">购物流程</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-151.html">会员介绍</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-297.html">生活旅行/团购</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue.html">常见问题</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-136.html">大家电</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/index.html">联系客服</a></div>
+                </dd>
+            </dl>
+            <dl class="fore2">
+                <dt>配送方式</dt>
+                <dd>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-81-100.html">上门自提</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-81.html">211限时达</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/103-983.html">配送服务查询</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/109-188.html">配送费收取标准</a></div>
+                    <div><a target="_blank" href="//en.jd.com/chinese.html">海外配送</a></div>
+                </dd>
+            </dl>
+            <dl class="fore3">
+                <dt>支付方式</dt>
+                <dd>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-172.html">货到付款</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-173.html">在线支付</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-176.html">分期付款</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-174.html">邮局汇款</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-175.html">公司转账</a></div>
+                </dd>
+            </dl>
+            <dl class="fore4">
+                <dt>售后服务</dt>
+                <dd>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/321-981.html">售后政策</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-132.html">价格保护</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/130-978.html">退款说明</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//myjd.jd.com/repair/repairs.action">返修/退换货</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//help.jd.com/user/issue/list-50.html">取消订单</a></div>
+                </dd>
+            </dl>
+            <dl class="fore5">
+                <dt>特色服务</dt>
+                <dd>
+                    <div><a target="_blank" href="//help.jd.com/user/issue/list-133.html">夺宝岛</a></div>
+                    <div><a target="_blank" href="//help.jd.com/user/issue/list-134.html">DIY装机</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//fuwu.jd.com/">延保服务</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//giftcard.jd.com/market/index.action">京东E卡</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//mobile.jd.com/">京东通信</a></div>
+                    <div><a rel="nofollow" target="_blank" href="//s.jd.com/">京东JD+</a></div>
+                </dd>
+            </dl>
+            <span class="clr"></span>
+        </div>
+    </div>
+    <div class="w">
+        <div id="footer-2014">
+            <div class="links">
+                <a rel="nofollow" target="_blank" href="http://www.jd.com/intro/about.aspx">关于我们</a>
+                |
+                <a rel="nofollow" target="_blank" href="http://www.jd.com/contact/">联系我们</a>
+                |
+                <a rel="nofollow" target="_blank" href="http://www.jd.com/contact/joinin.aspx">商家入驻</a>
+                |
+                <a rel="nofollow" target="_blank" href="http://jzt.jd.com">营销中心</a>
+                |
+                <a rel="nofollow" target="_blank" href="http://app.jd.com/">手机京东</a>
+                |
+                <a target="_blank" href="http://club.jd.com/links.aspx">友情链接</a>
+                |
+                <a target="_blank" href="http://media.jd.com/">销售联盟</a>
+                |
+                <a href="http://club.jd.com/" target="_blank">京东社区</a>
+                |
+                <a href="http://gongyi.jd.com" target="_blank">京东公益</a>
+                |
+                <a href="http://en.jd.com/" target="_blank">English Site</a>
+                |
+                <a href="http://help.en.jd.com/help/question-46.html" target="_blank">Contact Us</a>
+            </div>
+            <div class="copyright">
+                北京市公安局朝阳分局备案编号110105014669&nbsp;&nbsp;|&nbsp;&nbsp;京ICP证070359号&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a target="_blank" href="http://img14.360buyimg.com/da/jfs/t256/349/769670066/270505/3b03e0bb/53f16c24N7c04d9e9.jpg">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;新出发京零&nbsp;字第大120007号
+                <br>
+                <a rel="nofollow" href="http://misc.360buyimg.com/skin/df/i/com/f_music.jpg" target="_blank">音像制品经营许可证苏宿批005号</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;出版物经营许可证编号新出发(苏)批字第N-012号&nbsp;&nbsp;|&nbsp;&nbsp;互联网出版许可证编号新出网证(京)字150号
+                <br>
+                <a href="http://misc.360buyimg.com/wz/wlwhjyxkz.jpg" target="_blank">网络文化经营许可证京网文[2011]0168-061号</a>
+                &nbsp;&nbsp;违法和不良信息举报电话：4006561155&nbsp;&nbsp;Copyright&nbsp;©&nbsp;2004-2015&nbsp;&nbsp;京东JD.com&nbsp;版权所有
+                <br>
+                京东旗下网站：
+                <a target="_blank" href="http://www.360top.com/">360TOP</a>
+                &nbsp;&nbsp;
+                <a href="http://www.paipai.com/" target="_blank">拍拍网</a>
+                &nbsp;&nbsp;
+                <a href="https://www.wangyin.com/" target="_blank">网银在线</a>
+            </div>
+            <div class="authentication">
+                <a rel="nofollow" target="_blank" href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202007080200026">
+                    <img width="103" height="32" alt="经营性网站备案中心" src="http://img12.360buyimg.com/da/jfs/t535/349/1185317137/2350/7fc5b9e4/54b8871eNa9a7067e.png" class="err-product"></a>
+                <script type="text/JavaScript">function CNNIC_change(eleId){var str= document.getElementById(eleId).href;var str1 =str.substring(0,(str.length-6));str1+=CNNIC_RndNum(6); document.getElementById(eleId).href=str1;}function CNNIC_RndNum(k){var rnd=""; for (var i=0;i < k;i++) rnd+=Math.floor(Math.random()*10); return rnd;}</script>
+                <a rel="nofollow" target="_blank" id="urlknet" tabindex="-1" href="https://ss.knet.cn/verifyseal.dll?sn=2008070300100000031&amp;ct=df&amp;pa=294005">
+                    <img border="true" width="103" height="32" onclick="CNNIC_change('urlknet')" oncontextmenu="return false;" name="CNNIC_seal" alt="可信网站" src="http://img11.360buyimg.com/da/jfs/t643/61/1174624553/2576/4037eb5f/54b8872dNe37a9860.png" class="err-product"></a>
+                <a rel="nofollow" target="_blank" href="http://www.bj.cyberpolice.cn/index.do">
+                    <img width="103" height="32" alt="朝阳网络警察" src="http://img11.360buyimg.com/da/jfs/t559/186/1172042286/2795/7d90b036/54b8874bN694454a5.png" class="err-product"></a>
+                <a rel="nofollow" target="_blank" href="https://search.szfw.org/cert/l/CX20120111001803001836">
+                    <img width="103" height="32" src="http://img11.360buyimg.com/da/jfs/t451/173/1189513923/1992/ec69b14a/54b8875fNad1e0c4c.png" class="err-product"></a>
+                <a target="_blank" href="http://jubao.china.cn:13225/reportform.do">
+                    <img width="185" height="32" src="http://img10.360buyimg.com/da/jfs/t520/303/1151687373/1180/2f8340fc/54b8863dN8d2c61ec.png" class="err-product"></a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/commonwealth.js"></script>
+    <script type="text/javascript" src="//wl.jd.com/wl.js"></script>
+</body>
+</html>

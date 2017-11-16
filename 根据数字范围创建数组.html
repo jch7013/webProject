@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>根据数字范围创建数组</title>
+</head>
+<body>
+<p style="width:500px;height:500px;word-wrap: break-word;"></p>
+<script type="text/javascript" src="lib/jquery-1.12.2.min.js"></script>
+<script type="text/javascript">
+//拼接skuid为字符串
+function makeSkuids(data){
+    var realSkuidA = [];
+    jQuery.map(data, function(v, k){
+        realSkuidA.push(v.realSkuId);
+    })
+    return realSkuidA.join(',');
+}
+//根据返回的数据填写模板
+function makeTpltoHtml(data, tpl){
+    htmlStr = '';
+    for (var i = 0; i < data.length; i++) {
+        htmlStr += jshop.module.renderHTML(tpl, data[i]);
+    }
+    return htmlStr;
+}
+
+
+//根据数字范围创建数组
+function getArray(start, end){
+    a = [];
+    for(var i = start, len = end; i <= len; i++){
+        a.push(i);
+    }
+    return a;
+}
+var s = getArray(18903090,18903130);
+$('p').text('[' + s.join(',') + ']');
+console.log(s);
+</script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<html>
+<head>
+<title>在线文本差异对比</title>
+<meta charset="utf-8">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" media="screen">
+<link href="css/my.css" rel="stylesheet" media="screen">
+<link href="css/dl.css" rel="stylesheet" media="screen">
+<script src="//hm.baidu.com/hm.js?b3a3fc356d0af38b811a0ef8d50716b8"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>var n = 1;</script>
+<script src="js/m.js"></script>
+<script type="text/javascript" src="js/dm/c.min.js"></script>
+<link type="text/css" rel="stylesheet" href="js/dm/c.css">
+<script type="text/javascript" src="js/dm/m.js"></script>
+<link type="text/css" rel="stylesheet" href="js/dm/m.css">
+<style type="text/css">
+body{ background-color: #1A1A1A; color: #fff}
+.drop_zone { border: 2px dashed #BBBBBB; border-radius: 5px 5px 5px 5px; color: #BBBBBB; padding: 10px 25px; text-align: center; align: center; width: 80%; }
+#path-lhs,#path-rhs{ font-size: 40px; font-family: Arial; color:#C9C9C9}
+#path-rhs{ padding-left:20px}
+#compare-editor-lhs{ background-color: #212121; }
+#compare-editor-rhs{ background-color: #002035}
+#compare-lhs-margin,#compare-rhs-margin{ display:none}
+.CodeMirror - scroll { background - color: #1d1f20; }
+#merge-lhs-4{ font-family: "宋体"; }
+.save-link { color: #F8F8F8; }
+.dmsm{ font-family: "微软雅黑"; font-size: 12px; padding-left: 20px; }
+#compare .CodeMirror-lines pre{ transition: all 1s ease 0s; }
+#compare .CodeMirror-lines pre:hover{ background-color:#FDFFC6; color:#000000}
+td, th { border: 0px; }
+.wbbt { text-align:center; border-bottom: 1px solid #333333; line-height:40px}
+</style>
+<script type="text/javascript">
+$(document).ready(function () {
+	$('#compare').mergely({
+		width: 'auto',
+		height: 'auto', // containing div must be given a height
+		cmsettings: { readOnly: false },
+	});
+	var lhs_url = 'js/dm/a.txt';
+	var rhs_url = 'js/dm/b.txt'
+	$.ajax({
+		type: 'GET', async: true, dataType: 'text',
+		url: lhs_url,
+		success: function (response) {
+			$('#path-lhs').text("A");
+			$('#compare').mergely('lhs', response);
+		}
+	});
+	$.ajax({
+		type: 'GET', async: true, dataType: 'text',
+		url: rhs_url,
+		success: function (response) {
+			$('#path-rhs').text("B");
+			$('#compare').mergely('rhs', response);
+		}
+	});
+	function checkFileList(files) {
+		if (typeof window.FileReader !== 'function')
+			error_msg("The file API isn't supported on this browser yet.");
+		if (files.length>0) readFile(files[0], "lhs");
+		if (files.length>1) readFile(files[1], "rhs");
+	}
+	function readFile(file, side) {
+		var reader = new FileReader();
+		reader.onload = function file_onload() {
+			// document.getElementById('td1').innerHTML = ..
+			$('#path-'+side).text(file.name);
+			$('#compare').mergely(side, reader.result);
+		}
+		reader.readAsBinaryString(file);
+	}
+	function handleDragOver(evt) {
+		evt.stopPropagation();
+		evt.preventDefault();
+		evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+	}
+	function handleFileSelect(evt) {
+		document.getElementById('drop_zone').visibility = "collapse";
+		evt.stopPropagation();
+		evt.preventDefault();
+		var files = evt.dataTransfer.files; // FileList object.
+		checkFileList(files);
+	}
+	var dropZone = document.getElementById('drop_zone');
+	document.body.addEventListener('dragover', handleDragOver, false);
+	document.body.addEventListener('drop', handleFileSelect, false);
+	function download_content(a, side) {
+		//a.innerHTML = "preparing content..";
+		var txt = $('#compare').mergely('get', side);
+		var datauri = "data:plain/text;charset=UTF-8," + encodeURIComponent(txt);
+		a.setAttribute('download', side+".txt");
+		a.setAttribute('href', datauri);
+		//a.innerHTML = "content ready.";
+	}
+	document.getElementById('save-lhs').addEventListener('mouseover', function() { download_content(this, "lhs"); }, false);
+	document.getElementById('save-rhs').addEventListener('mouseover', function() { download_content(this, "lhs"); }, false);
+	document.getElementById('ignorews').addEventListener('change', function() {
+		$('#compare').mergely('options', { ignorews: this.checked });
+	}, false);
+});
+</script>
+<style type="text/css">
+#compare .CodeMirror-gutter-text { padding: 5px 0 0 0; }
+#compare .CodeMirror-lines pre, #compare .CodeMirror-gutter-text pre { line-height: 18px; }
+.CodeMirror-linewidget { overflow: hidden; };
+#compare .CodeMirror-scroll { height: 100%; overflow: auto; }
+.CodeMirror { line-height: 18px; }
+</style>
+<style id="__web-inspector-hide-shortcut-style__" type="text/css">
+.__web-inspector-hide-shortcut__, .__web-inspector-hide-shortcut__ *, .__web-inspector-hidebefore-shortcut__::before, .__web-inspector-hideafter-shortcut__::after {visibility: hidden !important; }
+</style>
+</head>
+<body data-spy="scroll" data-target=".navbar-example" style="overflow-x: hidden;">
+<div class="container-fluid m0 bod top70" id="zt">
+	<h3 class="wbbt"> <i class="fa fa-balance-scale" aria-hidden="true"></i>
+		在线文本比较工具
+	</h3>
+	<table style="width: 98%;display:none">
+		<tbody>
+			<tr>
+				<td style="width: 50%;">
+					<div id="drop_zone" class="drop_zone">Drop files here</div>
+				</td>
+				<td style="width: 50%;">
+					<input type="checkbox" id="ignorews">ignore witespaces</td>
+			</tr>
+		</tbody>
+	</table>
+	<table align="center" style="width: 98%;">
+		<tbody>
+			<tr style="border-left: 1px solid #1D1D1D; border-top:1px solid #1D1D1D;">
+				<td style="width: 50%;background-color: #1a1a1a;color: #bd6969;">
+					<tt id="path-lhs">A</tt>
+					&nbsp;
+					<a id="save-lhs" class="save-link" href="data:plain/text;charset=UTF-8," download="lhs.txt"> <i class="fa fa-floppy-o" aria-hidden="true"></i>
+						save
+					</a>
+					<span class="dmsm">(在下面输入您的代码或文本，或直接把文件拖入到框中，内容会自动获取)</span>
+				</td>
+				<td style="width: 50%;background-color: #1a1a1a;color: #8bcaf3">
+					<tt id="path-rhs">B</tt>
+					&nbsp;
+					<a id="save-rhs" class="save-link" href="#">
+						<i class="fa fa-floppy-o" aria-hidden="true"></i>
+						save
+					</a>
+					<span class="dmsm">(在下面输入您的代码或文本，或直接把文件拖入到框中)</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div id="mergely-resizer" style="height:800px;">
+		<div id="compare" style="display: block; width: 1482px; height: 800px; clear: both;">
+			<div class="mergely-margin" style="height: 800px;">
+				<canvas id="compare-lhs-margin" width="8px" height="800"></canvas>
+			</div>
+			<div style="position: relative; width: 717px; height: 800px;" id="compare-editor-lhs" class="mergely-column">
+				<textarea style="display: none; height: 800px; width: 717px;" id="compare-lhs"></textarea>
+				<div class="CodeMirror cm-s-default" style="height: 800px;">
+					<div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 34px;">
+						<textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; padding: 0px; width: 717px; height: 800px; outline: none;" tabindex="0"></textarea>
+					</div>
+					<div class="CodeMirror-vscrollbar" cm-not-content="true">
+						<div style="min-width: 1px; height: 0px;"></div>
+					</div>
+					<div class="CodeMirror-hscrollbar" cm-not-content="true" style="right: 0px; left: 30px;">
+						<div style="height: 100%; min-height: 1px; width: 0px;"></div>
+					</div>
+					<div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div>
+					<div class="CodeMirror-gutter-filler" cm-not-content="true"></div>
+					<div class="CodeMirror-scroll" tabindex="-1" style="height: 800px;" draggable="false">
+						<div class="CodeMirror-sizer" style="margin-left: 30px; min-width: 7px; margin-bottom: -17px; border-right-width: 13px; min-height: 26px; padding-right: 0px; padding-bottom: 0px;">
+							<div style="position: relative; top: 0px;">
+								<div class="CodeMirror-lines">
+									<div style="position: relative; outline: none;">
+										<div class="CodeMirror-measure">
+											<div class="CodeMirror-linenumber CodeMirror-gutter-elt">
+												<div>1</div>
+											</div>
+										</div>
+										<div class="CodeMirror-measure"></div>
+										<div style="position: relative; z-index: 1;"></div>
+										<div class="CodeMirror-cursors" style="visibility: hidden;">
+											<div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 18px;">&nbsp;</div>
+										</div>
+										<div class="CodeMirror-code">
+											<div style="position: relative;">
+												<div class="CodeMirror-gutter-wrapper" style="left: -30px;">
+													<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div>
+												</div>
+												<pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div style="position: absolute; height: 13px; width: 1px; top: 26px;"></div>
+						<div class="CodeMirror-gutters" style="height: 813px; left: 0px;">
+							<div class="CodeMirror-gutter merge"></div>
+							<div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mergely-canvas" style="height: 800px;">
+				<canvas id="compare-lhs-compare-rhs-canvas" style="width:28px" width="28px" height="800"></canvas>
+			</div>
+			<div style="width: 717px; height: 800px;" id="compare-editor-rhs" class="mergely-column">
+				<textarea style="display: none; height: 800px; width: 717px;" id="compare-rhs"></textarea>
+				<div class="CodeMirror cm-s-default" style="height: 800px;">
+					<div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 34px;">
+						<textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; padding: 0px; width: 717px; height: 800px; outline: none;" tabindex="0"></textarea>
+					</div>
+					<div class="CodeMirror-vscrollbar" cm-not-content="true">
+						<div style="min-width: 1px; height: 0px;"></div>
+					</div>
+					<div class="CodeMirror-hscrollbar" cm-not-content="true" style="right: 0px; left: 30px;">
+						<div style="height: 100%; min-height: 1px; width: 0px;"></div>
+					</div>
+					<div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div>
+					<div class="CodeMirror-gutter-filler" cm-not-content="true"></div>
+					<div class="CodeMirror-scroll" tabindex="-1" style="height: 800px;">
+						<div class="CodeMirror-sizer" style="margin-left: 30px; min-width: 7px; margin-bottom: -17px; border-right-width: 13px; min-height: 26px; padding-right: 0px; padding-bottom: 0px;">
+							<div style="position: relative; top: 0px;">
+								<div class="CodeMirror-lines">
+									<div style="position: relative; outline: none;">
+										<div class="CodeMirror-measure">
+											<div class="CodeMirror-linenumber CodeMirror-gutter-elt">
+												<div>1</div>
+											</div>
+										</div>
+										<div class="CodeMirror-measure"></div>
+										<div style="position: relative; z-index: 1;"></div>
+										<div class="CodeMirror-cursors">
+											<div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 18px;">&nbsp;</div>
+										</div>
+										<div class="CodeMirror-code">
+											<div style="position: relative;">
+												<div class="CodeMirror-gutter-wrapper" style="left: -30px;">
+													<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div>
+												</div>
+												<pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div style="position: absolute; height: 13px; width: 1px; top: 26px;"></div>
+						<div class="CodeMirror-gutters" style="height: 813px; left: 0px;">
+							<div class="CodeMirror-gutter merge"></div>
+							<div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mergely-margin" style="height: 800px;">
+				<canvas id="compare-rhs-margin" width="8px" height="800"></canvas>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+var _hmt = _hmt || [];
+(function () {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?b3a3fc356d0af38b811a0ef8d50716b8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>

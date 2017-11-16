@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+</head>
+<body>
+<input type="text" id="website" name="" value="" placeholder="">
+<button data-copytarget="#website">copy</button>
+<script type="text/javascript" src="lib/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+(function($) {
+	document.body.addEventListener('click', copy, true);
+	function copy(e) {
+		var t = e.target,
+		    c = t.dataset.copytarget,
+		    inp = (c ? document.querySelector(c) : null);
+
+		if (inp && inp.select) {
+			inp.select();
+			try {
+				document.execCommand('copy');
+				inp.blur();
+			} catch (err) {
+				alert('please press Ctrl/Cmd+C to copy');
+			}
+		}
+	}
+
+	var url = 'http://item.jd.com/2504556.htm',
+    i = url.indexOf('com');
+    if (i !== -1) {
+        var param = url.substring(i+4);
+        param = param.replace(/.html|.htm/gi, '');
+        $('input').val(param).select();
+    }
+})(jQuery);
+</script>
+</body>
+</html>
+
+

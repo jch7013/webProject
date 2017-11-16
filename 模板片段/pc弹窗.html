@@ -1,0 +1,73 @@
+<img src="http://img10.360buyimg.com/cms/jfs/t2965/20/2640379671/286603/8eb50393/57b688a9N67d67a0b.jpg" width="1920" height="342" alt="" /><img src="http://img14.360buyimg.com/cms/jfs/t2674/350/4389093784/76043/368e3c5e/57b688a9N133adaad.png" width="1920" height="363" alt="" usemap="#h-map" />
+
+<style>
+.popupText{width:500px; height:300px;background-color:#A7BF4E;display:none;z-index: 9999; padding:10px; color:#fff;}
+.popup{display:none;z-index:999;opacity: 0.6;background-color:#000;filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);}
+.closePopup{width:20px; height:20px; background-color:#fff; font-size: 16px; position: absolute; top:5px; right:5px; border-radius: 50%; text-indent: 5px;cursor: pointer; color:#000;}
+</style>
+
+<map name="h-map" id="h-map">
+  <area shape="rect" coords="474,157,698,274" href="javascript:;" id="popupBtn"/>
+  <area shape="rect" coords="718,157,946,274" href="https://btmkt.jd.com/activity/initParty?key=b934b852ae1984af753bd2be8fd4e9c8" target="_blank"/>
+  <area shape="rect" coords="965,159,1194,271" href="https://btmkt.jd.com/activity/initParty?key=e83f1fa7c4757404d091c098b4d42ea7" target="_blank"/>
+  <area shape="rect" coords="1215,158,1445,274" href="http://baitiao.jd.com/v3/ious/list" target="_blank"/>
+</map>
+<div class="popupText">
+    <h3>活动说明：</h3>
+    <p>
+    1．活动时间：8月1日—8月30日，校园白条优惠券每天00:00限量发放，活动期间每种优惠券每个用户ID限领一张；<br/>
+    2．活动规则：活动期间，新激活校园白条的用户可立得100元大礼包，礼包优惠券自动进入校园白条账户，无需领取。同时校园白条新、老用户可同时领取白条优惠券，享受白条满减优惠。<br/>
+    优惠资格使用注意事项：<br/>
+    1.白条优惠资格的使用仅限白条支付，混合其他支付暂不支持；<br/>
+    2.微信、手Q端下单前需提前绑定已激活白条的京东账号，否则无法享受白条优惠券。（用户绑定校园白条京东账号方法：进入校园白条公众号—点击白条—查询—登录京东账号—完成绑定）；<br/>
+    3.白条优惠使用规则：用户购买支付成功后，取消订单，优惠券已使用不可恢复，白条满减券与商城优惠券可同时使用；<br/>
+    4.白条优惠券查询方法：我的交易单-我的白条-白条优惠券；实际享受的白条优惠，以收银台页面显示为准。<br/>
+    </p>
+    <span class="closePopup">X</span>
+</div>
+
+<div class="popup"></div>
+<script>
+(function($) {
+    var j_show_popup = function(elem) {
+        var w = $(window).width(),
+            h = $(window).height();
+        var pt = $('.popupText').height();
+
+        var showPopup = function() {
+            $(".popup").css({position:'fix'+'ed',width:w,height:h,top:0,left:0,display:'block'});
+        }
+
+        var showCenter = function(elem) {
+            elem.css({
+                display: 'block',
+                position: 'absolute',
+                top: h/2 - pt/2 + 'px',
+                left: (w - elem.width()) / 2 + $(window).scrollLeft() + 'px'
+            });
+            return elem;
+        }
+
+        var init = function() {
+            showPopup();
+            showCenter(elem);
+        }
+        return init();
+    }
+
+    var j_hide_popup = function(elem) {
+        $(".popup").css("display", "none");
+        elem.css("display", "none");
+    }
+
+    $(".closePopup").bind("click", function() {
+        var p = $(".popupText");
+        j_hide_popup(p);
+    });
+
+    $("#popupBtn").bind("click", function() {
+        var p = $(".popupText");
+        j_show_popup(p);
+    });
+})(jQuery);
+</script>

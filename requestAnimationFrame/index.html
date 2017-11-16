@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>test</title>
+<style>
+.box{width:100px;height:100px;background-color:#886E3A;border-radius:50%;position: absolute;top:0;left:0;}	
+.but{margin-top:200px;width:600px;height: auto;border:1px solid #666;padding:15px 30px;}
+.but input{width:150px;height: 20px;}
+</style>
+</head>
+<body>
+<div class="box"></div>
+<div class="but">
+	<input type="button" value="start" id="s">
+</div>
+<script src="../lib/jquery-1.8.2.js"></script>
+<script src="Tween-dhk.js"></script>
+<script>
+(function($) {
+    var start = 0, during = 100;
+    var box = $(".box");
+    var reset = function() {
+    	setTimeout(function() {
+    		box.css("left", 0);
+    		start = 0;
+    	}, 300);
+    }
+    var animationLoop = function() {
+	    var _run = function() {
+	        start++;
+	        var left = Tween.Bounce.easeOut(start, 30, 500, during);
+	        box.css("left", left);
+	        if (start < during) {
+	        	requestAnimationFrame(_run);
+	        }else {
+	        	reset();
+	        }
+	    };
+	    _run();
+    }
+	$("#s").bind("click", function() {
+		animationLoop();
+	});
+})(jQuery);
+</script>
+</body>
+</html>
+
+<!--
+Quad
+Cubic
+Quart
+Quint
+Sine
+Expo
+Circ
+Elastic
+Back
+Bounce
+
+easeIn：从0开始加速的缓动； 
+easeOut：减速到0的缓动； 
+easeInOut：前半段从0开始加速，后半段减速到0的缓动。
+-->

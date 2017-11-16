@@ -1,0 +1,67 @@
+<style>
+.jd_tips1{ width:110px; height:110px; position:fixed; bottom:50px; left:50%; margin-left:520px; z-index:9999; overflow:hidden; opacity:0; display:none;}
+.jd_tips_box1{ position:relative; width:110px; height:110px;}
+</style>
+<div class="jd_tips1">  
+	<div class="jd_tips_box1">   
+		<a target="_blank" href="http://sale.jd.com/act/D5pO4rdbShnZ.html" title="" clstag="sale|keycount|13163059|1"><img src="http://img20.360buyimg.com/cms/jfs/t2905/148/2226605508/8553/c6c0bb1d/575d8aafN26931397.png" alt="" /></a>    
+	</div>
+</div>
+
+<style type="text/css">
+/*.footer_pos{width:100%;height: 110px;position: fixed;bottom:50px;left:0;z-index: 0}
+.footer_mask{width:110px;height: 110px;position: absolute;left:50%;}
+.footer_mask img{display: block;width: 110px;height: 110px;margin-left:510px;}*/
+</style>
+<!-- <div class="footer_pos">  
+	<div class="footer_mask">   
+		<a target="_blank" href="http://sale.jd.com/act/D5pO4rdbShnZ.html" title="" clstag="sale|keycount|13163059|1"><img src="http://img20.360buyimg.com/cms/jfs/t2905/148/2226605508/8553/c6c0bb1d/575d8aafN26931397.png" alt="" /></a>  
+	</div>
+</div> -->
+
+<script type="text/javascript">
+var lx = $(".jd_tips");
+var lx1 = $(".jd_tips1");
+var num = 0;
+function openTip(){
+	lx.show().clearQueue().animate({"opacity":1},300);
+	lx.css("display","block")
+	}	
+function closeTip(){
+	lx.clearQueue().animate({"opacity":0},300);
+	lx.css("display","none")
+	}
+$(window).scroll(function () {
+	var top1 = $(window).scrollTop();
+	if(top1 > 4300&&num
+<1 ){
+			openTip();
+			num = 1
+			setTimeout(function(){
+	   closeTip()
+	$(".jd_tips1").show().clearQueue().animate({"opacity":"1"},300);
+	},5000);
+		}
+	if(top1 < 1500 ){
+			lx1.hide();
+			}
+	
+});
+$(".tips_close").click(function(){
+	closeTip();
+	$(".jd_tips1").show().clearQueue().animate({"opacity":"1"},300);
+	})
+</script>
+<script>
+	// (function(){
+	//   var p3=$('p.jd_tips_pic1');
+ // 	  var scX1 = parseInt(p3.css('left')||0);
+ //  	  var scY1 = parseInt(p3.css('top')||0);
+ // $(document).mousemove(function(e){
+ //                        var myMouseX = e.pageX-$(window).width()/2;
+ //                        p3.css('left',(scX1+myMouseX*0.02));
+	// 					var myMouseY = e.pageY-$(window).height()/2;
+ //                        p3.css('top',(scY1+myMouseY*0.01));
+ //                    });
+	//  })(jQuery);
+</script>

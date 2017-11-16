@@ -1,0 +1,79 @@
+<style>
+.r-nav{width:110px;height: auto;}
+.r-nav ul li .com, .r-nav ul li .p, .r-nav ul li .p-active{float:left;width:110px;height: auto;display: block;}
+.r-nav ul li .p-active{display: none;}
+</style>
+<div class="r-nav">  
+	<ul>   
+		<li>    
+			<div class="com">     
+				<img src="" alt="" />    
+			</div> 
+		</li>   
+		<li>    
+			<div class="p">     
+				<a href="#f1"><img src="" alt="" /></a>    
+			</div>    
+			<div class="p-active">     
+				<a href="#f1"><img src="" alt="" /></a>    
+			</div> 
+		</li>   
+		<li>    
+			<div class="p">     
+				<a href="#f2"><img src="" alt="" width="110" height="39" /></a>    
+			</div>    
+			<div class="p-active">     
+				<a href="#f2"><img src="" alt="" /></a>    
+			</div> 
+		</li>   
+		<li>    
+			<div class="p">     
+				<a href="#f3"><img src="" alt="" /></a>    
+			</div>    
+			<div class="p-active">     
+				<a href="#f3"><img src="" alt="" /></a>    
+			</div> 
+		</li>   
+		<li>    
+			<div class="p">     
+				<a href="#f4"><img src="" alt="" /></a>    
+			</div>    
+			<div class="p-active">     
+				<a href="#f4"><img src="" alt="" /></a>    
+			</div> 
+		</li>   
+		<li>    
+			<div class="com">     
+				<a href="#"><img src="" alt="" /></a>    
+			</div> 
+		</li>  
+	</ul>
+</div>
+<script>$(function() {
+    var scrollHandler = function() {
+        var wrapScrollTop=new Array();
+        for(var i=0;i<4;i++){
+              wrapScrollTop[i] = $(".target").eq(i).offset().top;
+        }
+        var winScrollTop = $(window).scrollTop()+10;
+        for(var n=0;n<4;n++){
+            if(winScrollTop >= wrapScrollTop[n]){
+                $('.p').css('display', 'block');
+                $('.p-active').css('display', 'none');
+                var ele = $('.r-nav ul li').eq(n+1);
+                ele.find('.p').css('display', 'none');
+                ele.find('.p-active').css('display', 'block');
+            }
+        }
+    }
+    $(window).bind('scroll', scrollHandler);
+});
+</script>
+
+
+<style>
+.target { position: relative; }
+.placeholder { position: absolute; display:block; width:100px; height:50px;}
+.offsetTop01{top:0;}
+</style>
+<a name="f1" class="target"><span class="placeholder offsetTop01"></span></a>

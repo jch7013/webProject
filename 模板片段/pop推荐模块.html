@@ -1,0 +1,16 @@
+<div class="j-module" module-function="autoImgShow" module-param="">
+    <ul>
+        #foreach($shopAttention in $attentionList)
+        <li  $!jshopCommon.clstag($velocityCount)>
+            <a href="$!shopAttention.url" target="_blank" $!jshopCommon.clstag($velocityCount)><img src="$!shopAttention.imageUrl" alt=""></a>
+        </li>
+        #end
+    </ul>
+</div>
+
+<style>
+.user-ZY-more {}
+.user-ZY-more .mc{}
+.user-ZY-more .mc ul{width:1000px; height: auto; overflow: hidden; margin-left:-10px;}
+.user-ZY-more li{float:left; width:241px; height: 259px; margin-left:10px;}
+</style>

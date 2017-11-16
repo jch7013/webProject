@@ -1,0 +1,29 @@
+<input type="text" id="website" value="http://www.sitepoint.com/" />
+<button data-copytarget="#website">copy</button>
+<script type="text/javascript">
+(function() {
+  'use strict';
+  // 添加点击事件
+  document.body.addEventListener('click', copy, true);
+  // 添加时间处理方法
+  function copy(e) {
+    // 搜索目标元素
+    var t = e.target,
+        c = t.dataset.copytarget,
+        inp = (c ? document.querySelector(c) : null);
+ 
+    // 判断元素是否能被选中
+    if (inp && inp.select) {
+      // 选择文本
+      inp.select();
+      try {
+        // 复制文本
+        document.execCommand('copy');
+        inp.blur();
+      } catch (err) {
+        alert('please press Ctrl/Cmd+C to copy');
+      }
+    }
+  }
+})();
+</script>

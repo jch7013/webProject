@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div class="jtab-wrap">
+		<ul class="jtab">
+			<li class="jtab-active">大家电</li>
+			<li>手机</li>
+			<li>服装</li>
+			<div class="clearfloat"></div>
+		</ul>
+	</div>
+	<div class="j-module module-jz type-2-2 j-item">
+		<ul class="clearfloat">
+			#foreach($!goods in $!goodsRecList)
+			<li class="fItem" skuid="$!goods.goodsId" $!jshopCommon.clstag($velocityCount)>
+				<a href="$!jshopProduct.getBuyUrl($!goods.goodsId)" target="_blank" title="$!goods.wname" $!jshopCommon.clstag($goods.goodsId,$velocityCount,7)>
+					<div class="jPic">
+						<img src="$!jshopCommon.getImage($!goods.imageurl,1)" alt="$!goods.wname" />	
+					</div>
+				</a>
+				<div class="jDesc rel">
+					<a href="$!jshopProduct.getBuyUrl($!goods.goodsId)" target="_blank" title="$!goods.wname" $!jshopCommon.clstag($goods.goodsId,$velocityCount,2)  class="goods-name J_goods_name">$!goods.wname</a>
+					<div class="jPrice">
+						<span class="pText">活动价提前抢:</span>
+						<span class="price-color">
+							￥
+							<span class="pNum">$!jshopPrice.getJdPrice($!goods.goodsId)</span>
+						</span>
+					</div>
+				</div>
+			</li>
+			#end
+		</ul>
+	</div>
+	<script type="text/javascript">
+	$(function() {
+		$(".jtab").find("li").mouseover(function() {
+			$(this).addClass('jtab-active').siblings().removeClass('jtab-active');
+			var i = $(this).index();
+			$('.j-item').eq(i).removeClass('hidden').siblings().addClass('hidden');
+		});
+	});
+	</script>
+	<style type="text/css" media="screen">
+		.clearfloat:after { content: "."; display: block; clear: both; visibility: hidden; height: 0; }
+		.clearfloat { overflow: hidden; _zoom: 1; }
+		.transform{transition:all 0.8s;-webkit-transition:all 0.8s;}
+		.dib{display: inline-block;*display: inline;*zoom:1;}
+		.module-jz ul{margin-right: -30px;}
+		.module-jz li{background-color: #fff;float: left;margin:0 10px 10px 0;font-family: "微软雅黑";overflow: hidden;}	
+		.module-jz .dib{vertical-align: middle;}
+		.module-jz .jPic img{width: 100%;height: 100%;}
+		.module-jz .jPic{background: url(//img11.360buyimg.com/cms/jfs/t853/64/222820902/5860/54fc0ad5/550bc4d5N2164a1f4.gif) no-repeat center; margin:0 0 5px 0;}
+
+		.module-jz .goods-name{color: #090909;font-size: 14px;display: block;height: 28px;line-height: 28px;overflow: hidden; border-bottom: 1px dashed #b4b4b4; text-align: center;}
+		.module-jz .jDesc {padding:0 3px; background-color:#e6e6e6;}
+		.module-jz .jPrice{font-size: 18px;padding: 8px 0 6px 0;letter-spacing: -1px;white-space: nowrap;overflow: hidden;line-height: 18px; text-align: center;}
+		.module-jz .jPrice .pNum{font-size: 20px;}
+		.module-jz .jPrice .pText{color: #090909;font-size: 14px;}
+		.module-jz .jPrice .price-color{font-weight: bold;}
+		.module-jz .btn-buy{height: 30px;overflow: hidden;line-height: 30px;text-align: center;font-size: 14px;display: block;}
+		.module-jz .icon-cart{background: url(//img10.360buyimg.com/cms/jfs/t2218/220/2813618655/1311/ef1fab31/56e97da8Ne47df838.png) no-repeat;width: 17px;height: 16px;margin-right: 10px;}
+
+		/*爆品模板（大）*/
+		.type-1-1 li{width: 324px;height: 455px;}
+		.type-1-1 .jPic{width:197px; height:197px;}
+		.type-1-1 .jPrice{margin: 11px 0;}
+
+		/*爆品模板（小）*/
+		.type-1-2 li{width: 490px;height: 250px;}
+		.type-1-2 .jPic{height: 250px;width: 250px;float: left;margin-right: 16px;}
+		.type-1-2 .jPrice{margin: 12px 0;}
+		.type-1-2 .goods-name{height: 45px;margin-bottom: 91px;}
+		.type-1-2 .jDesc{margin-left: 250px;padding:24px 20px;}
+
+		/*单品模板（大）*/
+		.type-2-1 li{width: 240px;height: 365px;}
+		.type-2-1 .jPic{height: 240px;}
+
+		/*单品模板（小）*/
+		.type-2-2 li{width: 190px;height: 249px;}
+		.type-2-2 .jPic{height: 185px;}
+
+		/* 颜色修改：price-color:价格颜色；btn-color:按钮颜色 */
+		.price-color{color: #fa547f; font-size:14px;}
+		.btn-color{background-color: #be0808;color: #fff;}
+		.btn-color:hover{background-color: #ff0000;color: #fff;}
+
+		.jtab-wrap{width:990px; height:50px;margin-bottom:5px;background-color:#7F809E;}
+		.jtab{width:990px;}
+		.jtab li{float:left; width:330px; text-align: center;line-height: 50px; font-size: 18px;cursor: pointer;}
+		.jtab-active{background-color:#fff;}
+	</style>
+</body>
+</html>

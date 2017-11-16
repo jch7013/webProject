@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>商品组接口调取测试</title>
+<link rel="stylesheet" href="https://storage.360buyimg.com/babel/00066074/138441/production/dev/parser.1510044228420.css">
+<script src="./js/jquery.min.js"></script>
+<script src="./js/touch.min.js"></script>
+<script src="./js/require.min.js"></script>
+</head>
+<body>
+
+<style type="text/css">
+.mobile_con.bi_config .bi_box.unadd .btn_icon_add,.mobile_con.bi_config .bi_box.unadd .btn_icon_cls,.visual .separate_area .bi_box.unadd .btn_icon_add,.visual .separate_area .bi_box.unadd .btn_icon_cls,.visual .dragging .bi_box.unadd .btn_icon_add,.visual .dragging .bi_box.unadd .btn_icon_cls,.visual .bi_box.unadd .btn_icon_add,.visual .bi_box.unadd .btn_icon_cls{}
+</style>
+<script type="text/javascript">
+function loadJS(d){var c=document.createElement("script");c.type="application/javascript",c.src=d,c.charset="UTF-8",document.body?document.body.appendChild(c):document.getElementsByTagName("head")[0].appendChild(c)}function loadCSS(d){var c=document.createElement("link");c.type="text/css",c.rel="stylesheet",c.href=d,document.getElementsByTagName("head")[0].appendChild(c)};
+loadCSS('./css/presale.css');
+window.pageConfig = {
+	requireDataResource: './js/getUserPresaleData.js',
+	activityId: '00065675',
+	pageUrl: '//pro.m.jd.com/mall/active/3AiWooK2dqTxuXeAAJvGpiH3j5JM/index.html'
+}
+</script>
+
+
+<div class="presale-style-slide user-bg">
+    <ul class="presale-style-slide-content" id="jianhuoPresale"></ul>
+</div>
+<script type="text/javascript">
+	require([window.pageConfig.requireDataResource],function(api) {
+		var presaleData = {
+	        ele: 'jianhuoPresale',
+	        id: '02100351'
+	    };
+
+    	api.slideStyle(presaleData);
+    });
+</script>
+
+
+
+<div class="presale-style-tab" id="yundongyushou" style="height: 460.169vw;"></div>
+<script type="text/javascript">
+	require([window.pageConfig.requireDataResource],function(api) {
+		var presaleData = {
+	        ele: 'yundongyushou',
+	        data: [
+	        { name: '精选推荐', id: '02108786' },
+	        { name: '国际大牌', id: '01909873' },
+	        { name: '时尚潮牌', id: '01910070' },
+	        { name: '时尚潮牌', id: '01910070' },
+	        { name: '时尚潮牌', id: '01910070' },
+	        { name: '商务型男', id: '01910412' },
+	        { name: '休闲百搭', id: '01910425' }]
+	    };
+
+    	api.tabStyle(presaleData)
+    });
+</script>
+
+
+<div class="presale-style-tab" id="nvzhuangyushou" style="height: 460.169vw;"></div>
+<script>
+	require([window.pageConfig.requireDataResource],function(api) {
+	    var presaleData = {
+	        ele: 'nvzhuangyushou',
+	        data: [
+	        { name: '精选推荐', id: '01910435' },
+	        { name: '羽绒服', id: '01910473' },
+	        { name: '毛呢大衣', id: '01931091' },
+	        { name: '针织衫', id: '01910484' }  ]
+		};
+
+    	api.tabStyle(presaleData)
+    });
+</script>
+
+
+<div class="presale-style-tab" id="shepinyushou" style="height: 224.863vw;"></div>
+<script>
+	require([window.pageConfig.requireDataResource],function(api) {
+		var presaleData = {
+	        ele: 'shepinyushou',
+	        id: '01931215'
+	    };
+
+    	api.listStyle(presaleData)
+    });
+</script>
+</body>
+</html>

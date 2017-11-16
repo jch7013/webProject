@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+</head>
+<body>
+<script type="text/javascript" src="lib/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+(function($) {
+	var url = window.location.href,
+    i = url.indexOf('?id=');
+    if (i !== -1) {
+        var param = decodeURI(url).substring(i + 1);
+        $('body').append(param);
+    }
+
+    decodeURI(location.search.substring(3)
+})(jQuery);
+</script>
+</body>
+</html>

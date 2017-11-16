@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test</title>
+  <style>
+.nav, .nav ul{z-index:4000;}
+#top{width:100%;min-width:1160px;margin:0 auto;background:#fff;}
+.zt_wrapper{width:100%;margin:0 auto;padding:0 0 50px;overflow:hidden;}
+.zt_wrapper .zt_content{width:1160px;margin:0 auto;background:none;position:relative;}
+.sevenWarp{width:100%;height:1100px;overflow:hidden;margin:0 auto;}
+.sevenWarp .sevenBoxs{width:100%;margin:-332px auto 0;background:url(http://images.xiu.com/edm/hd_seven_150401/sevenbg2.jpg) center top repeat;}
+.sevenWarp .sevenBox{width:1453px;height:1400px;margin:0 auto;position:relative;}
+.sevenBox .miniBox{width:677px;height:677px;background:url(http://images.xiu.com/edm/hd_seven_150401/mini2.png) no-repeat;position:absolute;left:388px;top:338px;z-index:1000;}
+.sevenBox .logoBox{width:849px;height:849px;background:url(http://images.xiu.com/edm/hd_seven_150401/logo.png) no-repeat;position:absolute;left:303px;top:252px;z-index:100;}
+.sevenBox .goodsBox{width:1453px;height:1265px;background:url(http://images.xiu.com/edm/hd_seven_150401/goods2.png) no-repeat;position:absolute;left:0;top:44px;z-index:10;}
+.miniShow{animation: boxShow .5s linear;-webkit-animation: boxShow .5s linear;-moz-animation: boxShow .5s linear;-o-animation: boxShow .5s linear;}
+.logoShow{animation: boxShow 1s linear;-webkit-animation: boxShow 1s linear;-moz-animation: boxShow 1s linear;-o-animation: boxShow 1s linear;}
+.goodsShow{animation: boxShow 2s linear;-webkit-animation: boxShow 2s linear;-moz-animation: boxShow 2s linear;-o-animation: boxShow 2s linear;}
+.logoRound{animation: logoRound 20s linear infinite;-webkit-animation: logoRound 20s linear infinite;-moz-animation: logoRound 20s linear infinite;-o-animation: logoRound 20s linear infinite;}
+.goodsRound{animation: goodsRound 20s linear infinite;-webkit-animation: goodsRound 20s linear infinite;-moz-animation: goodsRound 20s linear infinite;-o-animation: goodsRound 20s linear infinite;}
+@keyframes boxShow{
+  0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3);-moz-transform:scale3d(.3,.3,.3);-o-transform:scale3d(.3,.3,.3);}
+  100%{opacity:1;}
+}
+@-webkit-keyframes boxShow{
+    0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3);-moz-transform:scale3d(.3,.3,.3);-o-transform:scale3d(.3,.3,.3);}
+  100%{opacity:1;}
+}
+@-moz-keyframes boxShow{
+    0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3);-moz-transform:scale3d(.3,.3,.3);-o-transform:scale3d(.3,.3,.3);}
+  100%{opacity:1;}
+}
+@-o-keyframes boxShow{
+    0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3);-moz-transform:scale3d(.3,.3,.3);-o-transform:scale3d(.3,.3,.3);}
+  100%{opacity:1;}
+}
+@keyframes goodsRound{
+  0%{-webkit-transform:rotate(0);transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);}
+  100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);}
+}
+@-webkit-keyframes goodsRound{
+    0%{-webkit-transform:rotate(0);transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);}
+  100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);}
+}
+@-moz-keyframes goodsRound{
+    0%{-webkit-transform:rotate(0);transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);}
+  100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);}
+}
+@-o-keyframes goodsRound{
+    0%{-webkit-transform:rotate(0);transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);}
+  100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);}
+}
+@keyframes logoRound{
+  0%{-webkit-transform:rotate(0);transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);}
+  100%{-webkit-transform:rotate(-360deg);transform:rotate(-360deg);-moz-transform:rotate(-360deg);-o-transform:rotate(-360deg);}
+}
+@-webkit-keyframes logoRound{
+    0%{-webkit-transform:rotate(0);transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);}
+  100%{-webkit-transform:rotate(-360deg);transform:rotate(-360deg);-moz-transform:rotate(-360deg);-o-transform:rotate(-360deg);}
+}
+@-moz-keyframes logoRound{
+    0%{-webkit-transform:rotate(0);transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);}
+  100%{-webkit-transform:rotate(-360deg);transform:rotate(-360deg);-moz-transform:rotate(-360deg);-o-transform:rotate(-360deg);}
+}
+@-o-keyframes logoRound{
+    0%{-webkit-transform:rotate(0);transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);}
+  100%{-webkit-transform:rotate(-360deg);transform:rotate(-360deg);-moz-transform:rotate(-360deg);-o-transform:rotate(-360deg);}
+}
+</style>
+</head>
+<body>
+<div id="top">
+  <div class="sevenWarp">
+       <div class="sevenBoxs">
+           <div class="sevenBox">
+                <div class="miniBox miniShow"></div>
+                <div class="logoBox logoShow logoRound"></div>
+                <div class="goodsBox goodsShow goodsRound"></div>
+           </div>
+       </div>
+  </div>
+</div>
+</body>
+</html>
+
+

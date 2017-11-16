@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>t1</title>
+<style>
+.wrap{width:83px;height:143px;overflow:hidden;position: relative;}
+.wrap img{display: block;position: absolute;top:-15px;left:-14px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+	<img src="image/1.jpg" alt="">
+</div>
+<script src="../../lib/jquery-1.8.2.js"></script>
+<script>
+(function($) {
+    var start = 0, during = 8;
+    var ele = $(".wrap img");
+    var left = (-14);
+    var reset = function() {
+    	setTimeout(function() {
+    		ele.css("left", "-14");
+    		left = (-14);
+    		start = 0;
+    		animationLoop();
+    	}, 300);
+    }
+    var animationLoop = function() {
+	    var _run = function() {
+	        start++;
+	        left = left - 83;
+	        ele.css("left", left);
+	        if (start < during) {
+	        	// requestAnimationFrame(_run);
+	        	// setTimeout(_run, 50);
+	        }else {
+	        	reset();
+	        }
+	    };
+	    _run();
+    }
+	// $("#s").bind("click", function() {
+		animationLoop();
+	// });
+})(jQuery);
+</script>
+</body>
+</html>

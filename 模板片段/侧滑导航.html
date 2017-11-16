@@ -1,0 +1,66 @@
+<style>
+.nav-r{width:120px; height: auto; overflow: hidden;}
+.nav-r .top{width:120px; height: 100px;}
+.nav-r ul{width:120px; height: 297px; padding:0 3px; background-color:#cd29e1;}
+.nav-r ul li{width:114px;height: 24px; float:left;margin-bottom: 3px;}
+.nav-r ul li a{height: 24px; font-size: 18px; color:#fff; line-height: 24px; text-align: center; display: block; background-color:#950bd5;}
+.nav-r ul li a:hover{background-color:#fffd00; color:#cd29e1;}
+.nav-r ul li a.n-active{background-color:#fffd00; color:#cd29e1;}
+.nav-r ul .w-56{width:56px;}
+.nav-r ul .w-56 a{ background-color:#a90acb; font-size: 12px;}
+.nav-r ul .mr-2{margin-right: 2px;}
+.nav-r .to-top{width:114px; height:33px; padding:0 3px; background-color: #cd29e1;}
+.nav-r .to-top a{width:114px; height: 24px; display: block;}
+</style>
+<div class="nav-r">  
+	<div class="top">   
+		<img src="http://img13.360buyimg.com/cms/jfs/t3346/328/73712975/6411/3b571645/57ff6231N2196efcb.png" alt="" />  
+	</div>  
+	<ul>   
+		<li> 
+			<a href="javascript:;">精选好货</a>
+		</li>   
+		<li class="w-56 mr-2"> 
+			<a href="javascript:;">居家出行</a>
+		</li>   
+	</ul>  
+	<div class="to-top">
+		<a href="javascript:;"><img src="http://img14.360buyimg.com/cms/jfs/t3745/295/73551443/2673/6b7b5142/57ff6441Ndff82a79.jpg" alt="" /></a>
+	</div>
+</div>
+<script>
+$(function() {
+	var len = $(".target").length;
+	var floorBtn = $('.nav-r ul').find('li');
+    var wrapScrollTop=new Array();
+
+    var getScrollPos = function() {
+	    for(var i=0;i<len;i++){
+	        wrapScrollTop[i] = $(".target").eq(i).offset().top;
+	    }
+    }
+
+    var scrollHandler = function() {
+    	getScrollPos();
+        var winScrollTop = $(window).scrollTop()+10;
+        for(var n=0;n<len;n++){
+			if(winScrollTop >= wrapScrollTop[n]){
+                var ele = $('.nav-r ul').find('li').eq(n);
+                ele.find('a').addClass('n-active').parent().siblings('li').find('a').removeClass('n-active');
+            }
+        }
+    }
+	getScrollPos();
+    $(window).bind('scroll', scrollHandler);
+
+	floorBtn.each(function(i){
+	    $(this).find('a').click(function(){
+	      	$('html,body').animate({'scrollTop': wrapScrollTop[i] });
+	    });
+	});
+
+	$('.to-top').find('a').click(function() {
+		$('html,body').animate({'scrollTop': 0 });
+	});
+});
+</script>

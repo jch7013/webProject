@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>serverTimeTest</title>
+</head>
+<body>
+<script type="text/javascript" src="lib/jquery-1.12.2.min.js"></script>
+<script type="text/javascript">
+
+// 获取用户头像
+$.ajax({
+    url: 'http://act-jshop.jd.com/userExd.html',
+    type: 'get',
+    dataType: 'jsonp',
+    data: {
+        pin: 'jing7013'
+    },
+    success: function(data) {
+    	console.log(data)
+        if (data) {
+            ut.attr('src', data.smallImg || 'http://img12.360buyimg.com/cms/jfs/t2227/299/1491074131/991/ef49f1f3/565e8a83N9e517044.png');
+            // ut.parent().find('.nick').html(data.nickShowName);
+        }
+    }
+});
+</script>
+</body>
+</html>

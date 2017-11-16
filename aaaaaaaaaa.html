@@ -1,0 +1,78 @@
+<style>
+.switchable-box{width:1920px; height: auto; overflow: hidden; position:relative;}
+.switchable-box .sw-btn{width:1920px; height: 39px;}
+.switchable-box .sw-btn a{width:182px; height: 39px; display: block; position: absolute; top:0; right:456px;}
+.switchable-box .sw-pic{width:1920px; height: 286px; overflow: hidden; display: none;}
+.switchable-box .sw-pic-active{display:block;}
+</style>
+
+<div class="switchable-box">
+	<div class="sw-btn">
+		<img src="http://img13.360buyimg.com/cms/jfs/t3139/359/1012183780/8451/a0b8ea74/57c54313Nb9411428.jpg" alt="">
+		<a href="javascript:;"></a>
+	</div>
+	<div class="sw-pic sw-pic-active">
+		<img src="http://img20.360buyimg.com/cms/jfs/t3022/19/1481579245/95305/a998799c/57c55720Nd40a2d9d.jpg" alt="">
+	</div>
+	<div class="sw-pic">
+		<img src="http://img10.360buyimg.com/cms/jfs/t3259/33/1064523497/95562/ef6a1a32/57c55720N14d45ea1.jpg" alt="">
+	</div>
+	<div class="sw-pic">
+		<img src="http://img11.360buyimg.com/cms/jfs/t3253/277/1058470433/95535/ab435e5e/57c55720N3550458e.jpg" alt="">
+	</div>
+</div>
+
+<div class="switchable-box">
+	<div class="sw-btn">
+		<img src="http://img13.360buyimg.com/cms/jfs/t3139/359/1012183780/8451/a0b8ea74/57c54313Nb9411428.jpg" alt="">
+		<a href="javascript:;"></a>
+	</div>
+	<div class="sw-pic sw-pic-active">
+		<img src="http://img20.360buyimg.com/cms/jfs/t3022/19/1481579245/95305/a998799c/57c55720Nd40a2d9d.jpg" alt="">
+	</div>
+	<div class="sw-pic">
+		<img src="http://img10.360buyimg.com/cms/jfs/t3259/33/1064523497/95562/ef6a1a32/57c55720N14d45ea1.jpg" alt="">
+	</div>
+	<div class="sw-pic">
+		<img src="http://img11.360buyimg.com/cms/jfs/t3253/277/1058470433/95535/ab435e5e/57c55720N3550458e.jpg" alt="">
+	</div>
+	<div class="sw-pic">
+		<img src="http://img20.360buyimg.com/cms/jfs/t3247/49/1044948082/95339/e5408a0/57c55720N6a183664.jpg" alt="">
+	</div>
+</div>
+
+<script type="text/javascript" src="lib/jquery-1.12.2.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$.fn.sw = function(config) {
+		var _this = $(this);
+		var obj = {
+			swBtn: _this.find(config.swBtn),
+			swPic: _this.find(config.swPic)
+		}
+
+		var l = obj.swPic.length;
+		var n = 1;
+
+    	obj.swBtn.find('a').bind('click', function() {
+    		if(n < l) {
+    			$(obj.swPic).eq(n).addClass('sw-pic-active').siblings(obj.swPic).removeClass('sw-pic-active');
+    			n++;
+    		}else if(n == l){
+    			$(obj.swPic).eq(0).addClass('sw-pic-active').siblings(obj.swPic).removeClass('sw-pic-active');
+    			n = 1;
+    		}
+    	});
+    }
+});
+</script>
+<script type="text/javascript">
+$(function() {
+	$(".switchable-box").each(function() {
+		$(this).sw({
+			swBtn: '.sw-btn',
+			swPic: '.sw-pic'
+		});
+	});
+});
+</script>

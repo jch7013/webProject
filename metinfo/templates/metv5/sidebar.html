@@ -1,0 +1,40 @@
+<!--<?php
+echo <<<EOT
+-->
+<div class="sidebar inner">
+    <div class="sb_nav">
+<!--
+EOT;
+$line='title';
+if($sidebar){
+echo <<<EOT
+-->
+			<h3 class='title myCorner' data-corner='top 5px'>{$sidebar_title}</h3>
+			<div class="active" id="sidebar" data-csnow="{$csnow}" data-class3="{$class3}" data-jsok="{$lang_sidebarjstype}">{$sidebar}<div class="clear"></div></div>
+<!--
+EOT;
+$line='line';
+}
+echo <<<EOT
+-->
+			<h3 class='title {$line} myCorner' data-corner='top 5px'>{$lang_metname1}</h3>
+			<!-- <div class="active editor">{$otherinfo[info10]}<div class="clear"></div></div> -->
+			<div class="active editor">
+				<div>北京亦马联传动科技有限公司</div>
+				<div>电  话：010-60509737</div>
+				<div>传  真：010-80803220</div>
+				<div>Email：admin@admin.cn</div>
+				<div>网  址：www.yml-bj.com</div>
+				<div>地  址：北京市通州区马驹桥镇晶彩亦庄2-2602室</div>
+				<div class="clear"></div>
+			</div>
+    </div>
+    <div class="sb_box">
+	    <h3 class="title">
+			<div class="position">{$lang_position}：<a href="{$index_url}" title="{$lang_home}">{$lang_home}</a> &gt; {$nav_x[name]}</div>
+			<span>{$class_list[$classnow][name]}</span>
+		</h3>
+		<div class="clear"></div>
+<!--
+EOT;
+?>

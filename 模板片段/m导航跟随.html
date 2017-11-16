@@ -1,0 +1,55 @@
+<div class="j-module" module-function="tab" module-param="{needToggle: true, linkSelector: '.child_nav_n>a', linkCurrentClass: 'red', defaultSelected: true, navScrollBarSelector: '.multipl_navigator', tabWidthAutoEqual: true, tabMaxSize: 4, needFixed: '$!ishead', fixedClass: 'fixed', firstMenuSelector: '.multiple_random > a', firstMenuCurrentClass: 'multipl_main_cur', secondMenuSelector:'.child_nav li', secondMenuCurrentClass: 'current'}">
+    <div class="multipl_navigator" #if($!bgColor && $!bgColor !='') style="background-color: $!bgColor;" #end>
+        <div class="multiple_random">
+            #set($void='javascript:;')
+            #foreach($urlLink in $mobUrlLinkList)
+            #if($urlLink.parentId == -1)
+            <a class="multipl_main" isSelected="$!urlLink.isSelected" href="#if($!urlLink.linkUrl != '' && $!urlLink.linkUrl != '//')$urlLink.linkUrl #else $void#end">
+                $!urlLink.name<span class="red_line">$!urlLink.name</span>
+            </a>
+            #end
+            #end
+        </div>
+    </div>
+    <div class="child_nav">
+        #foreach($urlLink in $mobUrlLinkList)
+        #if($urlLink.parentId == -1)
+        <li>
+            #foreach($urlLink2 in $mobUrlLinkList)
+            #if($!urlLink2.parentId == $!urlLink.id)
+            <div class="child_nav_n"><a href="$!urlLink2.linkUrl">$!urlLink2.name</a></div>
+            #end
+            #end
+        </li>
+        #end
+        #end
+    </div>
+</div>
+<script type="text/javascript">
+$(function() {
+    $(".multipl_main").eq(0).addClass('multipl_main_cur');
+
+    var module_data = [3318817,3318848,3318941,3319013,3319069,3319122,3319225];
+    function init() {
+        for(var i=0; i<module_data.length; i++) {
+            $('#module-'+module_data[i]).addClass('nav_target');
+        }
+    }
+    init();
+
+    var scrollHandler = function() {
+        var wrapScrollTop=new Array();
+        for(var i=0;i<7;i++){
+              wrapScrollTop[i] = $(".nav_target").eq(i).offset().top;
+        }
+        // wrapScrollTop[0] = $(".nav_target").eq(0).offset().top;
+        var winScrollTop = $(window).scrollTop()+10;
+        for(var n=0;n<7;n++){
+            if(winScrollTop >= wrapScrollTop[n]){
+                $(".multipl_main").eq(n).addClass('multipl_main_cur').siblings().removeClass('multipl_main_cur');
+            }
+        }
+    }
+    $(window).bind('scroll', scrollHandler);
+});
+</script>

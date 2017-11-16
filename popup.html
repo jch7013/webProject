@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script src="http://h5.jd.com/misc/script/jquery-1.7.2.min.js"></script>
+<style>
+#btn1 ,#btn2{display:inline-block;width:30px; line-height:20px; font-size:12px; text-align: center; border:1px solid #E318D9;}
+.p1{width:300px; height:200px;background-color:red;display:none;z-index: 9999}
+.p2{width:500px; height:300px;background-color:#A7BF4E;display:none;z-index: 9999}
+</style>
+<a href="javascript:;" id="btn1">1</a>
+<div class="p1">
+	11111
+	<span class="closePopup1">X</span>
+</div>
+<a href="javascript:;" id="btn2">2</a>
+<div class="p2">
+	22222
+	<span class="closePopup2">X</span>
+</div>
+
+<style>
+.popup{display:none;z-index:999;opacity: 0.6;background-color:#000;filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);}
+.closePopup1, .closePopup2{width:20px; height:20px; background-color:#fff; font-size: 16px; position: absolute; top:5px; right:5px; border-radius: 50%; text-indent: 5px;cursor: pointer;}
+</style>
+<div class="popup"></div>
+<script>
+(function($) {
+	var j_show_popup = function(elem) {
+		var w = $(window).width(),
+	    	h = $(window).height();
+
+	    var showPopup = function() {
+	    	$(".popup").css({position:'fix'+'ed',width:w,height:h,top:0,left:0,display:'block'});
+	    }
+
+	    var showCenter = function(elem) {
+			elem.css({
+				display: 'block',
+				position: 'absolute',
+				top: (h - elem.height()) / 2 + $(window).scrollTop() + 'px',
+				left: (w - elem.width()) / 2 + $(window).scrollLeft() + 'px'
+			});
+			return elem;
+		}
+
+		var init = function() {
+			showPopup();
+			showCenter(elem);
+		}
+
+		// $(window).resize(function() {
+		// 	if($(".popup").css("display")==='none') return;
+		// 	j_show_popup(elem);
+		// });
+		return init();
+	}
+
+	var j_hide_popup = function(elem) {
+		$(".popup").css("display", "none");
+		elem.css("display", "none");
+	}
+
+	$(".closePopup1").bind("click", function() {
+		var p1 = $(".p1");
+		j_hide_popup(p1);
+	});
+
+	$(".closePopup2").bind("click", function() {
+		var p2 = $(".p2");
+		j_hide_popup(p2);
+	});
+
+	$("#btn1").bind("click", function() {
+		var p1 = $(".p1");
+		j_show_popup(p1);
+	});
+	$("#btn2").bind("click", function() {
+		var p2 = $(".p2");
+		j_show_popup(p2);
+	});
+})(jQuery);
+</script>
+</body>
+</html>
+

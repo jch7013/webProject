@@ -1,0 +1,165 @@
+<style>
+.presale{width:100%; background-color:#d00169; overflow: hidden; position: relative;}
+.presale-tabs {width:100%; height:10.777vw; white-space: nowrap; overflow-x: auto; background-color:#fff; overflow-y: hidden; -webkit-overflow-scrolling: touch;}
+.presale-tabs::-webkit-scrollbar,
+.presale-tabs::-webkit-scrollbar-thumb {display: none }
+.presale-tabs li{display: inline-block; width: 21.222vw; height: 10.777vw; line-height: 10.777vw; color: #000; background-color:#fff; text-align: center; position: relative; padding:0;}
+.presale-tabs li:after{display: none; content: " "; position: absolute; bottom:.2vw; left:16%; width:68%; height:.8vw; background-color:#ff3496; }
+.presale-tabs li.ysTabsCur{font-weight: bold; color: #c31078}
+.presale-tabs li.ysTabsCur:after{display: block;}
+.presale-content{width: 100vw; margin-top:1.066vw; background-color: #d00169;}
+.presale-content .presale-item { width: 94.666vw; margin:0 2.666vw 0 2.666vw; overflow:hidden; display: none;}
+.presale-content .goods-item { position: relative; width: 46.666vw; height: 73.51vw; float:left; font-size:12px; background-color:#fff; overflow: hidden; margin: 0 1.333vw 1.333vw 0;}
+.presale-content .goods-item:nth-child(2n){margin: 0;}
+.presale-content .goods-item .goodsPic{width: 46.666vw; height: 46.666vw; position: relative; font-size: 12px;background-image: url(//m.360buyimg.com/babel/jfs/t9565/26/2037135231/995/b23cf625/59ed6299N11202272.png); background-repeat: no-repeat; background-position: 50% 50%; background-color: #fff;}
+.presale-content .goods-item .goodsPic:after{display: block; content: "预售"; position: absolute; top:0; right:1.777vw; width:8.533vw; height:3.644vw; background-color:#ff3496; color:#fff; font-size: 1em; line-height:3.644vw; text-align: center;}
+.presale-content .goods-item .goodsName{display: -webkit-box; width: 43.111vw; height: 7.644vw; line-height: 3.822vw; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-all; font-size: 1em; padding:0.888vw 1.777vw 0 1.777vw; overflow: hidden;}
+.presale-content .goods-item .goodsYsPrice{width: 94%; height: 5.333vw; margin: 0 3%; font-size: 1.167em; color:#f12f2f; white-space: nowrap;}
+.presale-content .goods-item .goodsPrice{width: 94%; height: 3.555vw; margin: 0 3% 0.888vw 3%; white-space: nowrap; font-size: 12px; line-height: 1;}
+.presale-content .goods-item .goodsYsPrice .ys-price,
+.presale-content .goods-item .goodsYsPrice .p-price,
+.presale-content .goods-item .yuding-num{width:100%; font-family: "FZLTZHJW","Microsoft YaHei", "Arial"; line-height: 1; display: block;}
+.presale-content .goods-item .goodsYsPrice .ys-price {color:#f12f2f; line-height: 5.333vw}
+.presale-content .goods-item .yuding-num,
+.presale-content .goods-item .p-price {display: inline-block; width: 50%; color:#9a9a9a; font-size: 1em; line-height: 1;}
+.presale-content .goods-item .dingjin{width: 100%; height: 5.955vw; font-size: 12px}
+.presale-content .goods-item .dingjin a{display: block; width: 94%; height: 5.955vw; margin: 0 3%; background-color:#ff3496; line-height: 5.955vw; text-align: center; font-size: 1em; color:#fff;}
+</style>
+
+<div class="presale-style-tab" id="yundongyushou" style="height: 451.837vw;">
+    <ul class="presale-tabs"></ul>
+    <div class="presale-content"></div>
+</div>
+
+<script>
+!(function() {
+    var presaleData = {
+        ele: 'yundongyushou',
+        data: [
+        { name: '头头头头', id: '01910557' },
+        { name: '运动鞋包', id: '01910557' },
+        { name: '运动服饰', id: '01931109' },
+        { name: '超出尺寸', id: '01931109' },
+        { name: '户外鞋服', id: '01931113' },
+        { name: '户外装备', id: '01931116' }],
+        activityId: '00065675'
+    };
+
+    getUserPresaleData(presaleData);
+
+    function getUserPresaleData(presaleData) {
+        var productIds = [], list='', d=presaleData.data, $presaleEle=$('#'+presaleData.ele), detailAddress='';
+        var srcInit = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+
+        function userLazyload(arg) {
+            var num = $presaleEle.find('.presale-content ul[data-flTabs="'+arg+'"] .goodsPic img').length;
+            var img = $presaleEle.find('.presale-content ul[data-flTabs="'+arg+'"] .goodsPic img');
+            var n = 0;
+
+            for (var i = n; i < num; i++) {
+                if (img[i].getAttribute("src") == srcInit) {
+                    img[i].src = img[i].getAttribute("data-src");
+                }
+                n = i + 1;
+            }
+        }
+
+        var getAddressType = {
+            isAppAddress: function(){
+                return !!location.pathname.match(/^\/mall\//);
+            },
+            isWQAddress: function(){
+                return !!location.pathname.match(/^\/wq\//);
+            }
+        }
+
+        if(getAddressType.isAppAddress()) {
+            detailAddress = 'https://item.m.jd.com/ware/view.action?wareId=';
+        } else if(getAddressType.isWQAddress()) {
+            detailAddress = 'https://wqitem.jd.com/item/view?sku='
+        }
+        var l = '';
+        d.map(function(g, i) {
+            if(d.length < 5) {l = (100/d.length)+'%'} else {l = '21.222vw'}
+            list += '<li style="width:'+l+';" data-id="'+g.id+'">'+g.name+'</li>';
+            productIds.push(g.id);
+        });
+        $presaleEle.find('.presale-tabs').append(list);
+        $presaleEle.find('.presale-tabs li').eq(0).addClass('ysTabsCur');
+
+        babel.babelProductInfo({
+            data: {
+                ids: productIds.join(','), currentStageFlag: "", groupId: "", stageId: "", stage: "", num: "", position: ""
+            },
+            success: function(res) {
+                $.each(res.list ,function(idx, goodsData) {
+                    var goodsList = goodsData.groupInfoList[0].groupInfoList;
+                    var dom='',priceType='',iShowPresaleAppoints='',btnType='';
+                    for(var i = 0;i<goodsList.length;i++ ){
+                        if(goodsList[i].presalePrice == ''){
+                            priceType = '京东价:￥'+goodsList[i].pPrice;
+                            iShowPresaleAppoints = 'hide';
+                            btnType = '立即购买';
+                        } else {
+                            priceType = '预售价:￥'+goodsList[i].presalePrice;
+                            iShowPresaleAppoints = '';
+                            btnType = '预付'+goodsList[i].presaleDeposit+'元抵'+goodsList[i].presaleDepositWorth+'元';
+                        }
+                        dom=dom+'<li class="goods-item"><div class="goodsPic"><a class="J_ping" href="'+detailAddress+goodsList[i].skuId+'&clickUrl=" target="_self" report-eventid="Babel_dev_sku" report-eventparam="'+presaleData.activityId+'_'+goodsList[i].skuId+'_'+goodsData.groupId+'_null_123456"><img class="fadein" src="'+srcInit+'" data-src="'+goodsList[i].image+'"></a></div><div class="goodsName"><a class="J_ping" href="'+detailAddress+goodsList[i].skuId+'&clickUrl=" target="_self" report-eventid="Babel_dev_sku" report-eventparam="'+presaleData.activityId+'_'+goodsList.skuId+'_'+goodsData.groupId+'_null_123456">'+goodsList[i].name+'</a></div><div class="goodsYsPrice"><a class="J_ping" href="'+detailAddress+goodsList[i].skuId+'&clickUrl=" target="_self" report-eventid="Babel_dev_sku" report-eventparam="'+presaleData.activityId+'_'+goodsList.skuId+'_'+goodsData.groupId+'_null_123456"> <span class="ys-price">'+priceType+'</span></a></div><div class="goodsPrice"><a class="J_ping" href="'+detailAddress+goodsList[i].skuId+'&clickUrl=" target="_self" report-eventid="Babel_dev_sku" report-eventparam="'+presaleData.activityId+'_'+goodsList.skuId+'_'+goodsData.groupId+'_null_123456"><span class="yuding-num '+iShowPresaleAppoints+'">'+goodsList[i].presaleAppoints+'件已预订</span><span class="p-price">上市价:￥'+goodsList[i].jdPrice+'</span></a></div><div class="dingjin"><a class="J_ping" href="'+detailAddress+goodsList[i].skuId+'&clickUrl=" target="_self" report-eventid="Babel_dev_sku" report-eventparam="'+presaleData.activityId+'_'+goodsList.skuId+'_'+goodsData.groupId+'_null_123456">'+btnType+'</a></div></li>';
+                    }
+                    dom = '<ul class="presale-item" data-flTabs="'+goodsData.groupId+'">'+dom+'</ul>';
+                    $presaleEle.find('.presale-content').append(dom);
+                });
+                $presaleEle.find('.presale-content ul[data-flTabs="'+productIds[0]+'"]').show();
+                var num = res.list[0].groupInfoList[0].groupInfoList.length,oDiv='';
+                oDiv=document.getElementById(presaleData.ele);
+                console.log(oDiv)
+                // oDiv.style.height=(Math.round(num/2)*74.843+10.777)+'vw';
+            },
+            error: function(e) {
+                alert(e)
+            }
+        });
+
+        $.fn.scrollTo =function(options){
+            var defaults = {toL : 0, durTime : 500, delay : 0, callback:null };
+            var opts = $.extend(defaults,options),
+                timer = null,
+                _this = this,
+                curLeft = _this.scrollLeft(),
+                subTop = opts.toL - curLeft,
+                index = 0,
+                dur = Math.round(opts.durTime / opts.delay),
+                smoothScroll = function(t){
+                    index++;
+                    var per = Math.round(subTop/dur);
+                    if(index >= dur){
+                        _this.scrollLeft(t);
+                        window.clearInterval(timer);
+                        if(opts.callback && typeof opts.callback == 'function'){
+                            opts.callback();
+                        }
+                        return;
+                    }else{
+                        _this.scrollLeft(curLeft + index*per);
+                    }
+                };
+            timer = window.setInterval(function(){
+                smoothScroll(opts.toL);
+            }, opts.delay);
+            return _this;
+        };
+
+        $presaleEle.find('.presale-tabs li').on("tap",function(e) {
+            var _this = $(this);
+            var i = _this.index();
+            _this.addClass('ysTabsCur').siblings().removeClass('ysTabsCur');
+            $presaleEle.find('.presale-content ul[data-flTabs="'+productIds[i]+'"]').show().siblings().hide();
+            var w = _this.width();
+            // $presaleEle.find('.presale-tabs').scrollLeft(w*(i-2));
+            $presaleEle.find('.presale-tabs').scrollTo({toL: w*(i-2)});
+            userLazyload(productIds[i]);
+        });
+    }
+})();
+</script>

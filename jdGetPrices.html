@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script src="lib/jquery-1.8.2.js"></script>
+<script>
+// jQuery.ajax({
+// 	type:"get",
+// 	url:"https://p.3.cn/prices/mgets?skuids=J_10322253788&type=2",
+// 	dataType:"jsonp",
+// 	success:function(json){
+// 		// for(var i=0,len=json.length;i<len;i++){
+// 		// 	var redthml = b_discount.eq(i).siblings(".b_red").text();
+// 		// 	price = Math.floor(redthml.substring(1,redthml.length));
+// 		// 	if(price < json[i].p){
+// 		// 		b_discount.eq(i).html(parseFloat(price*10/json[i].p).toFixed(1)+"折")
+// 		// 	}
+// 		// }
+// 		console.log(json)
+// 	},
+// 	error:function(json){
+// 		console.log(json)
+// 	}
+// });
+
+	var queryData = {
+    	"callback": "jQuery1113026544634654187194_1472608877422",
+    	"pin": "jing7013",
+    	"_": "1472608877423"
+    };
+    $.ajax({
+        url: 'http://act-jshop.jd.com/userExd.html',
+        type: 'get',
+        dataType: 'jsonp',
+        data: queryData,
+        success: function(data) {
+            	console.log('success'+data)
+            if (data) {
+                ut.attr('src', data.smallImg || 'http://img12.360buyimg.com/cms/jfs/t2227/299/1491074131/991/ef49f1f3/565e8a83N9e517044.png');
+                // ut.parent().find('.nick').html(data.nickShowName);
+            }
+        },
+        error: function(data) {
+            	console.log(data)
+        }
+    });
+
+// jQuery.ajax({
+// 	url : 'http://act.jshop.jd.com/goodsInfo.html',
+// 	data : {
+// 		skuIds : 10101322130
+// 	},
+// 	dataType : 'jsonp',
+// 	type : 'POST',
+// 	success : function(data){
+// 		// data.each(function(i,m){
+// 		// 	item.find('[skuid="' + m.goodsId + '"] .jPic img').attr('src',getImgServer() + '6/'+ m.imageurl);
+// 		// });
+// 		console.log(data);
+// 	},
+// 	error:function(data){
+// 		console.log(data);
+// 	}
+// });
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-- <script type="text/javascript" src="lib/jquery-1.12.2.min.js"></script> -->
+<script type="text/javascript">
+// $(function() {
+	/**
+	 * URL 类型匹配
+	 * regSku 验证SKU链接
+	 * regSale 验证活动链接
+	 * reqGetSku 获取SKU
+	 * reqNum 验证是否数字
+	 */
+	var REG_OBJ = {
+	            regSku: /^(https?:)?\/\/item\.m\.jd\.com\/(ware|product)\/|^openApp\.jdMobile:\/\/virtual\?params=\{\"category\":\"jump\",\"des\":\"productDetail\"/,
+	            regSale: /sale.jd.com/,
+	            reqGetSku: /\d+/g,
+	            reqNum: /^[0-9]*$/
+	        }
+	/* 去除非sku链接后面的参数 */
+	var getCleanHref = function(href) {
+	            if (!REG_OBJ.regSku.test(href) && href.indexOf('?') != -1) {
+	                href = href.split('?')[0];
+	            }
+	            return href;
+	        }
+
+	var href = 'http://item.jd.com/985602.html';
+
+	if (!REG_OBJ.reqNum.test(href)) {
+		var sku = getCleanHref(href).match(REG_OBJ.reqGetSku)[0];
+		return sku;
+	}
+// });
+</script>
+</body>
+</html>

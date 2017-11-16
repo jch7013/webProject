@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Test</title>
+<style type="text/css" media="screen">
+*{margin:0; padding:0;}
+.header-box{width:100%; height: 1232px; overflow: hidden; position: relative;}
+.header-box .bg-top{width:1920px; height: 631px; margin:0 auto; overflow: hidden;}
+.header-box .bg-bottom{width:1920px; height: 601px; overflow: hidden; position: absolute; top:541px; left:50%; margin-left:-960px; z-index: 3;}
+.header-box .pic{width:1201px; height: 1201px; position: absolute; top:0px; left:50%; margin-left:-600px; z-index: 2;}
+.header-box .txt{width:741px; height: 438px; position: absolute; top:212px; left:50%; margin-left:-319px; z-index: 4;}
+/*.header-box .pic{transition:all 1.5s infinite; -webkit-transition:all 1.5s infinite; -moz-transition:all 1.5s infinite; -o-transition:all 1.5s infinite;}
+.header-box .pic {transform:rotate(180deg); -webkit-transform:rotate(180deg); -moz-transform:rotate(180deg); -o-transform:rotate(180deg); -ms-transform:rotate(180deg);}*/
+
+.header-box .pic{-webkit-animation: animat 40s linear backwards infinite;-ms-animation: animat 40s linear backwards infinite; animation: animat 40s linear backwards infinite;-moz-animation: animat 40s linear backwards infinite;}
+@-webkit-keyframes animat{
+	form{transform:rotate(0deg)}
+	to{transform:rotate(360deg)}
+}
+@-moz-keyframes animat{
+	form{transform:rotate(0deg)}
+	to{transform:rotate(360deg)}
+}
+@-o-keyframes animat{
+	form{transform:rotate(0deg)}
+	to{transform:rotate(360deg)}
+}
+@-ms-keyframes animat{
+	form{transform:rotate(0deg)}
+	to{transform:rotate(360deg)}
+}
+</style>
+</head>
+<body>
+<div class="header-box">
+	<div class="bg-top">
+		<img src="http://img13.360buyimg.com/cms/jfs/t3127/209/2677389804/194449/1d7a6967/57e377d9N037bb03e.jpg" alt="">
+	</div>
+	<div class="bg-bottom">
+		<img src="http://img14.360buyimg.com/cms/jfs/t3067/253/2559786820/23363/9c3036c5/57e377d9N61bd30a9.png" alt="">
+	</div>
+	<div class="pic">
+		<img src="http://img12.360buyimg.com/cms/jfs/t3052/333/2588573474/251429/20e14ae3/57e37eeeN01739bf9.png" alt="">
+	</div>
+	<div class="txt">
+		<img src="http://img10.360buyimg.com/cms/jfs/t3301/256/2602419159/51555/a79a24d9/57e377d9Nfc73271a.png" alt="">
+	</div>
+</div>
+<script type="text/javascript" src="jquery-1.12.2.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	// $(".header-box .pic").bind({
+	// 	click: function() {
+	// 		$(this).addClass('active');
+	// 		setTimeout(function() {
+	// 			$(".header-box .pic").removeClass('active');
+	// 		},400);
+	// 	}
+	// });
+});
+</script>
+</body>
+</html>

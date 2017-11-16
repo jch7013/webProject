@@ -1,0 +1,67 @@
+<div class="presale" id="shepinyushou" style="height: 224.529vw;">
+    <div class="presale-content">
+        <ul class="presale-item" style="display:block;"></ul>
+    </div>
+</div>
+
+<script>
+!(function() {
+    var presaleData = {
+        ele: 'shepinyushou',
+        data: '01931215',
+        activityId: '00065675'
+    };
+
+    var $presaleEle=$('#'+presaleData.ele), detailAddress='';
+    var getAddressType = {
+        isAppAddress: function(){
+            return !!location.pathname.match(/^\/mall\//);
+        },
+        isWQAddress: function(){
+            return !!location.pathname.match(/^\/wq\//);
+        }
+    }
+
+    if(getAddressType.isAppAddress()) {
+        detailAddress = 'https://item.m.jd.com/ware/view.action?wareId=';
+    } else if(getAddressType.isWQAddress()) {
+        detailAddress = 'https://wqitem.jd.com/item/view?sku='
+    }
+
+    babel.babelProductInfo({
+        data: {
+            ids: presaleData.data, currentStageFlag: "", groupId: "", stageId: "", stage: "", num: "", position: ""
+        },
+        success: function(res) {
+            var resc = res.list[0].groupInfoList[0].groupInfoList;
+            var dom='',priceType='',iShowPresaleAppoints='',btnType='';
+            $.each(resc, function(idx, goodsList) {
+            	if(goodsList.presalePrice == ''){
+                    priceType = '京东价:￥'+goodsList.pPrice;
+                    iShowPresaleAppoints = 'hide';
+                    btnType = '立即购买';
+                } else {
+                    priceType = '预售价:￥'+goodsList.presalePrice;
+                    iShowPresaleAppoints = '';
+                    btnType = '预付'+goodsList.presaleDeposit+'元抵'+goodsList.presaleDepositWorth+'元';
+                }
+                dom+='<li class="goods-item"><div class="goodsPic"><a class="J_ping" href="'+detailAddress+goodsList.skuId+'&clickUrl=" target="_self" report-eventid="Babel_dev_sku" report-eventparam="'+presaleData.activityId+'_'+goodsList.skuId+'_'+res.list[0].groupInfoList[0].groupId+'_null_123456"><img src="http://m.360buyimg.com/cms/jfs/t2218/111/2490744834/43/9acceab1/56d55ce6N5a567661.gif" data-src="'+goodsList.image+'"></a></div><div class="goodsName"><a class="J_ping" href="'+detailAddress+goodsList.skuId+'&clickUrl=" target="_self" report-eventid="Babel_dev_sku" report-eventparam="'+presaleData.activityId+'_'+goodsList.skuId+'_'+res.list[0].groupInfoList[0].groupId+'_null_123456">'+goodsList.name+'</a></div><div class="goodsYsPrice"><a class="J_ping" href="'+detailAddress+goodsList.skuId+'&clickUrl=" target="_self" report-eventid="Babel_dev_sku" report-eventparam="'+presaleData.activityId+'_'+goodsList.skuId+'_'+res.list[0].groupInfoList[0].groupId+'_null_123456"> <span class="ys-price">'+priceType+'</span></a></div><div class="goodsPrice"><a class="J_ping" href="'+detailAddress+goodsList.skuId+'&clickUrl=" target="_self" report-eventid="Babel_dev_sku" report-eventparam="'+presaleData.activityId+'_'+goodsList.skuId+'_'+res.list[0].groupInfoList[0].groupId+'_null_123456"><span class="yuding-num '+iShowPresaleAppoints+'">'+goodsList.presaleAppoints+'件已预订</span><span class="p-price">上市价:￥'+goodsList.jdPrice+'</span></a></div><div class="dingjin"><a class="J_ping" href="'+detailAddress+goodsList.skuId+'&clickUrl=" target="_self" report-eventid="Babel_dev_sku" report-eventparam="'+presaleData.activityId+'_'+goodsList.skuId+'_'+res.list[0].groupInfoList[0].groupId+'_null_123456">'+btnType+'</a></div></li>';
+            });
+            $presaleEle.find(".presale-item").append(dom);
+            var num = res.length,oDiv='';
+			oDiv=document.getElementById(presaleData.ele);
+			console.log(oDiv)
+	        // oDiv.style.height=(Math.round(num/2)*74.843)+'vw';
+        },
+        error: function(e) {
+            alert(e)
+        }
+    });
+})();
+</script>
+
+<script type="text/javascript">
+try{
+    MPing.inputs.Click.attachEvent();
+}catch(e){}
+</script>

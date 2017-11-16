@@ -1,0 +1,179 @@
+<style type="text/css" media="screen">#module-3172156,
+#module-3172173,
+#module-3172186{display: none;}
+.current{display:block!important;}</style><style>.f-nav{width:100%;height:auto;padding:10px;box-sizing:border-box;}
+.f-nav>table td{text-align: center;border:2px solid #000; color:#fff;background-color:#bd0e47;font-size: 32px;width: 25%;line-height: 45px;}
+.f-nav>table td a{color:#fff;display:block;width:100%;height:100%;}
+.f-nav>.n2 td:hover{background-color:#2bd3c0;}</style>
+<div class="f-nav">            
+	<table class="n2" width="640" border="1" cellspacing="0" cellpadding="0" align="center">                
+		<tbody>                        
+			<tr>                
+				<td>
+					<a href="javascript:;" class="s-module-btn" id="ms1">1</a>
+				</td>                
+				<td>
+					<a href="javascript:;" class="s-module-btn" id="ms2">2</a>
+				</td>                
+				<td>
+					<a href="javascript:;" class="s-module-btn" id="ms3">3</a>
+				</td>                
+				<td>
+					<a href="javascript:;" class="s-module-btn" id="ms3">4</a>
+				</td>            
+			</tr>                        
+			<tr>                                
+				<td>
+					<a href="javascript:;" class="s-module-btn" id="ms4">5</a>
+				</td>                
+				<td>
+					<a href="javascript:;" class="s-module-btn" id="ms5">6</a>
+				</td>                
+				<td>
+					<a href="javascript:;" class="s-module-btn" id="ms6">7</a>
+				</td>                
+				<td>
+					<a href="javascript:;" class="s-module-btn" id="ms6">8</a>
+				</td>            
+			</tr>                        
+			<tr>                                
+				<td>
+					<a href="javascript:;" class="s-module-btn" id="ms7">9</a>
+				</td>                
+				<td>
+					<a href="javascript:;" class="s-module-btn" id="ms8">10</a>
+				</td>                
+				<td>
+					<a href="javascript:;" class="s-module-btn" id="ms9">11</a>
+				</td>                
+				<td>
+					<a href="javascript:;" class="s-module-btn" id="ms10">12</a>
+				</td>            
+			</tr>                
+		</tbody>        
+	</table>
+</div>
+<script type="text/javascript">$(function() {
+	var moduleDependence = JSON.parse(decodeURIComponent($("#moduleDependence").val() || "{}")),        //存放模块间的依赖关系
+		pureStyleModules = JSON.parse(decodeURIComponent($("#pureStyleModules").val() || "[]")),        //纯粹只存放了style的自定义内容区实例id
+		MODULE_CLASS = "j-placeholder",
+		PAGE_INSTANCEID = $("#mobPageInstanceId").val(),
+		FIRST_VIEW_CLASS = "j-first-view",          //需要显示在首屏的模块css标示
+	    moduleCssId = {};       //记录页面模块用到的cssId
+    var PAGE_INSTANCEID = 3165254;
+
+        //根据实例id，加载一个模块
+        function handle(moduleId){
+            loadData(moduleId, function(data){
+                //如果之前没有写如果这个模块CSS，则写入模块依赖的CSS
+                if(!(data.cssid in moduleCssId)){
+                    // $style.append(data.css);
+                    moduleCssId[data.cssid] = "in";
+                }
+                //然后再插入对应的模块内容
+                var $module = $(".outer-container > div[instanceid='" + data.instanceId + "']");
+                //判断模块里面是否有内容，避免模块内容重复加载显示
+                if(!$.trim($module.html())){
+                    $module.addClass(data.cssid).html(data.html);
+                }
+                //如果是功能框架模块，则需要把其包含的其他模块也一并请求过来
+                if(data.html.indexOf("j-categoryLayout") !== -1){
+                    actionFrameModule($module.find(".j-module"));
+                }
+            });
+        }
+
+        /**
+         *  发送模块请求以及处理渲染
+         */
+        function loadData(moduleId, callback){
+            var type = /^\/app/.test(location.pathname)? "app-": "m-",
+                url = INTERFACE.saleModule + type + PAGE_INSTANCEID + "-" + moduleId + ".html";
+                console.log(url);
+            $.ajax({
+                url: url,
+                dataType: "json",
+                success: function(data){
+                    if(data.status === "success"){
+                        callback(data);
+                        console.log(JSON.stringify(data));
+                        //触发模块公共方法加载
+                        moduleRefresh();
+                        //触发价格、图片懒加载
+                        jshop.widget.instance.imgLoad.reCheck();
+                        jshop.widget.instance.priceLoad.check();
+                        //加载了模块内部结构以及各种懒加载后，就可以把zui小站位高度给去掉了
+                        var jModule = $(".outer-container div[instanceid='" + moduleId + "']").css("height", "");
+                        //如果是微信手Q环境，还要同时处理链接
+                        // isWXQQAddress && tool.handleWXQQLink(jModule);
+                        //模块埋点
+                        try{
+                            jshop.mStatistic[jModule.attr("module-name")](jModule);
+                        }catch(e){
+                        }
+                        //数据加载完成后触发给页面里的链接都加上本页面的url参数
+                        commonLoder.initActPageParams(jModule);
+                        //加载和本模块关联的模块
+                        loadRelativeModule(moduleId);
+                    }else{
+                        console.error("请求接口[" + url + "]失败, pageInstanceId=" + PAGE_INSTANCEID + ", instanceId=" + moduleId);
+                    }
+                }
+            });
+        }
+
+
+    //加载和本模块关联的模块（目前针对锚点发生的关联关系）
+    function loadRelativeModule(moduleIds, needLoad){
+        var arrModule = [];
+        if(typeof moduleIds === "string"){
+            arrModule.push(moduleIds);
+        }else{
+            arrModule = moduleIds;
+        }
+        for(var i = 0; i < arrModule.length; i++){
+            var moduleId = arrModule[i];
+            if(needLoad || moduleId in moduleDependence){
+                var arr = needLoad? moduleIds: moduleDependence[moduleId];
+                for(var j = 0; j < arr.length; j++){
+                    var relativeModuleId = arr[j];
+                    var jRelativeModule = $(".outer-container > div[instanceid='" + relativeModuleId + "']");
+                    //没有加载过的模块才进行加载
+                    if(needLoad || arrModule.length > 1 || jRelativeModule.hasClass(MODULE_CLASS) || jRelativeModule.hasClass(FIRST_VIEW_CLASS)){
+                        handle(relativeModuleId);
+                        jRelativeModule.removeClass(MODULE_CLASS + " " + FIRST_VIEW_CLASS);
+                    }
+                }
+            }
+        }
+    }
+
+    // loadRelativeModule(module_data, true);
+
+    var module_data = [3172156,3172173,3172186];
+
+    function checkAll(){
+        // jshop.widget.instance.moduleLoad.check();
+        jshop.widget.instance.imgLoad.reCheck();
+        jshop.widget.instance.priceLoad.check();
+        moduleRefresh();
+    }
+
+    function init() {
+        for(var i=0; i<module_data.length; i++) {
+            $('#module-'+module_data[i]).addClass('show-module');
+        }
+        $('#module-'+module_data[0]).addClass('current');
+    }
+    init();
+
+    $('.s-module-btn').bind('click', function() {
+        var id = $(this).attr("id"),
+            n = id.substring(2)-1;
+        // var n = $(this).index();
+
+        $('.show-module').eq(n).addClass('current').siblings().removeClass('current');
+        checkAll();
+    });
+});
+</script>

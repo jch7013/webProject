@@ -1,0 +1,69 @@
+<style>
+.r-nav{width:110px;height: auto;}
+.r-nav ul li{width:110px;height:30px;background-color:#8500a3;color:#fff;font-size: 12px;color:#fff;line-height: 30px;text-align: center;}
+.r-nav ul li a{display:block;width: 110px;height: 30px;color:#fff;background-color:#8500a3;}
+.r-nav ul li.com{height:135px; }
+.r-nav ul li.com-top{height: 47px;}
+.r-nav ul li:hover a{background-color:#650084;color:#fce535;}
+.r-nav ul li a.p-active{background-color:#650084;color:#fce535;}
+</style>
+<div class="r-nav">  
+	<ul>   
+		<li class="com"> 
+			<img src="" alt="" /> 
+		</li>   
+		<li> 
+			<a href="#f1"></a> 
+		</li>   
+		<li> 
+			<a href="#f2"></a> 
+		</li>   
+		<li> 
+			<a href="#f3"></a> 
+		</li>   
+		<li> 
+			<a href="#f4"></a> 
+		</li>   
+		<li> 
+			<a href="#f5"></a> 
+		</li>   
+		<li> 
+			<a href="#f6"></a> 
+		</li>   
+		<li> 
+			<a href="#f7"></a> 
+		</li>   
+		<li class="com-top"> 
+			<a href="#"><img src="" alt="" /></a> 
+		</li>  
+	</ul>
+</div>
+<script>
+$(function() {
+    var scrollHandler = function() {
+        var wrapScrollTop=new Array();
+        for(var i=0;i<7;i++){
+              wrapScrollTop[i] = $(".target").eq(i).offset().top;
+        }
+        wrapScrollTop[0] = $(".target").eq(0).offset().top;
+        var winScrollTop = $(window).scrollTop()+10;
+        for(var n=0;n<7;n++){
+            if(winScrollTop >= wrapScrollTop[n]){
+                $('.r-nav ul li').find('a').removeClass('p-active');
+                var ele = $('.r-nav ul li').eq(n+1);
+                ele.find('a').addClass('p-active');
+            }
+        }
+    }
+    $(window).bind('scroll', scrollHandler);
+});
+</script>
+
+
+
+<style>
+.target { position: relative; }
+.placeholder { position: absolute; display:block; width:100px; height:50px;}
+.offsetTop01{top:0;}
+</style>
+<a name="f1" class="target"><span class="placeholder offsetTop01"></span></a>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie</title>
+</head>
+<body>
+<script type="text/javascript" src="http://static.360buyimg.com/jshop/sale/201602251620/assets/new/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	var cookie = document.cookie,
+	    cArr = cookie.split(';'),
+	    cObj = {};
+	    console.log(cookie);
+	for (var i = cArr.length - 1; cArr[i]; i--) {
+	    var kv = cArr[i].replace(/^\s+/, '').split('=');
+	    cObj[kv[0]] = kv[1];
+	}
+	return cObj[name];
+});
+</script>
+</body>
+</html>

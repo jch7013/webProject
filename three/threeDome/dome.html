@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>Three.js JSON Loader Demo</title>
+<script type="text/javascript" src="three.js"></script>
+<script type="text/javascript">
+
+
+var renderer, scene, camera;
+var model;
+var rotateX = 0, rotateY = 0;
+
+function createWorld() {
+    var light;  // A light shining from the direction of the camera.
+    light = new THREE.DirectionalLight();
+    light.position.set(0,0,1);
+    scene.add(light);
+}
+
+function modelLoadedCallback(geometry, materials) {
+    var object = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+
+    var xmin = Infinity, xmax = -Infinity, ymin = Infinity, ymax = -Infinity, zmin = Infinity, zmax = -Infinity;
+
+    for (var i = 0; i < geometry.vertices.length; i++) {
+        var v = geometry.vertices[i];
+        if (v.x < xmin) xmin = v.x;
+        else if (v.x > xmax) xmax = v.x;
+        if (v.y < ymin) ymin = v.y;
+        else if (v.y > ymax) ymax = v.y;
+        if (v.z < zmin) zmin = v.z;
+        else if (v.z > zmax) zmax = v.z;
+    }
+
+    var centerX = (xmin+xmax)/2, centerY = (ymin+ymax)/2, centerZ = (zmin+zmax)/2;
+    var max = Math.max(centerX - xmin, xmax - centerX);
+    max = Math.max(max, Math.max(centerY - ymin, ymax - centerY) );
+    max = Math.max(max, Math.max(centerZ - zmin, zmax - centerZ) );
+    var scale = 10/max;
+    object.position.set( -centerX, -centerY, -centerZ );
+    console.log("Loading finished, scaling object by " + scale);
+    console.log("Center at ( " + centerX + ", " + centerY + ", " + centerZ + " )");
+
+    model = new THREE.Object3D();
+    model.add(object);
+    model.scale.set(scale,scale,scale);
+    rotateX = rotateY = 0;
+    scene.add(model);
+    render();
+}
+
+function installModel(file) {
+    if (model) {
+        scene.remove(model);
+    }
+    render();
+    var loader = new THREE.JSONLoader();
+    loader.load("models-json/" + file, modelLoadedCallback);
+}
+
+function render() {
+    renderer.render(scene, camera);
+}
+
+function init() {
+        var theCanvas = document.getElementById("cnvs");
+
+        if (window.WebGLRenderingContext) {
+            renderer = new THREE.WebGLRenderer( {
+               canvas: theCanvas,
+               antialias: true
+            } );
+        }
+
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(50, theCanvas.width/theCanvas.height, 0.1, 100);
+        camera.position.z = 30;
+        createWorld();
+        installModel("arrowhead.js");
+        // installModel("horse.json");
+        render();
+}
+
+</script>
+</head>
+<body onload="init()">
+
+<div style="float:left">
+   <canvas width=600 height=600 id="cnvs" style="background-color:black"></canvas>
+</div>
+</body>
+</html>

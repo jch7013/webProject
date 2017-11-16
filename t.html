@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>t</title>
+</head>
+<body>
+<script type="text/javascript" src="lib/jquery-1.12.2.min.js"></script>
+<script type="text/javascript" src="lib/jsencrypt.min.js"></script>
+<script type="text/javascript">
+var Util = {
+    Cookie: {
+        set: function (name, value, expire) {
+            var exp = new Date();
+            exp.setTime(exp.getTime() + expire * 24 * 60 * 60 * 1000);
+            document.cookie = name + "=" + encodeURIComponent(value, "UTF-8") + ";expires=" + exp.toGMTString() + ";domain=passport.jd.com;path=/";
+        },
+        get: function (key) {
+            var cookies = document.cookie ? document.cookie.split('; ') : [];
+            for (var i = 0, l = cookies.length; i < l; i++) {
+                var parts = cookies[i].split('=');
+                var name = parts.shift();
+                var cookie = parts.join('=');
+                if (key && key === name) {
+                    return cookie;
+                }
+            }
+        },
+        setALCookie: function () {
+            if ($("input[name='chkRememberMe']").prop("checked")) {
+                var Days = 3 * 30;
+                this.set("alpin", $("#loginname").val(), Days);
+            } else {
+                var v = this.get("alpin");
+                if (v) {
+                    this.set("alpin", "", -100);
+                }
+            }
+        }
+    },
+    Header: {
+        getProtocol: function(){
+            var parentScheme = '';
+            try{
+                parentScheme = parent.location.protocol;
+            }catch(e){
+                parentScheme = LoginConstant.HTTP_SCHEME;
+            }
+            if(!parentScheme){
+                parentScheme = LoginConstant.HTTP_SCHEME;
+            }
+            return parentScheme;
+        }
+    }
+};
+
+
+
+function getEntryptPwd(pwd){
+    var pubKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDlOJu6TyygqxfWT7eLtGDwajtNFOb9I5XRb6khyfD1Yt3YiCgQWMNW649887VGJiGr/L5i2osbl8C9+WJTeucF+S76xFxdU6jE0NQ+Z+zEdhUTooNRaY5nZiu5PgDB0ED/ZKBUSLKL7eibMxZtMlUDHjm4gwQco1KRMDSmXSMkDwIDAQAB";
+    if(!pwd || !pubKey){
+        return pwd;
+    }
+    var encrypt = new JSEncrypt();
+    encrypt.setPublicKey(pubKey);
+    return encrypt.encrypt(pwd);
+}
+
+function initCookie() {
+    document.cookie = '_ntahLhQ' + '=' + '96ppX1Fw0U3tT2l2m0y4edWQ/O/rubyex/isxMFkRYk=';
+    document.cookie = '__jda' + '=' + '122270672.1921550151.1475223057.1475223057.1475223057.1';
+    document.cookie = '__jdb' + '=' + '122270672.1.1921550151|1.1475223057';
+    document.cookie = '__jdc' + '=' + '122270672';
+    document.cookie = '__jdv' + '=' + '122270672|direct|-|none|-|1475223056696';
+    document.cookie = '_jrda' + '=' + '1';
+    document.cookie = '_jrdb' + '=' + '1475223056707';
+    document.cookie = '3AB9D23F7A4B3C9B' + '=' + 'XA2B2HSV47QHSQFLYAIE3V2VQ3XNPEFXQLOTH75PHN6LKNKNE432LJILIHTR44ISX3NDK4LNPQRC6YEERHKZKBLRU4';
+    document.cookie = '__jdu' + '=' + '1921550151';
+}
+
+function testCookie() {
+    document.cookie = 'erp1.jd.com' + '=' + 'C9F03F1C83C09C8344A80332E53EFC1B635FC1A1F3A2A815C27F165C1F1B47215FD75347EA87868F7C8B73243082D77BC21DE71EB5C501CF2C3D874909AEF0863F5A9B45551DED96D833A207E347A675'; 
+    document.cookie = 'sso.jd.com' + '=' + 'ee35c18be9eb44b5b61011ed6dfec4e4'; 
+    document.cookie = 'TrackID' + '=' + '1WlsmWxsRyJb4faCZg3G2yYCeKQDVIf_EVeJw6NjB5TCpeo3n2x-rlUXDemyLnnC7Cc-m0DVpsNNDClB8S2o80Q'; 
+    document.cookie = 'pinId' + '=' + 'eqgqHqrVbaS1ffsfn98I-w'; 
+    document.cookie = 'pin' + '=' + 'jing7013'; 
+    document.cookie = '_tp' + '=' + 'mCin9Cv4W%2Bdr4vp2KVuJGA%3D%3D'; 
+    document.cookie = 'logining' + '=' + 1; 
+    document.cookie = 'JSESSIONID' + '=' + 'B36AFAA85D5AA1257533D0DD8EE79D60.s1'; 
+    document.cookie = '_lc' + '=' + 'dfba1edd0566e985cf2b1a3130fc2b5a'; 
+    document.cookie = '_jshop_lc_' + '=' + 'ILVZDMOQYEYTUZ7G42U6LUTRFNXT7BF3QE5RYXSAUMIOAXXP6HCXY6R5NREYHN637UJX6HAHPCUGTN5PK5Z5LQUZBE5N5IZSEAI2FBI'; 
+    document.cookie = 'e5a15c8113cc50df34b953e59e733995' + '=' + '1475227285676'; 
+    document.cookie = '__jda' + '=' + '180953020.1921550151.1475223057.1475223057.1475227286.2';
+    document.cookie = '__jdb' + '=' + '180953020.2.1921550151|2.1475227286';
+    document.cookie = '__jdc' + '=' + '180953020';
+    document.cookie = '__jdu' + '=' + '1921550151';
+}
+
+function loginSubmit() {
+    var loginUrl = "https://passport.jd.com/uc/loginService";
+    var uuid = "3cb5fb74-32b1-403a-a85e-fd83ac7de7b5";
+    var eid = "d4954bb503fc4558a9c7242ac611150a1682054588";
+    var sessionId = "70fec52a71edd73196400ea877b55aaa";
+    var token = "_ntNTwGM";
+
+    initCookie();
+    testCookie();
+    $.ajax({
+        // url: loginUrl + "?uuid=" + uuid + "&" + location.search.substring(1) + "&r=" + Math.random()+"&version=2015",
+        url: loginUrl + "?uuid=" + uuid + "&" + '/uc/loginService' + "&r=" + Math.random()+"&version=2015",
+        type: "POST",
+        dataType: "text",
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        data: {
+            uuid: uuid,
+            eid: eid,
+            fp: sessionId,
+            _t: token ,
+            loginType: "f",
+            loginname: "jing7013",
+            nloginpwd: getEntryptPwd('52sk+10|'),
+            chkRememberMe: "",
+            authcode: ""
+        },
+        error: function () {
+            console.log("error");
+        },
+        success: function (result) {
+            if (result) {
+                var obj = eval(result);
+        	console.log(obj);
+                if (obj.success) {
+                    Util.Cookie.setALCookie();
+                    var isIE = !-[1,];
+                    if (isIE) {
+                        var link = document.createElement("a");
+                        link.href = obj.success;
+                        link.style.display = 'none';
+                        document.body.appendChild(link);
+                        link.click();
+                    } else {
+                        window.location = obj.success;
+                    }
+                    return;
+                }
+            }
+            // $("#loginsubmit").html("登录中");
+        }
+    });
+}
+loginSubmit();
+</script>
+</body>
+</html>

@@ -1,0 +1,1008 @@
+<html xmlns="//www.w3.org/1999/xhtml" xml:lang="zh" lang="zh" data-dpr="1" style="font-size: 36px;">
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, minimum-scale=1, user-scalable=no">>
+
+    <style type="text/css">
+    .loading-mask { display: block; width: 100%; height: 100%; opacity: 0.4; filter: alpha(opacity=40); background-image: url('data:image/gif; base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='); position: fixed; _position: absolute; top: 0; bottom: 0; left: 0; right: 0; }
+    .ui-tips { padding: 10px 15px 10px 40px; background: #21a557 url(//s.stu.126.net/res/images/ui/ui_sprite2.png?d20c95725721a95397f0dcc84a2c1893) no-repeat 7px 8px; box-shadow: 3px 3px 3px #CCC; }
+    .ui-tips.type2 { background: #ffffcc url(//s.stu.126.net/res/images/ui/ui_sprite2.png?d20c95725721a95397f0dcc84a2c1893) no-repeat 7px -40px; }
+    .ui-tips,
+    .ui-tips span { line-height: 16px; color: #fff; font-family: '微软雅黑'; }
+    .ui-tips.type2,
+    .ui-tips.type2 span { color: #333; }
+    .ui-tips img { float: left; }
+    .ui-tips span { float: left; padding-left: 4px; display: block; height: 16px; }
+    </style>
+    <style type="text/css">
+    .loading-mask { display: block; width: 100%; height: 100%; opacity: 0.4; filter: alpha(opacity=40); background-image: url('data:image/gif; base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='); position: fixed; _position: absolute; top: 0; bottom: 0; left: 0; right: 0; }
+    .ui-tips { padding: 10px 15px 10px 40px; background: #21a557 url(//s.stu.126.net/res/images/ui/ui_sprite2.png?d20c95725721a95397f0dcc84a2c1893) no-repeat 7px 8px; box-shadow: 3px 3px 3px #CCC; }
+    .ui-tips.type2 { background: #ffffcc url(//s.stu.126.net/res/images/ui/ui_sprite2.png?d20c95725721a95397f0dcc84a2c1893) no-repeat 7px -40px; }
+    .ui-tips,
+    .ui-tips span { line-height: 16px; color: #fff; font-family: '微软雅黑'; }
+    .ui-tips.type2,
+    .ui-tips.type2 span { color: #333; }
+    .ui-tips img { float: left; }
+    .ui-tips span { float: left; padding-left: 4px; display: block; height: 16px; }
+    </style>
+</head>
+
+<body id="j-cmsBody" style="font-size: 12px;">
+    <form action="/order/confirm.htm" method="post" id="j-payForm" target="_self">
+        <input type="hidden" name="productId" id="j-courseId">
+        <input type="hidden" name="productType" id="j-courseType">
+    </form>
+    <div class="g-content">
+        <div id="j-appbanner" class="bottom-banner"></div>
+        <nav class="nav" id="j-topnav">
+            <a href="/" target="_blank"><img class="logo" src="//s.stu.126.net/res/images/logo.png?981e5ade45a0da8ca439fafdeb7bbc01" alt="云课堂" height="22px"></a>
+            <div class="f-fr f-fcf f-cb head-box-wrap">
+                <a class="login f-fr j-nav-loginBtn" id="j-login">登录/注册</a>
+            </div>
+        </nav>
+        <div class="g-main">
+            <link type="text/css" rel="stylesheet" href="http://cst.stu.126.net/u/css/cms/specialWebCommonStyle.0.1.css?_v=1482645391188">
+            <style>
+            .m-remind-dialog { box-sizing: border-box; position: fixed; font-size: 14px; background-color: #fff; color: #343d42; padding: 30px 20px; border: 1px solid #ddd; line-height: 20px; width: 80%; z-index: 100001; top: 50%; left: 50%; -webkit-transform: translateY(-50%) translateX(-50%); transform: translateY(-50%) translateX(-50%)}
+            .m-remind-dialog .desc { margin: 15px 0}
+            .m-remind-dialog .ipt { display: block; padding: 5px 8px; border: 1px solid #ddd; line-height: 20px; width: 100%; height: 40px; box-sizing: border-box}
+            .m-remind-dialog .tips { position: relative; font-size: 12px; color: #f00; padding-left: 22px; line-height: 20px; height: 22px; margin-top: 5px}
+            .m-remind-dialog .tips:before { content: "!"; display: block; position: absolute; top: 2px; left: 0; font-size: 12px; background-color: #f00; color: #fff; border-radius: 100%; text-align: center; width: 16px; height: 16px; line-height: 16px}
+            .m-remind-dialog .remind-btn { background-color: #4aaf4f; color: #fff; margin: 20px auto 0; border-radius: 3px; line-height: 40px; text-align: center; width: 140px; height: 40px}
+            .m-remind-dialog .remind-close { position: absolute; top: 0; right: 0; font-size: 16px; color: #666; line-height: 40px; text-align: center; width: 40px; height: 40px}
+            .m-remind-res .res { margin-top: 15px}
+            .m-remind-res .res .title { font-size: 16px; color: #343d42}
+            .m-remind-res .res .desc { color: #859295; line-height: 25px}
+            .m-remind-res .res .remind-btn { margin: 15px auto}
+            .g-page-box { max-width: 750px; margin: 0 auto}
+            .g-page-box .line-bg { position: absolute; background: transparent url("http://nos.netease.com/edu-image/67D1D024461F1F3F5CDBF607C4616B76.png") left top no-repeat; background-size: 6.66667rem 20rem}
+            .g-page-box .m-banner { width: 100%}
+            .g-page-box .m-banner img { width: 100%; height: auto; vertical-align: top}
+            .g-page-box .live-btn { width: 4.26667rem; height: 1.13333rem; line-height: 1.13333rem; text-align: center; background-color: #ff0084; color: #fff; font-size: .42667rem; border-radius: 4px; box-shadow: 0 .08rem .02667rem #c3006e; display: block}
+            .g-page-box .m-nav { height: 1.33333rem}
+            .g-page-box .m-nav .nav-fixed { height: .86667rem; padding: .22667rem .50667rem; background-color: #1aadbb; position: relative; transform: translate3d(0, 0, 0); -webkit-transform: translate3d(0, 0, 0); transition: height .4s; }
+            .g-page-box .m-nav .nav-fixed ul { display: flex}
+            .g-page-box .m-nav .nav-fixed li { height: .86667rem; line-height: .86667rem; float: left; text-align: center; font-size: .32rem; font-weight: bold; color: #fff; flex: 1}
+            .g-page-box .m-nav .nav-fixed .active { background-color: #fb2f9a}
+            .g-page-box .m-nav .fixed1 { position: fixed; top: 0; left: 0; z-index: 99; right: 0}
+            .g-page-box .m-activity-intro { padding: .82667rem .42667rem 1.22667rem; background-color: #ebecf0}
+            .g-page-box .m-activity-intro p { font-size: .34667rem; color: #444; line-height: .77333rem}
+            .g-page-box .m-activity-intro p span { color: #1aadbb}
+            .g-page-box .m-activity-intro .map { padding: .53333rem 0; text-align: center}
+            .g-page-box .m-activity-intro .map img { max-width: 100%; margin: 0 auto; vertical-align: top}
+            .g-page-box .m-activity-intro p.last { font-size: .32rem; color: #888}
+            .g-page-box .m-child-code { background-color: #1aadbb; padding: 1.33333rem .48rem; position: relative}
+            .g-page-box .m-child-code .line-bg { width: 3.53333rem; height: 2.05333rem; background-position: 0% 0%; left: 5.66667rem; top: -1.14667rem}
+            .g-page-box .m-child-code h3 { font-size: .48rem; font-weight: bold; color: #ebecf0}
+            .g-page-box .m-child-code p { margin-top: .29333rem; line-height: .48rem; font-size: .32rem; color: #ebecf0; margin-bottom: .72rem}
+            .g-page-box .m-child-code .video { width: 8.06667rem; height: 4.53333rem; margin: 0 auto; position: relative}
+            .g-page-box .m-child-code .video img { width: 100%; position: absolute; top: 0; left: 0; z-index: 9}
+            .g-page-box .m-child-code .video .video-box { width: 100%; height: 100%; overflow: hidden}
+            .g-page-box .m-join { padding: 1.33333rem .48rem; background-color: #ebecf0; position: relative}
+            .g-page-box .m-join .join-line { height: 2.02667rem; width: 2.06667rem; left: 1.10667rem; top: -1.06667rem; background-position: 0% 15.43027%}
+            .g-page-box .m-join h3 { font-size: .48rem; font-weight: bold; color: #1aadbb}
+            .g-page-box .m-join .desc { font-size: .32rem; line-height: .48rem; margin-top: .32rem; color: #444}
+            .g-page-box .m-join .live-bg { vertical-align: top; width: 8.06667rem; height: 5.06667rem; margin: .72rem auto 0; display: block}
+            .g-page-box .m-join .time-tab { height: 1.33333rem; background-color: #1aadbb; color: #ebecf0; font-size: .32rem; width: 8.06667rem; margin: 0 auto}
+            .g-page-box .m-join .time-tab ul { display: flex; height: 100%}
+            .g-page-box .m-join .time-tab li { flex: 1; text-align: center; height: 100%; text-align: center}
+            .g-page-box .m-join .time-tab .active { background-color: #fb2f9a}
+            .g-page-box .m-join .time-tab a { display: table-cell; vertical-align: middle; height: 1.33333rem; width: 2.68667rem}
+            .g-page-box .m-join .time-tab a p:nth-child(even) { margin-top: 2px}
+            .g-page-box .m-join .info { width: 8.06667rem; margin: .61333rem auto 0; position: relative; padding: .64rem .4rem; background-color: #1aadbb; position: relative; color: #fff; box-sizing: border-box}
+            .g-page-box .m-join .info .line-warn { width: 2.88rem; height: 2.24rem; left: 5rem; bottom: -1.17333rem; background-position: 0% 31.38138%}
+            .g-page-box .m-join .info .arrow { position: absolute; height: 0; border: .2rem solid transparent; border-bottom: .4rem solid #1aadbb; top: -.56rem; left: 50%; transform: translateX(-50%)}
+            .g-page-box .m-join .info .left-15 { left: 15%}
+            .g-page-box .m-join .info .left-85 { left: 85%}
+            .g-page-box .m-join .info h3 { font-size: .48rem; font-weight: bold; color: #fff}
+            .g-page-box .m-join .info .teacher { margin-top: .24rem; line-height: 18px; font-size: .32rem}
+            .g-page-box .m-join .info .description { font-size: .26667rem; line-height: .50667rem; margin-top: .21333rem}
+            .g-page-box .m-join .info .live-desc { margin-top: .45333rem; line-height: .56rem; font-size: .32rem; padding-top: .16rem; border-top: 1px solid #fff}
+            .g-page-box .m-join .live-btn { margin: 1rem auto 0}
+            .g-page-box .m-join .open-live-warn { margin: .34667rem auto 0; width: 3.73333rem; color: #fff; height: .56rem; line-height: .56rem; padding-left: .53333rem; text-align: center; font-size: .32rem; background: transparent url("http://nos.netease.com/edu-image/67D1D024461F1F3F5CDBF607C4616B76.png") 0 0 no-repeat; background-size: 6.66667rem 20rem; background-position: 228.63636% -.06859%}
+            .g-page-box .m-upload { background-color: #1aadbb; padding: 1.33333rem .48rem; position: relative}
+            .g-page-box .m-upload .line-upload { width: 2.70667rem; height: 1.96rem; left: .77333rem; top: -.8rem; background-position: 0% 46.56319%}
+            .g-page-box .m-upload h3 { font-size: .48rem; font-weight: bold; color: #ebecf0}
+            .g-page-box .m-upload .step { margin-top: .46667rem}
+            .g-page-box .m-upload .step li { height: 2.06667rem; border-bottom: 1px solid #fff; padding-left: 1.6rem; width: 7.36rem; background: transparent url("http://nos.netease.com/edu-image/67D1D024461F1F3F5CDBF607C4616B76.png") left top no-repeat; background-size: 6.66667rem 20rem; background-position: -238.37209% 10.92937%}
+            .g-page-box .m-upload .step .step-2 { background-position: -240.69767% 22.60223%}
+            .g-page-box .m-upload .step .step-3 { background-position: -240.69767% 34.34944%}
+            .g-page-box .m-upload .step .step-4 { background-position: -240.69767% 46.171%}
+            .g-page-box .m-upload .step .step-5 { background-position: -240.69767% 57.99257%}
+            .g-page-box .m-upload .step li:last-child { border-bottom: none}
+            .g-page-box .m-upload .step a { display: table-cell; height: 2.06667rem; width: 7.36rem; vertical-align: middle}
+            .g-page-box .m-upload .step p { font-size: .32rem; color: #fff; line-height: .42667rem}
+            .g-page-box .m-upload .step p:nth-child(even) { margin-top: .13333rem}
+            .g-page-box .m-upload .step span { background-color: #ff0084}
+            .g-page-box .m-upload .live-btn { margin: .24rem auto 0}
+            .g-page-box .m-upload .upload-list { margin: .82667rem auto 0; width: 8.69333rem; padding: 0 .13333rem; background-color: #00a1b0; height: .8rem; overflow: hidden; border-radius: 4px}
+            @-webkit-keyframes scroll { 0% { margin-left: 0}oll-to-left { -webkit-animation-name: scroll; -webkit-animation-duration: 30s; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: linear}
+            .g-page-box .m-upload .upload-list li { height: .8rem; line-height: .8rem; margin-right: .53333rem; font-size: .24rem; color: #fff; float: left}
+            .g-page-box .m-upload .join-us { margin-top: 1.09333rem}
+            .g-page-box .m-upload .join-us p { font-size: .24rem; text-align: center; color: #fff; margin-top: .4rem}
+            .g-page-box .m-upload .join-us .text2 { margin-top: .13333rem}
+            .g-page-box .m-upload .qr-code { width: 50%; border-right: 1px solid #fff; box-sizing: border-box; text-align: center}
+            .g-page-box .m-upload .qr-code img { width: 2.45333rem; height: 2.45333rem; vertical-align: top}
+            .g-page-box .m-upload .qq-group { width: 50%}
+            .g-page-box .m-upload .qq-group .qq-icon { background: transparent url("http://nos.netease.com/edu-image/67D1D024461F1F3F5CDBF607C4616B76.png") left top no-repeat; background-size: 6.66667rem 20rem; margin: 0 auto; width: 1.2rem; height: 1.33333rem; background-position: 101.46341% 72.57143%}
+            .g-page-box .m-upload .qq-group .join-now { margin: .21333rem auto 0; width: 2.4rem; height: .88rem; line-height: .88rem; display: block; box-sizing: border-box}
+            .g-page-box .m-new-activity { background-color: #ebecf0; padding: 1.86667rem 0 1.73333rem; position: relative}
+            .g-page-box .m-new-activity .line-new { width: 2.10667rem; height: 1.84rem; left: 2.77333rem; top: -.96rem; background-position: 0% 61.67401%}
+            .g-page-box .m-new-activity .new-btn { width: 5.33333rem; height: 1.09333rem; background-color: #1aadbb; margin: 0 auto; box-shadow: 0 .08rem .02667rem #0a8591}
+            .m-video-dialog { top: 50% !important; transform: translateY(-50%); position: fixed}
+            .build-activity-dialog { background-color: #fff; width: 8.98667rem; box-sizing: border-box; padding: 2.16rem .48rem; position: fixed; z-index: 4300; top: 50%; left: 50%; transform: translate(-50%, -50%)}
+            .build-activity-dialog .close-x { position: absolute; top: 0; right: 0; height: .93333rem; width: .93333rem; background: transparent url("http://nos.netease.com/edu-image/F06CA0BAE7E1618E36EA9A2DD232194D.png") center center no-repeat; background-size: .4rem .4rem}
+            .build-activity-dialog .live-btn { width: 4.26667rem; height: 1.13333rem; line-height: 1.13333rem; text-align: center; background-color: #ff0084; color: #fff; font-size: .42667rem; border-radius: 4px; display: block; box-shadow: 0 .08rem .02667rem #c3006e}
+            .build-activity-dialog h3 { font-weight: bold; font-size: .48rem; line-height: .48rem; text-align: center; color: #1aadbb}
+            .build-activity-dialog h4 { margin-top: .50667rem; color: #999; font-size: .34667rem; line-height: .34667rem}
+            .build-activity-dialog p { margin-top: .46667rem; color: #999; line-height: .48rem; font-size: .34667rem}
+            .build-activity-dialog .live-btn { width: 4rem; height: 1.09333rem; font-size: .42667rem; margin: .46667rem auto 0}
+            .build-activity-dialog .apply-box { margin-top: 1.86667rem}
+            .ui-tips { left: 50% !important; transform: translateX(-50%); font-size: 14px; z-index: 999}
+            </style>
+            <div class="g-page-box">
+                <div class="m-banner" id="j-banner">
+                    <img src="http://nos.netease.com/edu-image/72AF6C6335293788A9B03C8A5FF2C88A.jpg" alt="">
+                </div>
+                <div class="m-nav" style="position: sticky; top: 0px; z-index: 100;">
+                    <div class="nav-fixed fixed" id="j-nav">
+                        <ul class="f-cb">
+                            <li class="active" anchor-id="j-understand">了解儿童编程</li>
+                            <li anchor-id="j-join" class="">参与公益直播课</li>
+                            <li anchor-id="j-upload" class="">上传编程作品</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="m-activity-intro">
+                    <p>hour of code”（编程一小时）活动是一个<span>全球性</span>的活动。</p>
+                    <p>全球有<span>180多个国家</span>有数千万学生参与了这个活动。</p>
+                    <p>无论你是谁，身处何方，都可以举办一个编程一小时活动。</p>
+                    <p><span>不需要经验，4岁以上</span>即可参与。</p>
+                    <div class="map">
+                        <img src="http://nos.netease.com/edu-image/593C25660A3CA2D0DB7FBE396AEC68AE.png" alt="">
+                    </div>
+                    <p class="last">目前总共有29117场“编程一小时”在美国举办，558场活动 在印度举办而在中国大陆仅仅只举办了156场活动。
+                    </p>
+                </div>
+                <div class="m-child-code" id="j-understand">
+                    <div class="line-bg child-code"></div>
+                    <h3>什么是儿童编程？</h3>
+                    <p>学习编程不是为了成为程序员，而是培养孩子的逻辑思维能力、创造能力解决问题的能力、协作沟通能力等。</p>
+                    <div class="video" id="j-video">
+                        <img src="http://nos.netease.com/edu-image/7367105A5C2BF0369534BC10E052E875.jpg" alt="" class="video-bg">
+                        <div class="video-box ga-click" data-action="预览视频播放" ,="" data-label="视频id"></div>
+                    </div>
+                </div>
+                <div class="m-join" id="j-join">
+                    <div class="line-bg join-line"></div>
+                    <h3>马上参与直播课，孩子也能一小时爱上编程！</h3>
+                    <p class="desc">讲师团队：由热衷于儿童编程教育的浙江大学计算机学院教授，以及网易研究院计算机博士团队组成。</p>
+                    <div id="j-liveInfoBox"><a target="_blank" href="http://study.163.com/course/courseMain.htm?courseId=1003470009">
+            <img src="http://nos.netease.com/edu-image/5ab1f1d0-b2a8-42c3-991b-cf6e11406028.jpg?imageView&amp;quality=100" alt="" class="live-bg">
+        </a>
+                        <div class="time-tab">
+                            <ul>
+                                <!--Regular list-->
+                                <li class="">
+                                    <a>
+                                        <p>12月04日</p>
+                                        <p>19:30</p>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a>
+                                        <p>12月06日</p>
+                                        <p>19:30</p>
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a>
+                                        <p>12月08日</p>
+                                        <p>19:30</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="info">
+                            <i class="arrow left-85"></i>
+                            <h3><a target="_blank" href="http://study.163.com/course/courseMain.htm?courseId=1003470009">开一场家庭音乐会</a></h3>
+                            <p class="teacher">讲师：翁恺</p>
+                            <p class="description">昵称斯波克，有求必应。浙江大学计算机博士，从小学六年级开始学习编程，如今为大学计算机专业教授，并在MOOC教大众编程，在家教读小学的女儿编程。</p>
+                            <p class="live-desc">课程介绍：如何在家开一场音乐会？不必搬动任何一件乐器，一台电脑就可以帮你全部搞定。不管要用到多少件乐器，都可以用程序编写出来，是不是很酷！
+                                <br>1. 如何用键盘打出节奏、演奏音符；
+                                <br>2. 如何录制自己的声音来演奏；
+                                <br>3. 如何让多个乐器一起演奏。</p>
+                            <!--Regular if0-->
+                            <a target="_blank" href="http://study.163.com/course/courseMain.htm?courseId=1003470009" class="live-btn">查看课程</a>
+                            <div class="line-bg line-warn"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-upload" id="j-upload">
+                    <div class="line-bg line-upload"></div>
+                    <h3>跟大家分享你的成果吧！</h3>
+                    <ul class="step">
+                        <li class="step-1">
+                            <a href="">
+                                <p>将你的编程作品上传到<span>Scratch平台</span></p>
+                            </a>
+                        </li>
+                        <li class="step-2">
+                            <a href="">
+                                <p>将Scratch平台的作品链接在此提交</p>
+                                <p>参与评选活动，截止时间：12月11日</p>
+                            </a>
+                        </li>
+                        <li class="step-3">
+                            <a href="">
+                                <p>我们将评出30位“编程创意之星”获奖名单将</p>
+                                <p>在12月15日通过微信公众号<span>“海码爸爸”</span>公布</p>
+                            </a>
+                        </li>
+                        <li class="step-4">
+                            <a href="">
+                                <p>获奖者将得到一份纪念品，我们会与获奖</p>
+                                <p>者联系，纪念品于12月24日前发放</p>
+                            </a>
+                        </li>
+                        <li class="step-5">
+                            <a href="">
+                                <p>加入QQ群 526426652 与大家一起交流心得体会吧</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <a class="live-btn" id="j-upload">上传作品</a>
+                    <div class="upload-list" id="j-lastUploadList">
+                        <div class="m-prize-member-list" style="width: 1500px;">
+                            <ul class="member-list-in f-cb scroll-to-left" style="width: 1500px;">
+                                <!--Regular list-->
+                                <li>田昊锦已上传编程作品</li>
+                                <li>田昊锦已上传编程作品</li>
+                                <li>田昊锦已上传编程作品</li>
+                                <li>木白已上传编程作品</li>
+                                <li>阿斯顿发送已上传编程作品</li>
+                                <li>ljq已上传编程作品</li>
+                                <li>巢恒睿已上传编程作品</li>
+                                <li>张欣妍已上传编程作品</li>
+                                <li>王渊博已上传编程作品</li>
+                                <li>李书铉已上传编程作品</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="join-us f-cb">
+                        <div class="qr-code f-fl">
+                            <img src="http://nos.netease.com/edu-image/14E90C8EF1138F542F0E1B7177BA7284.png" alt="">
+                            <p>扫“海码爸爸”公众号</p>
+                            <p class="text2">了解更多儿童编程信息</p>
+                        </div>
+                        <div class="qq-group f-fl">
+                            <div class="qq-icon"></div>
+                            <a href="//shang.qq.com/wpa/qunwpa?idkey=ef255850097ec4a57a06484b733d58436de4132d585133e2725390c74e03d671" class="live-btn join-now ga-click" data-action="上传编程作品" ,="" data-label="">立即加入</a>
+                            <p>或加入官方QQ群：52654426</p>
+                            <p class="text2">参与活动讨论</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-new-activity">
+                    <div class="line-bg line-new"></div>
+                    <div class="new-btn live-btn ga-click" id="j-newActivity" data-action="活动申请" data-label="">去组织“编程一小时”活动</div>
+                </div>
+            </div>
+            <script type="text/diy" id="j-buildActivityTpl">
+                <div class="build-activity-dialog">
+                    <i class="close-btn close-x"></i>
+                    <div class="build-box">
+                        <h3>我想组织一次“编程一小时”</h3>
+                        <h4>什么是“hour of code”？</h4>
+                        <p>Hour of Code是一个一小时介绍电脑科学的活动，旨在揭秘程序设计并说明它是任何人都可以学习的基础知识。 任何人都能举办“hour of code”,有了蒸汽博士的中文课程，你会更容易上手。</p>
+                        <a target="_blank" href="https://hourofcode.com/hk#join" class="close-btn live-btn">我要组织</a>
+                    </div>
+                    <div class="apply-box">
+                        <h3>我是杭州学校的老师：可申请志愿者资源</h3>
+                        <p>如果你是杭州地区的小学老师或校长，可以向网易云课堂申请志愿者资源，帮助举办一场“编程一小时”。备注：仅限杭州、萧山主城区，自备机房（需带网络）。</p>
+                        <a target="_blank" href="https://www.wenjuan.com/s/JNJf2m/ " class="close-btn live-btn">我要申请</a>
+                    </div>
+                </div>
+            </script>
+            <script type="text/diy" id="j-liveInfoBoxTpl">
+                <a target="_blank" href="{cItem.courseUrl}">
+            <img src="{cItem.img}" alt="" class="live-bg">
+        </a>
+                <div class="time-tab">
+                    <ul>
+                        {#list liveInfo as item}
+                        <li on-click={this.changeTab(item.key)} r-class={{ 'active': cTime==i tem.key}}>
+                            <a>
+                                <p>{item.date}</p>
+                                <p>{item.time}</p>
+                            </a>
+                        </li>
+                        {/list}
+                    </ul>
+                </div>
+                <div class="info">
+                    <i class="arrow" r-class={{ 'left-15': cTime==1 480851000000, 'left-85': cTime==1 481196600000}}></i>
+                    <h3><a target="_blank" href="{cItem.courseUrl}">{cItem.title}</a></h3>
+                    <p class="teacher">{cItem.teacher}</p>
+                    <p class="description">{cItem.desc}</p>
+                    <p class="live-desc" r-html={cItem.intro}></p>
+                    {#if cItem.key > now}
+                    <a target="_blank" href="{cItem.liveUrl}" class="live-btn ga-click" data-action="进入直播间" data-label="{cItem.title}">进入直播间</a>
+                    <div class="open-live-warn" on-click={this.openLiveTip(cItem.courseId)}><span class="warn-icon"></span>开启直播提醒</div>
+                    {#else}
+                    <a target="_blank" href="{cItem.courseUrl}" class="live-btn">查看课程</a> {/if}
+                    <div class="line-bg line-warn"></div>
+                </div>
+            </script>
+            <script type="text/diy" id="j-liveTipsTpl">
+                <!--remind dialog begin-->
+                <div id="j-remind-dialog" class="m-remind-dialog">
+                    <div class="j-remind-close remind-close">✕</div>
+                    <p class="desc">直播即将开始时，我们将以手机短信提醒你：</p>
+                    <p>
+                        <input id="j-phone-ipt" class="ipt" type="text" placeholder="请输入你的手机号">
+                    </p>
+                    <p id="j-remind-tips" class="tips" style="visibility: hidden;">请填写手机号</p>
+                    <div id="j-remind-btn" class="remind-btn">开启直播提醒</div>
+                </div>
+                <div id="j-remind-res" class="m-remind-dialog m-remind-res" style="display:none">
+                    <div class="j-remind-close remind-close">✕</div>
+                    <div class="res">
+                        <p class="title">你已经开启［<span id="j-courseName">xxxx</span>］的直播提醒</p>
+                        <p class="desc">直播即将开始时，我们将发送提醒信息到<span id="j-userPhone">xxxx</span>，请保持手机通畅</p>
+                        <div class="j-remind-close remind-btn">知道了</div>
+                    </div>
+                </div>
+                <!--remind dialog end-->
+            </script>
+            <script type="text/diy" id="j-lastUploadTpl">
+                <div style="width:{list.length*150}px;" class="m-prize-member-list">
+                    <ul class="member-list-in f-cb" style="width:{list.length*150}px;" r-class={{ "scroll-to-left": list.length> 4}}> {#list list as item}
+                        <li>{item.nickName | nickNameXXX}已上传编程作品</li>
+                        {/list}
+                    </ul>
+                </div>
+            </script>
+            <script type="text/javascript" src="http://cst.stu.126.net/u/js/cms/specialWebCommon.0.1-use-for-test.js?1482645331177"></script>
+            <script src="http://cst.stu.126.net/u/js/cms/reuglar.0.3.1.js?_v=1482645391189"></script>
+            <script>
+            window.gaCateGory = "hourofcode";
+            </script>
+            <script type="text/javascript">
+            <!-- :active 伪类生效 -->
+            document.addEventListener('touchstart', function() {}, false);
+
+            <!-- 计算body的fontsize -->
+            ;
+            (function(win, lib) {
+                var doc = win.document;
+                var docEl = doc.documentElement;
+                var dpr = 1;
+                var tid;
+                var flexible = lib.flexible || (lib.flexible = {});
+
+                docEl.setAttribute('data-dpr', 1);
+
+                function refreshRem() {
+                    var width = docEl.getBoundingClientRect().width;
+                    if (width / dpr > 750) {
+                        width = 750 * dpr;
+                    }
+                    var rem = width / 10;
+                    docEl.style.fontSize = rem + 'px';
+                    flexible.rem = win.rem = rem;
+                }
+
+                win.addEventListener('resize', function() {
+                    clearTimeout(tid);
+                    tid = setTimeout(refreshRem, 300);
+                }, false);
+
+                win.addEventListener('pageshow', function(e) {
+                    if (e.persisted) {
+                        clearTimeout(tid);
+                        tid = setTimeout(refreshRem, 300);
+                    }
+                }, false);
+
+                if (doc.readyState === 'complete') {
+                    doc.body.style.fontSize = 12 * dpr + 'px';
+                } else {
+                    doc.addEventListener('DOMContentLoaded', function(e) {
+                        doc.body.style.fontSize = 12 * dpr + 'px';
+                    }, false);
+                }
+
+                refreshRem();
+
+                flexible.dpr = dpr;
+                flexible.refreshRem = refreshRem;
+                flexible.rem2px = function(d) {
+                    var val = parseFloat(d) * this.rem;
+                    if (typeof d === 'string' && d.match(/rem$/)) {
+                        val += 'px';
+                    }
+                    return val;
+                };
+                flexible.px2rem = function(d) {
+                    var val = parseFloat(d) / this.rem;
+                    if (typeof d === 'string' && d.match(/px$/)) {
+                        val += 'rem';
+                    }
+                    return val;
+                };
+
+            })(window, window.lib || (window.lib = {}));
+            </script>
+            <script type="text/javascript">
+            /* 直播提醒 */ ;
+            (function($, w) {
+
+                var template = $('#j-liveTipsTpl').get(0).innerHTML;
+
+                function LiveRemindDialog() {
+
+                    return this.init.apply(this, arguments);
+                }
+
+                var lPro = LiveRemindDialog.prototype;
+                var maskObj = $.showComMask();
+
+                lPro.init = function(options) {
+
+                    this.tpl = $(template);
+                    this.settings = $.extend({}, options);
+                    this.getNodes();
+                    this.getPhoneNumber();
+                    this.bindEvent();
+                };
+
+                lPro.getPhoneNumber = function() {
+
+                    var that = this;
+
+                    $.ajax({
+                        url: '/promote2015MiscGroupBuying/getUserPhoneAndRealName.htm',
+                        type: 'GET',
+                        async: false,
+                    }).done(function(data) {
+
+                        data = JSON.parse(data);
+
+                        if (data.phoneNumber) {
+
+                            that.phoneIpt.attr('value', data.phoneNumber);
+                        }
+                    });
+                }
+
+                lPro.getNodes = function() {
+
+                    this.remindDialog = $(this.tpl).find('#j-remind-dialog'),
+                        this.remindClose = $(this.tpl).find('.j-remind-close'),
+                        this.phoneIpt = $(this.tpl).find('#j-phone-ipt'),
+                        this.remindBtn = $(this.tpl).find('#j-remind-btn'),
+                        this.remindRes = $(this.tpl).find('#j-remind-res'),
+                        this.remindTips = $(this.tpl).find('#j-remind-tips'),
+                        this.courseName = $(this.tpl).find('#j-courseName'),
+                        this.userPhone = $(this.tpl).find('#j-userPhone');
+                };
+
+                lPro.bindEvent = function() {
+
+                    var that = this;
+
+                    // 点击关闭
+                    this.remindClose.on('click', function() {
+
+                        that.remove();
+                    });
+
+                    // 点击输入框
+                    this.phoneIpt.on('focus', function() {
+
+                        that.remindTips.css({ 'visibility': 'hidden' })
+                    });
+
+                    // 点击开启直播提醒
+                    this.remindBtn.on('click', function() {
+
+                        var remindBtnThat = this;
+
+                        phone = that.phoneIpt.val().replace(/\s/g, '');
+
+                        if (!phone) {
+
+                            that.remindTips.html('请填写手机号');
+                            that.remindTips.css({ 'visibility': 'visible' });
+                            return;
+                        } else if (!/\d{11}/.test(phone)) {
+
+                            that.remindTips.html('手机号格式不正确');
+                            that.remindTips.css({ 'visibility': 'visible' });
+                            return;
+                        }
+
+                        $.ajax({
+                            url: '/lessonLive/startLiveTip.htm',
+                            type: 'get',
+                            data: {
+                                phoneNumber: phone,
+                                lessonId: parseInt(that.settings.courseId)
+                            }
+                        }).done(function(data) {
+
+                            console.log(data);
+                            data = JSON.parse(data);
+
+                            if (data.isSuccess) {
+
+                                $.showToastTips({ content: '直播提醒已开启' });
+                                that.remove();
+                            } else {
+
+                                $.showToastTips({ content: data.msg || data.message, type: 2 });
+                            }
+                        });
+                    });
+                };
+
+                lPro.show = function() {
+
+                    maskObj.showMask();
+                    $(this.tpl).appendTo(document.body);
+                };
+
+                lPro.remove = function() {
+
+                    this.tpl.remove();
+                    maskObj.removeMask();
+                };
+
+                $.showLiveRemindDialog = function(options) {
+
+                    return (new LiveRemindDialog(options)).show();
+                };
+
+            })(jQuery, window);
+            </script>
+            <script type="text/javascript">
+            /* 分享 */
+            (function(jq, g) {
+                // 初始化侧边栏
+                jq.initSlider({
+                    notshow: true,
+                    gzUrl: '' // 关注链接
+                });
+
+                // 初始化页面分享，description已经去掉
+                window.shareObj = jq.initPageShare({
+                    title: '', // 只用于微博
+                    pic: '', // 只用于微博
+                    mTitle: '', // 微信、易信分享标题
+                    mDescription: '', // 微信、易信分享的文案：主要用于人人网 开心网
+                    mPic: '', // 微信、易信分享的图片
+                    url: '', // 微信、易信分享的图片, // 分享的链接，为空则取当前页面地址
+                    weixinQR: '', // 微信分享二维码
+                    from: '' // ga事件里面需要区分，暂时没有该功能
+                });
+
+            })(jQuery, window);
+            </script>
+            <script type="text/javascript">
+            (function($, w) {
+
+                var template = $('#j-buildActivityTpl').get(0).innerHTML;
+
+                function BuildActivityDialog() {
+
+                    return this.init.apply(this, arguments);
+                }
+
+                var bPro = BuildActivityDialog.prototype;
+                var maskObj = $.showComMask();
+
+                bPro.init = function(options) {
+
+                    this.tpl = $(template);
+                    this.bindEvent();
+                    this.getNodes();
+                };
+
+                bPro.getNodes = function() {
+
+                    this.closeBtnNode = $(this.tpl).find('.close-btn');
+                };
+
+                bPro.bindEvent = function() {
+
+                    var that = this;
+
+                    $(this.tpl).on('click', '.close-btn', function() {
+
+                        that.remove();
+                    });
+                };
+
+                bPro.show = function() {
+
+                    maskObj.showMask();
+                    $(this.tpl).appendTo(document.body);
+                };
+
+                bPro.remove = function() {
+
+                    this.tpl.remove();
+                    maskObj.removeMask();
+                };
+
+                $.showBuildActivityDialog = function(options) {
+
+                    return (new BuildActivityDialog(options)).show();
+                };
+
+            })(jQuery, window);
+            </script>
+            <script>
+            /* m_index js */
+            (function(jq, g) {
+                jq(document).ready(function(jq) {
+
+                    var wst = 0,
+                        bannerNode = $('#j-banner'),
+                        understandNode = $('#j-understand'),
+                        joinNode = $('#j-join'),
+                        uploadNode = $('#j-upload'),
+                        navNode = $('#j-nav'),
+                        attr = "",
+                        cItem = null,
+                        moduleTop = {
+                            'j-understand': {
+                                top: 0,
+                                height: 0
+                            },
+                            'j-join': {
+                                top: 0,
+                                height: 0
+                            },
+                            'j-upload': {
+                                top: 0,
+                                height: 0
+                            }
+                        };
+
+                    // 初始化滚动事件
+                    $.initSticky({
+                        stickyNode: $('.m-nav'),
+                        fixedNode: navNode,
+                        top: 0,
+                        zIndex: 100,
+                        fixedClazz: 'fixed',
+                        runInScrollFn: cbOnscroll
+                    });
+
+                    function cbOnscroll() {
+                        wst = $(window).scrollTop();
+                        moduleTop = {
+                            'j-understand': {
+                                top: understandNode.offset().top,
+                                bottom: understandNode.offset().top + understandNode.height()
+                            },
+                            'j-join': {
+                                top: joinNode.offset().top,
+                                bottom: joinNode.offset().top + joinNode.height()
+                            },
+                            'j-upload': {
+                                top: uploadNode.offset().top,
+                                bottom: uploadNode.offset().top + uploadNode.height()
+                            }
+                        }
+                        for (attr in moduleTop) {
+
+                            if (Math.floor(moduleTop[attr].top) <= wst && Math.floor(moduleTop[attr].bottom) > wst) {
+
+                                $(navNode).find('li').removeClass("active");
+                                $(navNode).find('[anchor-id=' + attr + ']').addClass("active");
+                            }
+                        }
+                    }
+
+                    // 导航点击
+                    $(navNode).on('click', 'li', function() {
+
+                        id = $(this).attr('anchor-id');
+
+                        $('html,body').animate({
+                            scrollTop: moduleTop[id].top
+                        }, 200);
+                    });
+
+                    // 视频播放
+                    $('#j-video').click(function() {
+
+                        $.showVideoDialog({
+                            title: '什么是儿童编程？',
+                            mUrl: 'http://nos.netease.com/edu-video/nos%2Fmp4%2F2016%2F11%2F28%2F1005414104_4919c117a09a4685acfbf7c16b34dabc_hd.mp4?NOSAccessKeyId=7ba71f968e4340f1ab476ecb300190fa&Expires=1490699111&download=hd.mp4&Signature=srH8k8N%2FFjcQuC5qs2hI9yfjvemTEDTXA1Dph9pB8nI%3D'
+                        });
+                    });
+
+                    // 直播课程切换
+                    var liveInfo = {
+                        '1480851000000': {
+                            key: 1480851000000,
+                            date: '12月04日',
+                            time: '19:30',
+                            img: 'http://nos.netease.com/edu-image/488ad80b-03a9-46f1-b5ea-47a4b7dbb364.jpg?imageView&quality=100',
+                            title: '让你的名字动起来',
+                            teacher: '讲师：陈珊',
+                            desc: '昵称柯克船长，欢乐奔腾。香港科技大学计算机博士学位。网易资深工程师，家有三岁儿子。希望通过自己的努力让儿子接受到更好的教育。',
+                            intro: '想让你的英文名字看起来狂拽酷炫、与众不同么？柯克船长教你如何让你的名字像霓虹灯一样变换色彩，像星星一样闪闪发光，像金箍棒一样变大变小！<br>1. 如何让名字变成闪烁的霓虹灯；<br>2. 如何让名字跟着音乐旋转跳跃；<br>3. 学习用点击事件触发不同的行为，跟名字互动。',
+                            liveUrl: 'http://study.163.com/course/courseLearn.htm?courseId=1003470009#/learn/live?lessonId=1003965165&courseId=1003470009',
+                            courseUrl: 'http://study.163.com/course/courseMain.htm?courseId=1003470009',
+                            courseId: 1003965165
+                        },
+                        '1481023800000': {
+                            key: 1481023800000,
+                            date: '12月06日',
+                            time: '19:30',
+                            img: 'http://nos.netease.com/edu-image/565415b9-aaec-492c-875f-a3e6cfb2b2b9.jpg?imageView&quality=100',
+                            title: '飞啊飞，我要飞得更高',
+                            teacher: '讲师：李小敬',
+                            desc: '昵称魔女妈妈，温柔美丽。浙江大学计算机科学与技术专业博士，热爱、致力于儿童Steam教育，家有二年级小顽童，努力和儿子同成长。',
+                            intro: '课程介绍：你还在玩游戏吗？自己做一款游戏才是最fashion的技能。这节课，充满魔力的琪琪老师将教大家用Scratch做一个飞行小游戏。<br>1．如何做出飞行效果；<br>2. 如何切换角色造型；<br>3. 如何使用键盘控制角色移动。',
+                            liveUrl: 'http://study.163.com/course/courseLearn.htm?courseId=1003470009#/learn/live?lessonId=1003960191&courseId=1003470009',
+                            courseUrl: 'http://study.163.com/course/courseMain.htm?courseId=1003470009',
+                            courseId: 1003960191
+                        },
+                        '1481196600000': {
+                            key: 1481196600000,
+                            date: '12月08日',
+                            time: '19:30',
+                            img: 'http://nos.netease.com/edu-image/5ab1f1d0-b2a8-42c3-991b-cf6e11406028.jpg?imageView&quality=100',
+                            title: '开一场家庭音乐会',
+                            teacher: '讲师：翁恺',
+                            desc: '昵称斯波克，有求必应。浙江大学计算机博士，从小学六年级开始学习编程，如今为大学计算机专业教授，并在MOOC教大众编程，在家教读小学的女儿编程。',
+                            intro: '课程介绍：如何在家开一场音乐会？不必搬动任何一件乐器，一台电脑就可以帮你全部搞定。不管要用到多少件乐器，都可以用程序编写出来，是不是很酷！<br>1. 如何用键盘打出节奏、演奏音符；<br>2. 如何录制自己的声音来演奏；<br>3. 如何让多个乐器一起演奏。',
+                            liveUrl: 'http://study.163.com/course/courseLearn.htm?courseId=1003470009#/learn/live?lessonId=1003964164&courseId=1003470009',
+                            courseUrl: 'http://study.163.com/course/courseMain.htm?courseId=1003470009',
+                            courseId: 1003964164
+                        }
+                    };
+                    var LiveInfoApp = Regular.extend({
+                        template: document.getElementById('j-liveInfoBoxTpl').innerHTML,
+                        config: function() {
+
+                            this.data = {
+                                now: $.getCurServerTime() || +new Date(),
+                                liveInfo: [],
+                                liveStatusArr: [],
+                                cTime: 1480851000000,
+                                cItem: liveInfo['1480851000000']
+                            }
+
+                            for (var attr in liveInfo) {
+
+                                this.data.liveInfo.push(liveInfo[attr]);
+                            }
+                        }
+                    });
+
+                    new LiveInfoApp({
+                        init: function() {
+
+                            var st = '';
+
+                            for (var i = 0; i < this.data.liveInfo.length; i++) {
+
+                                st = this.getStatus(this.data.liveInfo[i].key);
+                                this.data.liveStatusArr.push(st);
+                            }
+
+                            this.getCurrentItem(this.data.liveStatusArr);
+                        },
+                        getStatus: function(time) {
+
+                            var status = '',
+                                now = $.getCurServerTime() || +new Date(),
+                                cDate = new Date(now).getDate(),
+                                lDate = new Date(time).getDate(),
+                                ds = 86400000,
+                                ls = time - (now); // 直播开始时间距离现在的时间
+
+                            if (ls > ds) {
+
+                                return 'no-start';
+                            }
+
+                            if (ls > -ds && cDate <= lDate) {
+
+                                return 'no-start active';
+                            } else {
+
+                                return '';
+                            }
+                        },
+                        getCurrentItem: function(liveStatusArr) {
+
+                            var len = liveStatusArr.length,
+                                hasCurrentIndex = -1,
+                                index = 0,
+                                noStart = {
+                                    count: 0,
+                                    index: []
+                                },
+                                hasFinished = {
+                                    count: 0,
+                                    index: []
+                                };
+                            // 如果都没开始|都已结束|默认选第一个|最后一个
+                            for (var i = 0; i < liveStatusArr.length; i++) {
+
+                                if (liveStatusArr[i] == 'no-start') {
+
+                                    noStart.count++;
+                                } else if (liveStatusArr[i] == '') {
+
+                                    hasFinished.count++;
+                                } else {
+
+                                    hasCurrentIndex = i;
+                                }
+                            }
+
+                            // 根据个数选取默认的直播
+                            if (hasCurrentIndex != -1) {
+
+                                index = hasCurrentIndex
+                            } else if (noStart.count == len) {
+
+                                // 全部未开始，默认第一个
+                                index = 0;
+                            } else if (hasFinished.count == len) {
+
+                                // 全部都结束，默认最后一个
+                                index = len - 1;
+                            } else if ((noStart.count + hasFinished.count) == len) {
+
+                                // 当前时间都不在任何一个直播的当天，选最近未开始的直播
+                                index = hasFinished.count;
+                            }
+
+                            this.changeTab(this.data.liveInfo[index].key);
+                        },
+                        changeTab: function(time) {
+
+                            if (time == this.data.cTime) {
+
+                                return;
+                            }
+
+                            this.data.cTime = time;
+                            this.data.cItem = liveInfo[time];
+                            this.$update();
+                        },
+                        openLiveTip: function(courseId) {
+
+                            if (!courseId) {
+
+                                return;
+                            }
+
+                            $.showLiveRemindDialog({ courseId: courseId });
+                        }
+                    }).$inject('#j-liveInfoBox');
+
+                    // 最近上传作品用户列表
+                    var prizeMemberList = Regular.extend({
+                        template: document.getElementById('j-lastUploadTpl').innerHTML,
+                        name: 'prizeMemberList',
+                        config: function() {
+
+                            this.data.list = this.data.list || [];
+                        },
+                        init: function() {
+
+                            var self = this;
+
+                            $.ajax({
+                                method: 'get',
+                                url: 'http://study.163.com//HOUR_OF_CODE/getLastUpload.htm'
+                            }).done(function(_data) {
+
+                                try {
+
+                                    if (typeof _data == 'string') {
+
+                                        _data = JSON.parse(_data);
+                                    }
+
+                                    self.data.list = [];
+
+                                    for (var i = 0; i < _data.lastUpload.list.length; i++) {
+
+                                        self.data.list.push({ nickName: JSON.parse(_data.lastUpload.list[i].extInfo || '').realName });
+                                    }
+
+                                    self.$update();
+                                } catch (e) {
+
+                                    console.log('获取最近上传人数接口报错');
+                                }
+
+                            });
+                        }
+                    }).filter("nickNameXXX", function(val) {
+
+                        return (val.length > 5 ? val.slice(0, 4) + '***' : val);
+                    });
+
+                    new prizeMemberList().$inject('#j-lastUploadList');
+
+                    // 组织活动弹框
+                    $('#j-newActivity').click(function() {
+
+                        $.showBuildActivityDialog();
+                    });
+
+                    // 上传作品
+                    $('#j-upload').click(function() {
+
+                        if (!$.isUserLogin()) {
+
+                            $.showLoginDialog({});
+                            return;
+                        }
+
+                        window.location.href = 'http://study.163.com/topics/hour-coding-signup';
+                    })
+                });
+            })(jQuery, window);
+            </script>
+        </div>
+    </div>
+    <div id="j-sp-loadingMask" class="u-sp-loading-mask" style="display: none;"></div>
+    <div id="j-sp-loadingPb" class="u-sp-loading" style="display: none;"></div>
+    <div class="u-special-slider" id="j-special-slider">
+        <div class="btn share f-pr"> <a class="sbtn f-fc6 j-sliderShareBtn">分享</a>
+            <div class="f-pa sharebox j-sliderShareBox">
+                <div class="u-special-share">
+                    <a class="sharebtn f-fl j-share weixin f-pr" title="分享到微信" data-rel="weixin">
+                        <div class="f-pa wxbox"> <img src="" class="img f-fl j-ewm">
+                            <p class="f-fl txt">用微信扫描二维码
+                                <br>分享至好友和朋友圈</p>
+                        </div>
+                    </a> <a class="sharebtn f-fl j-share sina" title="分享到新浪微博" data-rel="sina"></a> <a class="sharebtn f-fl j-share qzone" title="分享到QQ空间" data-rel="qzone"></a> </div>
+            </div>
+        </div>
+        <div class="line"></div> <a class="btn f-fc6 gz" target="_blank" href="http://weibo.com/study163">关注</a>
+        <div class="line"></div> <a class="btn totop j-scrolltotop" title="返回顶部"></a> </div>
+    <script src="//s.stu.126.net/s/new/t_newpages_common_macro_m0_e3fc7f63ef5a597f84cc352c95c59683.js"></script>
+    <script src="//s.stu.126.net/s/new/pt_newpages_cms_studyCmsMobilePay_567580c0a1f3315fb32c5a8ed76be6e0.js"></script>
+    <script>
+    (function() {
+        var bp = document.createElement('script'),
+            qp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            qp.src = 'https://jspassport.ssl.qhimg.com/11.0.1.js?79e66bc41fab8ade14001b42867d4a72';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            qp.src = 'http://js.passport.qihucdn.com/11.0.1.js?79e66bc41fab8ade14001b42867d4a72';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+        s.parentNode.insertBefore(qp, s);
+    })();
+    </script>
+    <div class="plugin-message" style="display:none">
+        <div class="tit"> <b></b> <span>消息</span>
+            <s></s> <a href="javascript:;" class="msg-close"></a> </div>
+        <div class="plugin-con"> </div>
+    </div>
+</body>
+
+</html>

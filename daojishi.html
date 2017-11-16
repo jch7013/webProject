@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<p class="left-time"></p>
+<script src="lib/jquery-1.8.2.js"></script>
+<script>
+$(function(){
+    function leftTime(){
+        var endTime = new Date("2016/10/20,15:00:00");//结束时间
+        var curTime = new Date();//当前时间
+        var leftTime = parseInt((endTime.getTime() - curTime.getTime())/1000);//获得时间差
+        //小时、分、秒需要取模运算
+        var d = parseInt(leftTime/(60*60*24));
+        var h = parseInt(leftTime/(60*60)%24);
+        var m = parseInt(leftTime/60%60);
+        var s = parseInt(leftTime%60);
+        var ms = parseInt(((endTime.getTime() - curTime.getTime())/100)%10);
+        // var txt = "剩余："+d+"天"+h+"小时"+m+"分钟"+s+"."+ms+"秒";
+        var txt = "剩余："+d+"天"+h+"小时"+m+"分钟"+s+"秒";
+        $(".left-time").text(txt);
+        if(leftTime<=0){ $(".left-time").text("团购结束");}
+    };
+    leftTime();
+    var set = setInterval(leftTime,100);
+});
+</script>
+</body>
+</html>

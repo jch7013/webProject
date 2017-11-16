@@ -1,0 +1,306 @@
+<style>/* tab状态 */
+  .tab-container {height: 76px; background: #FED030;}
+  .tab-container ul {overflow: hidden; position: relative; margin-right: -2px;}
+  .tab-container li {float: left; width: 33%; height: 76px; overflow: hidden; background: #704BF7; text-align: center; color: #fff; cursor: pointer; position: relative; border-right: 3px solid #432D94; z-index: 1;}
+  .tab-container li strong {position: absolute; left: -1px; top: 8px; width: 0px; height: 61px; border-right: 1px dotted #A11B25;}
+  .tab-container li span {display: block; line-height: 1.1;}
+  .tab-container li .tab-time {padding-top: 16px; font-size: 18px; letter-spacing: 1px;}
+  .tab-container li .tab-status {font-size: 12px; margin-top: 10px;}
+  
+  .tab-container li.go {background: #FFD200; z-index: 2;}
+  .tab-container li.current {background: #9B71FF;}
+  .tab-container li.go {width: 123px;}
+  .tab-container li.current .tab-time {color: #fff;}
+  .tab-container li.go .tab-time {color: #333;}
+  .tab-container li.current .tab-status {color: #fff;}
+  .tab-container li.go .tab-status {background: #333333; border-radius: 10px; display: inline-block; padding: 3px 10px; margin-top: 7px; color: #fff;}
+  .tab-container li.go strong {display: none;}
+  
+  .tab-container li.over {background: #969696;}
+
+  .tab-content {background: #FED030;}
+  .time {height: 30px; padding: 12px 0 13px; text-align: center; font-size: 16px; color: #333; line-height: 30px;}
+  .time span {color: #fff; display: inline-block; height: 30px; padding: 0px 5px; background: #333; margin: 0 5px;}
+
+  .content-over .wait-status,.content-over .go-status {display: none;}
+  .content-go .wait-status,.content-go .over-status {display: none;}
+  .content-wait .go-status,.content-wait .over-status {display: none;}</style>
+<div class="tab-container">  
+ <ul>   
+  <li data-time="0:0-9:0"> 
+   <span class="tab-time"><em></em>00:00</span> <span class="tab-status">即将开始</span> <strong></strong> 
+  </li>   
+  <li data-time="9:00-16:0"> 
+   <span class="tab-time"><em></em>09:00</span> <span class="tab-status">即将开始</span> <strong></strong> 
+  </li>   
+  <li data-time="16:0-0:0"> 
+   <span class="tab-time"><em></em>16:00</span> <span class="tab-status">即将开始</span> <strong></strong> 
+  </li>    
+ </ul> 
+</div>
+
+
+
+
+
+<div class="j-module tab-content" module-function="base" module-param="{waitCls:'jWait', underwayCls:'jGo', overCls:'jOver'}">
+  <div class="time">
+    <div class="wait-status">活动尚未开始</div>
+    <div class="go-status">距离秒杀结束还有<span class="hour">00</span>:<span class="minute">00</span>:<span class="second">00</span></div>
+    <div class="over-status">活动已经结束</div>
+  </div>
+  <div class="tab-content-item">
+    <ul>
+    #foreach($!promoRec in $!promoRecList)
+      <li prompt-id="$!promoRec.id" data-starttime="$!dateFormatUtils.format($!{promoRec.startTime})"  data-endtime="$!dateFormatUtils.format($!{promoRec.endTime})"$!jshopCommon.clstag($velocityCount)>
+        <div class="goods-img">
+          <a href="$!jshopProduct.getBuyUrl($!promoRec.skuId)" target="_blank"><img src="$!jshopCommon.getImage($!promoRec.goodsImg,6)" width="166" alt="$!promoRec.goodsName"></a>
+          <span class="over-l"></span>
+        </div>
+        <div class="goods-name"><a href="$!jshopProduct.getBuyUrl($!promoRec.skuId)" target="_blank">$!promoRec.goodsName</a></div>
+        <div class="goods-detail">
+          <div class="goods-price">秒杀价：¥<span class="prom-price">$!promoRec.promoPrice</span></div>
+          <div class="goods-num">限量<em>$!promoRec.goodsNum</em>件</div>
+        </div>
+        <div class="goods-progress">
+          <span class="whole-num" data-whole="0"></span>
+          <span class="now-num" data-now="0"></span>
+        </div>
+        <div class="goods-btn">
+          <a href="$!jshopProduct.getBuyUrl($!promoRec.skuId)" target="_blank" class="buy-now">立即抢购<em></em></a>
+          <span class="over-btn">已抢光<em></em></span>
+          <span class="wait-btn">即将开始<em></em></span>
+        </div>
+      </li>
+      #end
+    </ul>
+  </div>
+</div>
+
+<style>
+/* 通用 */
+.tab-content {margin-bottom:0!important;}
+.tab-content .content-wait,.tab-content .content-over {display: none;}
+.tab-content .content-go {display: block;}
+.tab-content-item {overflow: hidden; position: relative; width: 990px;}
+.tab-content-item ul {overflow: hidden; position: relative; margin-right: -15px; padding-left: 10px; *padding-bottom: 10px;}
+.tab-content-item li {float: left; background: #fff; width: 166px; padding: 10px; margin-right: 10px; margin-bottom: 10px;}
+.tab-content-item li .goods-img {width: 166px; height: 166px; position: relative; overflow: hidden; margin-bottom: 6px;}
+.tab-content-item li .goods-img .over-l {width: 166px; height: 166px; background: url(//img10.360buyimg.com/cms/jfs/t3211/106/3187145812/23453/ceaa6168/57ecd750N1ce38e94.png) no-repeat 20px 38px rgba(255,255,255,0.5); position: absolute; left: 0; top: 0; display: none;}
+.tab-content-item li .goods-name {height: 28px; overflow: hidden; line-height: 1.2;}
+.tab-content-item li .goods-name a {color: #333;}
+.tab-content-item li .goods-name a:hover {text-decoration: underline; color: #E01928;}
+.tab-content-item li .goods-detail {height: 16px; line-height: 1.2; padding: 7px 0 10px; position: relative;}
+.tab-content-item li .goods-detail .goods-price {font-size: 12px; color: #E11445;}
+.tab-content-item li .goods-detail .goods-price .prom-price { font-weight: bold; font-size: 14px;}
+.tab-content-item li .goods-detail .goods-price .old-price {text-decoration:line-through; color:#666; margin-left:3px;}
+.tab-content-item li .goods-detail .goods-num {width: 70px; text-align: left; position: absolute; top: 28px; left: 104px;}
+.tab-content-item li .goods-detail .goods-num em {color: #C91623;}
+.content-over .tab-content-item li .goods-detail .goods-num em {color: #D3D3D3;}
+
+/* 进度条 */
+.tab-content-item li .goods-progress {position: relative; width: 100px; height: 5px;}
+.tab-content-item li .goods-progress span {display: block; position: absolute; left: 0; top: 0; width: 100px; height: 5px; border-radius: 3px;}
+.tab-content-item li .goods-progress .whole-num {background: #F6D7E0;}
+.tab-content-item li .goods-progress .now-num {background: #E11445;}
+.content-over .tab-content-item li .goods-progress .whole-num {background: #D3D3D3;}
+.content-over .tab-content-item li .goods-progress .now-num {background: #D3D3D3;}
+
+/* 按钮状态 */
+.tab-content-item li .goods-btn {width: 186px; height: 36px; position: relative; left: -10px; bottom: -10px; font-size:14px;}
+.tab-content-item li .goods-btn a, .tab-content-item li .goods-btn span {display: block; color: #fff; font-weight: bold; line-height: 36px; text-align: center;}
+.tab-content-item li .goods-btn a em,.tab-content-item li .goods-btn span em {display: inline-block; width: 4px; height: 6px; background: url(//img11.360buyimg.com/cms/jfs/t2347/197/2946362249/357/2320832a/5722e89cN75f013aa.png) no-repeat 0 -66px; vertical-align: 1px; margin-left: 2px;}
+.tab-content-item li .goods-btn a {background: #E11445;}
+.tab-content-item li .goods-btn a:hover {background: #c91623;}
+.tab-content-item li .goods-btn span {background: #6F6666; display: none;}
+
+.content-over li .goods-img .over-l,.tab-content-item li.jOver .goods-img .over-l {display: block;}
+.content-over li .goods-btn .over-btn {display: block;}
+.content-over li .goods-btn a {display: none;}
+.content-wait li .goods-btn a {display: none;}
+.content-go li .goods-btn a {display: block;}
+.content-wait li .goods-btn .wait-btn {display: block;}
+.content-go li.jWait .goods-btn a,.content-go li.jOver .goods-btn a {display: none;}
+.content-go li.jWait .goods-btn .wait-btn,.content-go li.jOver .goods-btn .over-btn {display: block;}
+.content-go li.jOver .goods-img .over-l {display: block;}
+</style>
+
+
+
+
+
+<script>
+function miaosha(argument) {
+    var _this = this;
+    _this.Option = jQuery.extend({
+        tabDad : jQuery('.tab-container'),
+        tab: jQuery('.tab-container li'),
+        status : jQuery('.tab-status'),
+        content : jQuery('.tab-content')
+    },argument);
+    _this.index = 0;
+    _this.date = new Date();
+    _this.year = _this.date.getFullYear();
+    _this.month = _this.date.getMonth();
+    _this.nowday = _this.date.getDate();
+    _this.nowhour = _this.date.getHours();
+    _this.nowM = _this.date.getMinutes();
+    _this.init();
+}
+miaosha.prototype.init = function(){
+  var _this = this;
+
+  /* 初始化 */
+  _this.Option.tab.attr('class','wait');
+  _this.Option.status.html('即将开始');
+  _this.Option.content.attr('class','tab-content content-wait');
+  
+  _this.getStatus();
+  _this.mouseevent();
+}
+miaosha.prototype.getStatus = function(){
+  var _this = this;
+  _this.Option.tab.each(function(index){
+    var that = jQuery(this);
+    var thisStatus = that.find('.tab-status');
+    var thistime = that.attr('data-time').split('-');
+    var time_1 = thistime[0].split(':');
+    var time_2 = thistime[1].split(':');
+    var now = new Date().getTime();
+    var today = new Date().getDate();
+    var starttime = new Date(_this.year,_this.month,today,time_1[0],time_1[1],0).getTime();
+    var endtime = new Date(_this.year,_this.month,today,time_2[0],time_2[1],0).getTime();
+
+    //判断哪个时段
+    if ( now >= starttime && now < endtime) {
+
+      thisStatus.html('秒杀中');
+      _this.Option.tab.eq(index).attr('class','go');
+      _this.Option.content.eq(index).attr('class','tab-content content-go');
+
+      _this.progress(_this.Option.content.eq(index));
+
+      var st = setInterval(function(){
+        _this.getTime(today,time_2[0],time_2[1],_this.Option.content.eq(index));
+      },1000);
+
+    }else if( now > starttime ){
+
+      _this.Option.tab.eq(index).attr('class','over');
+      _this.Option.content.eq(index).attr('class','tab-content content-over');
+      _this.Option.tab.eq(index).find('.tab-status').html('已结束');
+
+    }else if(now <= endtime){
+
+      _this.Option.tab.eq(index).attr('class','wait');
+      _this.Option.content.eq(index).attr('class','tab-content content-wait');
+      _this.Option.tab.eq(index).find('.tab-status').html('即将开始');
+
+    };
+
+  });
+}
+
+miaosha.prototype.getTime = function(day,hour,minute,dom){
+  var _this = this;
+  //倒计时
+  var now = new Date().getTime();
+  var endTime = new Date(_this.year,_this.month,day,hour,minute,0).getTime();
+  var resultTime = parseInt(endTime - now);
+  var d=Math.floor(resultTime/1000/60/60/24);
+  var h=Math.floor(resultTime/1000/60/60%24);
+  var m=Math.floor(resultTime/1000/60%60);
+  var s=Math.floor(resultTime/1000%60);
+  h = h>9?h:'0'+h; 
+  m = m>9?m:'0'+m; 
+  s = s>9?s:'0'+s; 
+
+  //dom插入
+  var hdom = dom.find('.hour');
+  var mdom = dom.find('.minute');
+  var sdom = dom.find('.second');
+
+  hdom.html(h);
+  mdom.html(m);
+  sdom.html(s);
+}
+
+miaosha.prototype.mouseevent =function(){
+  var _this = this;
+  _this.Option.tab.each(function(index){
+    var that = jQuery(this);
+    that.bind('mouseenter',function(){
+      _this.Option.tab.attr('style','').removeClass('current');
+      that.addClass('current');
+      _this.Option.content.attr('style','').hide();
+      if (that.attr('class').indexOf('over')>=0) {
+        that.css({'background':'#6E6E6E'});
+        _this.Option.content.eq(index).css({'background':'#6E6E6E'}).show();
+      }else if(that.attr('class').indexOf('go')>=0){
+        that.css({'background':'#FFD200'});
+        _this.Option.content.eq(index).css({'background':'#FFD200'}).show();
+      }else if(that.attr('class').indexOf('wait')>=0){
+        that.css({'background':'#9B71FF'});
+        _this.Option.content.eq(index).css({'background':'#9B71FF'}).show();
+      };
+    });
+  })
+}
+miaosha.prototype.progress = function(dom){
+  var _this = this;
+
+  _this.RestNum = null;
+  _this.promId = [];
+  var item = dom.find('li');
+  var thisPg,thisWhold,thisNow,bfb,nowWidth;
+
+  $.each(item,function(index){
+    var that = jQuery(this);
+    _this.promId[index] = that.attr('prompt-id');
+  });
+  _this.ids = _this.promId.toString();
+
+  var getNum = jQuery.ajax({
+        type: 'post',
+        url: '//act-jshop.jd.com/getPromoNum.html?ids=""+_this.ids',
+        dataType: 'jsonp',
+  });
+
+  getNum.done(function(restDate){
+    if (restDate.length!=0) {
+        _this.RestNum = restDate;
+        
+        $.each(_this.RestNum,function(idsIndex){
+            $.each(item,function(itemIndex){
+                if (parseInt(item.eq(itemIndex).attr('prompt-id')) == parseInt(_this.RestNum[idsIndex].id)) {
+                    item.eq(itemIndex).find('.whole-num').eq(0).attr('data-whole',_this.RestNum[idsIndex].n);
+                    item.eq(itemIndex).find('.now-num').eq(0).attr('data-now',_this.RestNum[idsIndex].nb);
+                }
+                thisPg = item.eq(itemIndex).find('.goods-progress');
+                thisWhold = parseInt(thisPg.find('.whole-num').attr('data-whole'));
+                thisNow = parseInt(thisPg.find('.now-num').attr('data-now'));
+                bfb = parseInt((thisNow/thisWhold)*10);
+
+                nowWidth = 100*thisNow/thisWhold;
+
+                thisPg.find('.now-num').css('width',nowWidth);
+
+                if ( bfb<=3 ) {
+                    thisPg.attr('class','goods-progress p-30');
+                } else if( bfb > 3 && bfb <= 6 ){
+                    thisPg.attr('class','goods-progress p-60');
+                } else {
+                    thisPg.attr('class','goods-progress p-90');
+                };
+            });
+        });
+        
+    }else{
+        item.find('.whole-num').eq(0).attr('data-whole',100);
+        item.find('.now-num').eq(0).attr('data-now',100);
+    };
+  });
+}
+
+var ms1 = new miaosha();
+</script>
